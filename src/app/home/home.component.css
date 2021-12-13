@@ -1,0 +1,191 @@
+.carousel-inner {
+  width: 100%;
+  max-height: 500px !important;
+}
+.carousel-container {
+  padding-right: 4% !important;
+  padding-left: 4% !important;
+}
+
+.bg-overlay {
+  background: linear-gradient(rgba(165, 122, 73, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://www.mustdiscover.com/wp-content/uploads/2021/05/Kona-cotton-solid-light-blue-cotton-fabric-by-Robert-Kaufman-228451-5.jpg");
+  position: center;
+  background-size: cover; /* background-size: cover; */
+  background-position: center center;
+  color: #fff;
+  height: 50vh !important;
+  padding-top: 50px;
+  font-family: "Berlin Sans FB";
+}
+.bg-overlay1 {
+  background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://image.made-in-china.com/2f0j00qZWaesISZDzH/Low-Price-Khaki-Stiffness-Workwear-Polyester-Cotton-Twill-Fabric.jpg");
+  position: center;
+  background-size: cover; /* background-size: cover; */
+  background-position: center center;
+  color: #fff;
+  height: 50vh !important;
+  padding-top: 50px;
+  font-family: "Berlin Sans FB";
+}
+.bg-overlay2 {
+  background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(0, 0, 0, 0.7)),
+    url("http://cdn.shopify.com/s/files/1/0411/7885/products/295-A200795096T.jpeg?v=1568923580");
+  position: center;
+  background-size: cover; /* background-size: cover; */
+  background-position: center center;
+  color: #fff;
+  height: 50vh !important;
+  padding-top: 50px;
+  font-family: "Berlin Sans FB";
+}
+.bg-overlay3 {
+
+  position: center;
+  background-size: cover; /* background-size: cover; */
+  background-position: center center;
+  color: #fff;
+  height: 50vh !important;
+  padding-top: 50px;
+  font-family: "Berlin Sans FB";
+}
+
+.a-button{
+  background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(187, 153, 80, 0.7));
+  font-size: 100%;
+  font-family: "Berlin Sans FB";
+  color: white;
+}
+
+
+
+.con{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 800%;
+  font-family: "Berlin Sans FB";
+  font-weight: 900;
+  line-height: 175%;
+}
+
+
+body {
+  font-family: Varela Round;
+  background: #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Card Styles */
+
+.card-sl {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 8px 8px 0px 0;
+}
+
+.card-action {
+  position: relative;
+  float: right;
+  margin-top: -25px;
+  margin-right: 20px;
+  z-index: 2;
+  color: #E26D5C;
+  background: #fff;
+  border-radius: 100%;
+  padding: 15px;
+  font-size: 15px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action:hover {
+  color: #fff;
+  background: #E26D5C;
+  -webkit-animation: pulse 1.5s infinite;
+}
+
+.card-heading {
+  font-size: 18px;
+  font-weight: bold;
+  background: #fff;
+  padding: 10px 15px;
+}
+
+.card-text {
+  padding: 10px 15px;
+  background: #fff;
+  font-size: 14px;
+  color: #636262;
+}
+
+.card-button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+  background-color: #514646;
+  color: #dad3c7;
+  border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+  text-decoration: none;
+  background-color: #dad3c7;
+  color: #514646;
+}
+
+.font{
+  font-weight: 700;
+  font-family: "Berlin Sans FB";
+  color: #514646;
+}
+
+.leftRightButton{
+  background-color: #514646 !important;
+}
+/*
+
+@-webkit-keyframes pulse {
+  0% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+  }
+
+  70% {
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+
+  100% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+      box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+} */

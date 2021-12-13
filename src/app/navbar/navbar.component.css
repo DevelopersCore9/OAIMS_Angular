@@ -1,0 +1,36 @@
+.logo_div {
+  background-color: #514646 !important;
+
+}
+
+h2 {
+  font-family: "Berlin Sans FB";
+  font-size: 500% !important;
+}
+.content_div {
+  background-color: #dad3c7 !important;
+
+}
+
+::ng-deep .mat-form-field-label .mat-form-field-label {
+  color: #514646 !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #514646 !important;
+}
+
+.mat-form-field-underline {
+  background-color: white !important;
+}
+::ng-deep .mat-icon {
+  color: #514646 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: #514646 !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+  background-color: #514646 !important;
+}

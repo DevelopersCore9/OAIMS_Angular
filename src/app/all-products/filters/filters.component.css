@@ -1,0 +1,16 @@
+.head{
+  background-color: #514646;
+  color: #dad3c7;
+  font-family: "Berlin Sans FB";
+  font-weight: bold;
+  text-align: center;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: #514646!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #514646;
+}
