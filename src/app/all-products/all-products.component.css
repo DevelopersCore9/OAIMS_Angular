@@ -6,7 +6,15 @@
   padding-right: 4% !important;
   padding-left: 4% !important;
 }
-
+h1 {
+  font-family: "Berlin Sans FB";
+  line-height: 1.5em;
+  color: #514646;
+  font-size:320%;
+  font-weight:bolder;
+  border-bottom: 4px solid #514646;
+  zoom: 1;
+}
 .bg-overlay {
   background: linear-gradient(rgba(165, 122, 73, 0.7), rgba(0, 0, 0, 0.7)),
     url("https://www.mustdiscover.com/wp-content/uploads/2021/05/Kona-cotton-solid-light-blue-cotton-fabric-by-Robert-Kaufman-228451-5.jpg");

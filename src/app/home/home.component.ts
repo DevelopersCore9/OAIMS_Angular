@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { HomeService } from '../services/home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public homeData : any
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: true,
-    navSpeed: 700,
-    navText: ['', ''],
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 600,
+    navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {
         items: 1
@@ -21,23 +24,36 @@ export class HomeComponent implements OnInit {
       400: {
         items: 2
       },
-      740: {
+      760: {
         items: 3
       },
-      940: {
+      1000: {
         items: 4
       }
     },
     nav: true
   }
 
-isViewMore = false
-  constructor() { }
+  isViewMore = false
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
+
+    this.homeService.findAll()
+    .then((data:any) => {
+      this.homeData = data;
+      console.log("data:", this.homeData);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
 
-  showCard(){
-     return this.isViewMore = !this.isViewMore
+  showCard() {
+    return this.isViewMore = !this.isViewMore
   }
 }

@@ -20,7 +20,14 @@ import { FiltersComponent } from './all-products/filters/filters.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AboutComponent } from './about/about.component';
 import { ProductCottonComponent } from './all-products/product-cotton/product-cotton.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CartComponent } from './all-products/cart/cart.component';
+import { CheckoutComponent } from './all-products/checkout/checkout.component';
+import { PaymentComponent } from './all-products/payment/payment.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { HttpClientModule } from '@angular/common/http';
+import { PlacedOrdersComponent } from './all-products/placed-orders/placed-orders.component';
+
 
 
 @NgModule({
@@ -35,6 +42,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FavouritesComponent,
     AboutComponent,
     ProductCottonComponent,
+    CartComponent,
+    CheckoutComponent,
+    PaymentComponent,
+    PlacedOrdersComponent,
 
   ],
   imports: [
@@ -48,7 +59,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatSelectModule,
     MatCardModule,
     MatCheckboxModule,
-    CarouselModule
+    IvyCarouselModule,
+    MatRadioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
