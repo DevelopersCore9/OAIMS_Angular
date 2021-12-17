@@ -27,6 +27,9 @@ import { PaymentComponent } from './all-products/payment/payment.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { PlacedOrdersComponent } from './all-products/placed-orders/placed-orders.component';
+import { OrdersHistoryComponent } from './all-products/orders-history/orders-history.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BoxPageComponent } from './models/box-page/box-page.component';
 
 
 
@@ -46,6 +49,8 @@ import { PlacedOrdersComponent } from './all-products/placed-orders/placed-order
     CheckoutComponent,
     PaymentComponent,
     PlacedOrdersComponent,
+    OrdersHistoryComponent,
+    BoxPageComponent,
 
   ],
   imports: [
@@ -61,7 +66,8 @@ import { PlacedOrdersComponent } from './all-products/placed-orders/placed-order
     MatCheckboxModule,
     IvyCarouselModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

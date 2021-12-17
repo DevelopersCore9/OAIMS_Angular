@@ -1,5 +1,7 @@
+import { BoxPageComponent } from './../../models/box-page/box-page.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-checkout',
@@ -17,10 +19,16 @@ export class CheckoutComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.edited = !this.edited
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(BoxPageComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

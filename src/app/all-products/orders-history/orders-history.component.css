@@ -1,0 +1,12 @@
+font{
+  font-size:larger;
+}
+h1 {
+  font-family: "Berlin Sans FB";
+  line-height: 1.5em;
+  color: #514646;
+  font-size:320%;
+  font-weight:bolder;
+  border-bottom: 4px solid #514646;
+  zoom: 1;
+}

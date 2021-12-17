@@ -1,3 +1,4 @@
+import { OrdersHistoryComponent } from './all-products/orders-history/orders-history.component';
 import { PlacedOrdersComponent } from './all-products/placed-orders/placed-orders.component';
 import { ProductCottonComponent } from './all-products/product-cotton/product-cotton.component';
 import { AboutComponent } from './about/about.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'placed-orders',
     component:PlacedOrdersComponent
+  },
+  {
+    path: 'orders-history',
+    component:OrdersHistoryComponent
   }
 ];
 
