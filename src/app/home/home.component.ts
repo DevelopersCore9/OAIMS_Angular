@@ -9,6 +9,7 @@ import { HomeService } from '../services/home.service';
 })
 export class HomeComponent implements OnInit {
   public homeData : any
+  public carouselImages : any
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -51,6 +52,15 @@ export class HomeComponent implements OnInit {
     .catch((err)=>{
       console.log(err);
     })
+
+    this.homeService.getCarouselImages()
+      .then((data:any) => {
+        this.carouselImages = data;
+        console.log("Carousel Images:", this.carouselImages);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
   }
 
   showCard() {

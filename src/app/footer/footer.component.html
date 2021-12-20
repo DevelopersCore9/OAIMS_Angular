@@ -16,7 +16,7 @@
               <p>
                 <mat-form-field appearance="legacy" style="min-width: 100% !important;">
                   <mat-label>Enter Your Name</mat-label>
-                  <input matInput placeholder="Name" #name>
+                  <input matInput placeholder="Name"  #name>
                 </mat-form-field>
               </p>
             </div>
@@ -54,9 +54,8 @@
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
 
-              <button mat-raised-button style="background-color: #dad3c7;">Send Message</button>
+              <button mat-raised-button style="background-color: #dad3c7;" (click)= "addMessage(name.value,email.value,subject.value,comment.value)">Send Message</button>
             </div>
-
           </div>
         </form>
 

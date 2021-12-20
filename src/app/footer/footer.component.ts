@@ -1,3 +1,4 @@
+import { ContactService } from './../services/contact.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private contactService: ContactService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  addMessage(name:string,email:string,subject:string,message:string){
+    this.contactService.addCustomerMessage(name,email,subject,message)
+    .then((data) =>{
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 }
