@@ -1,20 +1,15 @@
 <div class="container-fluid carousel-container">
-  <div class="mt-5"  *ngIf="carouselImages">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+  <div *ngIf="carouselImagesIf" class="mt-5">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" >
-          <img class="d-block w-100 img-fluid"
-            src={{carouselImages[0].image}} alt="First slide">
+        <div class="carousel-item active">
+          <img class="d-block w-100 img-fluid" src={{carouselImages[0].image}} alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100"
-            src={{carouselImages[1].image}} alt="Second slide"
-            alt="Second slide">
+          <img class="d-block w-100" src={{carouselImages[1].image}} alt="Second slide" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100"
-            src={{carouselImages[2].image}} alt="Third slide"
-            alt="Third slide">
+          <img class="d-block w-100" src={{carouselImages[2].image}} alt="Third slide" alt="Third slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -115,17 +110,16 @@
 </div>
 <br><br><br><br>
 
-<div class="container-fluid" *ngIf="banner" >
-  <div class="row content" >
-    <div class="col-md-6">
-      <img style="width: 100%;"
-        src={{banner[0].image}} alt="">
+<div  class="container-fluid">
+  <div class="row content">
+    <div class="col-md-6" *ngIf="bannerIf">
+      <img style="width: 100%;" src={{banner[0].image}} alt="">
     </div>
 
-    <div class="col-md-6 mt-1" >
-      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
+    <div class="col-md-6 mt-1">
+      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="homeDataIf">
         <div class=" mt-2 carousel-cell">
-          <div class="card-sl" >
+          <div class="card-sl">
             <div class="card-image">
               <img
                 src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
@@ -224,10 +218,10 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="homeData">
+<div  class="container-fluid">
   <div class="row content">
     <div class="col-md-6 mt-2">
-      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
+      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="homeDataIf">
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
@@ -326,22 +320,20 @@
       </carousel>
     </div>
 
-    <div class="col-md-6">
-      <img style="width: 100%;"
-        src={{banner[1].image}}>
+    <div *ngIf="bannerIf" class="col-md-6">
+      <img style="width: 100%;" src={{banner[1].image}}>
     </div>
 
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="banner">
+<div  class="container-fluid">
   <div class="row">
-    <div class="col-md-6 ">
-      <img style="width: 100%;"
-        src={{banner[2].image}} alt="">
+    <div *ngIf="bannerIf" class="col-md-6 ">
+      <img style="width: 100%;" src={{banner[2].image}} alt="">
     </div>
 
-    <div class="col-md-6 mt-2">
+    <div class="col-md-6 mt-2" *ngIf="homeDataIf">
       <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
@@ -459,10 +451,10 @@
 
     <div class="col-md-8 offset-md-1">
       <div class="row mt-3 ml-5">
-        <div class="col-md-4 mb-3" *ngFor="let data of homeData ; let i=index">
+        <div class="col-md-4 mb-3" *ngFor="let data of collectionData ; let i=index">
           <div class="card-sl" *ngIf="i<6">
             <div class="card-image">
-              <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" />
+              <img src={{data.images}} />
             </div>
 
             <div class="card-heading">
@@ -486,27 +478,27 @@
   </div>
   <div class="container-fluid">
     <div class="row d-flex justify-content-center content">
-        <div class="col-md-3" *ngFor="let data of topSelling">
-          <div class="card-sl">
-            <div class="card-image">
-              <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" />
-            </div>
-
-            <div class="card-heading">
-              {{data.name}}
-            </div>
-            <div class="card-text">
-              {{data.description}}
-            </div>
-            <div class="card-text">
-              {{data.price}} PKR / {{data.size} }Metre
-            </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+      <div class="col-md-3" *ngFor="let data of topSelling">
+        <div class="card-sl">
+          <div class="card-image">
+            <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" />
           </div>
+
+          <div class="card-heading">
+            {{data.name}}
+          </div>
+          <div class="card-text">
+            {{data.description}}
+          </div>
+          <div class="card-text">
+            {{data.price}} PKR / {{data.size} }Metre
+          </div>
+          <a href="#" class="card-button"> Add To Cart</a>
         </div>
       </div>
-      <div class="row">
-        <div class="offset-md-9" >
-      <a class="btn mt-3 a-button btn-lg" style="float:right" (click)="navigateToProducts()">View All</a>
+    </div>
+    <div class="row">
+      <div class="offset-md-9">
+        <a class="btn mt-3 a-button btn-lg" style="float:right" (click)="navigateToProducts()">View All</a>
       </div>
-</div>
+    </div>

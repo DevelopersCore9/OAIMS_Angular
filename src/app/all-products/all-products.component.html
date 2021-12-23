@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row p-4">
     <div class="col-12 col-sm-3 mt-5">
-      <app-filters></app-filters>
+      <app-filters #Child (filterEvent)="getValuesFromFilters($event)"></app-filters>
     </div>
     <div class="col mt-5">
       <nav aria-label="breadcrumb">
@@ -15,7 +15,7 @@
           *ngFor="let data of allProducts | paginate:{itemsPerPage:count,currentPage:p};; let i=index">
           <div class="card-sl mb-3">
             <div class="card-image">
-              <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" />
+              <img src={{data.images}} />
             </div>
 
             <div class="card-heading">

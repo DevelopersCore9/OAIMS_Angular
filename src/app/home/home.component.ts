@@ -13,9 +13,12 @@ import { HomeService } from '../services/home.service';
 })
 export class HomeComponent implements OnInit {
   public homeData: any;
+  public homeDataIf: boolean = false;
   public carouselImages: any = [];
+  public carouselImagesIf: boolean = false;
   public collectionData: any;
   public banner: any = [];
+  public bannerIf: boolean = false;
   public topSelling: any;
   public categoriesImages: any;
 
@@ -52,13 +55,14 @@ export class HomeComponent implements OnInit {
     private productService: ProductsService,
     private carouselService: CarouselService,
     private bannerService: BannersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.homeService
       .SliderData()
       .then((data: any) => {
         this.homeData = data;
+        this.homeDataIf = true;
         console.log('data:', this.homeData);
       })
       .catch((err) => {
@@ -86,27 +90,31 @@ export class HomeComponent implements OnInit {
       });
 
 
-    this.bannerService.getBanner().then((data: any) => {
-      this.banner = data;
-      console.log('Banner:', this.banner);
-    });
+    this.bannerService
+      .getBanner()
+      .then((data: any) => {
+        this.banner = data;
+        this.bannerIf = true;
+        console.log('Banner:', this.banner);
+      });
 
     this.productService.getTopSelling().then((data: any) => {
       this.topSelling = data;
       console.log('Banner:', this.topSelling);
     });
-  }
-  ngAfterViewInit(): void {
+
     this.carouselService
       .getCarouselImages()
       .then((data: any) => {
         this.carouselImages = data;
+        this.carouselImagesIf = true
         console.log('Carousel Images:', this.carouselImages);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
   navigateToProducts() {
     this.router.navigate(['/all-products']);
   }

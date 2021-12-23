@@ -30,6 +30,7 @@ import { OrdersHistoryComponent } from './all-products/orders-history/orders-his
 import {MatDialogModule} from '@angular/material/dialog';
 import { BoxPageComponent } from './models/box-page/box-page.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatRadioModule,
     HttpClientModule,
     MatDialogModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

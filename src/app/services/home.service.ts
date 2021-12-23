@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { HostService } from './host.service';
 
 @Injectable({
@@ -28,8 +28,12 @@ export class HomeService {
 
   getCollectionData() {
     return new Promise<any>((resolve, reject) => {
+      const formData = new FormData()
+      formData.append("type", "summer")
+
+      let params = new HttpParams().set("type", "summer");
       this.http
-        .get(`${this.hostAddress.getHostIp()}/api/products/collection`)
+        .get(`${this.hostAddress.getHostIp()}/api/products/collection`, {params})
         .toPromise()
         .then((data: any) => {
           console.log(data);
