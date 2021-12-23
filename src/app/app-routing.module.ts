@@ -19,11 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component : HomeComponent
+    component : HomeComponent,
   },
   {
     path: 'all-products',
-    component: AllProductsComponent
+    component: AllProductsComponent,
   },
   {
     path: 'favourites',

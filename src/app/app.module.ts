@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +29,7 @@ import { PlacedOrdersComponent } from './all-products/placed-orders/placed-order
 import { OrdersHistoryComponent } from './all-products/orders-history/orders-history.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BoxPageComponent } from './models/box-page/box-page.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -67,7 +66,8 @@ import { BoxPageComponent } from './models/box-page/box-page.component';
     IvyCarouselModule,
     MatRadioModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

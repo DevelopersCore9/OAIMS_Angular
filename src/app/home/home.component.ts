@@ -1,15 +1,24 @@
+import { Observable } from 'rxjs';
+import { BannersService } from './../services/banners.service';
+import { CarouselService } from './../services/carousel.service';
+import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from '../services/home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public homeData : any
-  public carouselImages : any
+  public homeData: any;
+  public carouselImages: any = [];
+  public collectionData: any;
+  public banner: any = [];
+  public topSelling: any;
+  public categoriesImages: any;
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -20,50 +29,89 @@ export class HomeComponent implements OnInit {
     navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       400: {
-        items: 2
+        items: 2,
       },
       760: {
-        items: 3
+        items: 3,
       },
       1000: {
-        items: 4
-      }
+        items: 4,
+      },
     },
-    nav: true
-  }
+    nav: true,
+  };
 
-  isViewMore = false
+  isViewMore = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private homeService: HomeService
-  ) { }
+    private homeService: HomeService,
+    private productService: ProductsService,
+    private carouselService: CarouselService,
+    private bannerService: BannersService
+  ) {}
 
   ngOnInit(): void {
-
-    this.homeService.findAll()
-    .then((data:any) => {
-      this.homeData = data;
-      console.log("data:", this.homeData);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-
-    this.homeService.getCarouselImages()
-      .then((data:any) => {
-        this.carouselImages = data;
-        console.log("Carousel Images:", this.carouselImages);
+    this.homeService
+      .SliderData()
+      .then((data: any) => {
+        this.homeData = data;
+        console.log('data:', this.homeData);
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err);
+      });
+
+    this.homeService
+      .getCollectionData()
+      .then((data: any) => {
+        this.collectionData = data;
+        console.log('Collection Data', this.collectionData);
       })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    this.bannerService
+      .getCategoriesImages()
+      .then((data: any) => {
+        this.categoriesImages = data;
+        console.log('Images of categories:', this.categoriesImages);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+    this.bannerService.getBanner().then((data: any) => {
+      this.banner = data;
+      console.log('Banner:', this.banner);
+    });
+
+    this.productService.getTopSelling().then((data: any) => {
+      this.topSelling = data;
+      console.log('Banner:', this.topSelling);
+    });
+  }
+  ngAfterViewInit(): void {
+    this.carouselService
+      .getCarouselImages()
+      .then((data: any) => {
+        this.carouselImages = data;
+        console.log('Carousel Images:', this.carouselImages);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  navigateToProducts() {
+    this.router.navigate(['/all-products']);
+  }
+  showCard() {
+    return (this.isViewMore = !this.isViewMore);
   }
 
-  showCard() {
-    return this.isViewMore = !this.isViewMore
-  }
 }

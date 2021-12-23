@@ -130,8 +130,7 @@
       <h1 class="product-title ml-5 mt-5">You May Also Like</h1>
     </div>
     <div class="container-fluid p-5">
-      <div class="row ml-2">
-
+      <div class="row">
         <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
@@ -141,13 +140,13 @@
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[0].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[0].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[0].price}} PKR / {{featured[0].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -159,51 +158,13 @@
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[1].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[1].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
-              </div>
-              <a href="#" class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img
-                  src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
-              </div>
-
-              <div class="card-heading">
-                Cotton Unstitched
-              </div>
-              <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
-              </div>
-              <div class="card-text">
-                1500 PKR / 4 Metre
-              </div>
-              <a href="#" class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img
-                  src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403" />
-              </div>
-
-              <div class="card-heading">
-                Cotton Unstitched
-              </div>
-              <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
-              </div>
-              <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[1].price}} PKR / {{featured[1].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -215,13 +176,13 @@
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[2].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[2].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[2].price}} PKR / {{featured[2].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -229,18 +190,17 @@
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
               <div class="card-image">
-                <img
-                  src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403" />
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[3].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[3].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[3].price}} PKR / {{featured[3].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -248,18 +208,35 @@
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
               <div class="card-image">
-                <img
-                  src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403" />
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[4].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[4].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[4].price}} PKR / {{featured[4].size}} Metre
+              </div>
+              <a href="#" class="card-button"> Add To Cart</a>
+            </div>
+          </div>
+          <div class="mt-2 carousel-cell">
+            <div class="card-sl">
+              <div class="card-image">
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              </div>
+
+              <div class="card-heading">
+                {{featured[5].name}}
+              </div>
+              <div class="card-text">
+                {{featured[5].description}}
+              </div>
+              <div class="card-text">
+                {{featured[5].price}} PKR / {{featured[5].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -267,18 +244,17 @@
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
               <div class="card-image">
-                <img
-                  src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403" />
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[6].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[6].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[6].price}} PKR / {{featured[6].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
@@ -286,18 +262,52 @@
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
               <div class="card-image">
-                <img
-                  src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403" />
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
               </div>
 
               <div class="card-heading">
-                Cotton Unstitched
+                {{featured[7].name}}
               </div>
               <div class="card-text">
-                High Quality un-stitched cotton fabric, best for shalwar kameez.
+                {{featured[7].description}}
               </div>
               <div class="card-text">
-                1500 PKR / 4 Metre
+                {{featured[7].price}} PKR / {{featured[7].size}} Metre
+              </div>
+              <a href="#" class="card-button"> Add To Cart</a>
+            </div>
+          </div>
+          <div class=" mt-2 carousel-cell">
+            <div class="card-sl">
+              <div class="card-image">
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              </div>
+              <div class="card-heading">
+                {{featured[8].name}}
+              </div>
+              <div class="card-text">
+                {{featured[8].description}}
+              </div>
+              <div class="card-text">
+                {{featured[8].price}} PKR / {{featured[8].size}} Metre
+              </div>
+              <a href="#" class="card-button"> Add To Cart</a>
+            </div>
+          </div>
+          <div class=" mt-2 carousel-cell">
+            <div class="card-sl">
+              <div class="card-image">
+                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              </div>
+
+              <div class="card-heading">
+                {{featured[9].name}}
+              </div>
+              <div class="card-text">
+                {{featured[9].description}}
+              </div>
+              <div class="card-text">
+                {{featured[9].price}} PKR / {{featured[9].size}} Metre
               </div>
               <a href="#" class="card-button"> Add To Cart</a>
             </div>
