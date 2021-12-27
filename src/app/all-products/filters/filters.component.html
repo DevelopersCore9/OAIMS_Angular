@@ -7,12 +7,12 @@
       <mat-accordion >
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title >
-              <p (click)="navigateToProducts('Wool')">Cotton</p>
+            <mat-panel-title (click)="navigateToProducts('Cotton')">
+              Cotton
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>96-88</p>
-          <p>Sotton</p>
+          <p (click)="navigateToProducts('96-88')">96-88</p>
+          <p (click)="navigateToProducts('Sotton')">Sotton</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -20,11 +20,11 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              MVS
+              <p (click)="navigateToProducts('96-88')">MVS</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>26-18</p>
-          <p>PVT</p>
+          <p (click)="navigateToProducts('96-88')">26-18</p>
+          <p (click)="navigateToProducts('96-88')">PVT</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -35,7 +35,7 @@
               PVT
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>18-18</p>
+          <p (click)="navigateToProducts('96-88')">18-18</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -46,9 +46,9 @@
               Wash & Wear
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>100-80</p>
-          <p>64-64</p>
-          <p>58-58</p>
+          <p (click)="navigateToProducts('96-88')">100-80</p>
+          <p (click)="navigateToProducts('96-88')">64-64</p>
+          <p (click)="navigateToProducts('96-88')">58-58</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -59,7 +59,7 @@
             Boski
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p>China Boski</p>
+          <p (click)="navigateToProducts('96-88')">China Boski</p>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

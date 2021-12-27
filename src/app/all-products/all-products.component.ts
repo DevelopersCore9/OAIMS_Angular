@@ -1,6 +1,6 @@
 import { FiltersComponent } from './filters/filters.component';
 import { FeaturedService } from './../services/featured.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ProductsService } from './../services/products.service';
 import { Component, Input, OnInit, ViewChild, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 
@@ -23,8 +23,13 @@ export class AllProductsComponent implements OnInit {
     private productService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private featuredProducts: FeaturedService,
-    private ref: ChangeDetectorRef
-  ) { }
+    private ref: ChangeDetectorRef,
+    private router: Router
+  ) {
+    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    //   return false;
+    // };
+   }
 
   // Get Data or Category Name from Child
   getValuesFromFilters($event: any) {
