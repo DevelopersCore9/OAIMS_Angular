@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row p-4">
     <div class="col-12 col-sm-3 mt-5">
-      <app-filters #Child  (filterEvent)="getValuesFromFilters($event)"></app-filters>
+      <app-filters #Child  (filterEvent)="getValuesFromFilters($event)" (filterEventColor)="getColorsFromFilters($event)"></app-filters>
     </div>
     <div class="col mt-5">
       <nav aria-label="breadcrumb">

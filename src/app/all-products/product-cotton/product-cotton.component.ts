@@ -15,6 +15,7 @@ export class ProductCottonComponent implements OnInit {
   public id: any;
   public productsDataIf : boolean = false;
   public featuredIf : boolean = false;
+
   constructor(
     private featuredProducts: FeaturedService,
     private productService : ProductsService,

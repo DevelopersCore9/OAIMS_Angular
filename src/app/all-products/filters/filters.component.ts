@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class FiltersComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<any>();
+  @Output() filterEventColor = new EventEmitter<any>();
   panelOpenState = false;
 
   constructor() {}
@@ -30,5 +31,10 @@ export class FiltersComponent implements OnInit {
     console.log(productSubCategory);
     this.filterEvent.emit({"subcategory":productSubCategory})
 
+  }
+
+  filterProducts(productColor: string) {
+    console.log(productColor);
+    this.filterEventColor.emit({ "color": productColor });
   }
 }

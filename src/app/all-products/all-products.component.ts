@@ -29,15 +29,15 @@ export class AllProductsComponent implements OnInit {
   count: number = 8;
   public param: any;
   public subCategory: any;
-  public searchkey : string = "";
-
+  public searchkey: string = "";
+  public colorFilters: any = [];
   constructor(
     private productService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private featuredProducts: FeaturedService,
     private ref: ChangeDetectorRef,
     private router: Router,
-    private navigateService : NavigateProductDataService
+    private navigateService: NavigateProductDataService
   ) {
     // this.router.routeReuseStrategy.shouldReuseRoute = function () {
     //   return false;
@@ -45,7 +45,6 @@ export class AllProductsComponent implements OnInit {
   }
   // Get Data or Category Name from Child
   getValuesFromFilters($event: any) {
-    console.log($event);
     if ($event.category) {
       this.productService.CustomProductsCategory($event.category).subscribe((data) => {
         console.log(data);
@@ -57,16 +56,27 @@ export class AllProductsComponent implements OnInit {
       this.productService
         .CustomProductsSubCategory($event.subcategory)
         .subscribe((data) => {
-          console.log(data);
           this.allProducts = data;
           console.log('all Cotton products are:', this.allProducts);
           this.ref.detectChanges();
         });
     }
   }
-  onSave(index:any){
+  getColorsFromFilters($event: any) {
+    console.log($event);
+    if (this.colorFilters.includes($event.color)) {
+      this.colorFilters = this.colorFilters.filter((color:any)=> color !== $event.color);
+      console.log(this.colorFilters)
+    }
+    else {
+      this.colorFilters.push($event.color)
+    }
+    console.log("elements",this.allProducts = this.allProducts.some((product:any)=> product.color.includes($event.color)))
+    console.log("The array", this.allProducts)
+  }
+  onSave(index: any) {
     this.navigateService.saveData(this.allProducts[index])
-    this.router.navigate(['/productCotton',index])
+    this.router.navigate(['/productCotton', index])
   }
   getValuesFromFilterBySubCategory($event: any) {
     this.productService.CustomProductsSubCategory($event).subscribe((data) => {
