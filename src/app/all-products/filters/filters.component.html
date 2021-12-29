@@ -7,12 +7,12 @@
       <mat-accordion >
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title (click)="navigateToProducts('Cotton')">
+            <mat-panel-title (click)="navigateToProducts('cotton')">
               Cotton
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p (click)="navigateToProducts('96-88')">96-88</p>
-          <p (click)="navigateToProducts('Sotton')">Sotton</p>
+          <p (click)="navigateToProductsBySubCategory('96-88')">96-88</p>
+          <p (click)="navigateToProductsBySubCategory('sotton')">Sotton</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -20,11 +20,11 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <p (click)="navigateToProducts('96-88')">MVS</p>
+              <p (click)="navigateToProducts('mvs')">MVS</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p (click)="navigateToProducts('96-88')">26-18</p>
-          <p (click)="navigateToProducts('96-88')">PVT</p>
+          <p (click)="navigateToProductsBySubCategory('26-18')">26-18</p>
+          <p (click)="navigateToProductsBySubCategory('pvt')">PVT</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -32,10 +32,10 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              PVT
+              <p (click)="navigateToProducts('pvt')">PVT</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p (click)="navigateToProducts('96-88')">18-18</p>
+          <p (click)="navigateToProductsBySubCategory('18-18')">18-18</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
@@ -43,23 +43,23 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Wash & Wear
+             <p (click)="navigateToProducts('washnwear')">Wash & Wear</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p (click)="navigateToProducts('96-88')">100-80</p>
-          <p (click)="navigateToProducts('96-88')">64-64</p>
-          <p (click)="navigateToProducts('96-88')">58-58</p>
+          <p (click)="navigateToProductsBySubCategory('100-80')">100-80</p>
+          <p (click)="navigateToProductsBySubCategory('64-64')">64-64</p>
+          <p (click)="navigateToProductsBySubCategory('58-58')">58-58</p>
         </mat-expansion-panel>
       </mat-accordion>
       <br>
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title>
-            Boski
+            <mat-panel-title >
+          <p (click)="navigateToProducts('boski')">Boski</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p (click)="navigateToProducts('96-88')">China Boski</p>
+          <p (click)="navigateToProductsBySubCategory('china Boski')">China Boski</p>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

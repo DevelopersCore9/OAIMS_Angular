@@ -1,50 +1,39 @@
 <div class="container-fluid">
-  <div class="row p-5">
-    <!-- card left -->
+  <div class="row p-5" >
     <div class="col-md-4 mt-5">
       <div class="product-imgs">
         <div class="img-display">
           <div class="img-showcase">
             <img
-              src="https://5.imimg.com/data5/RD/AP/MY-26790125/viscose-satin-fabric-500x500.jpeg"
-              >
-            <img
-              src="https://cdn.shopify.com/s/files/1/0690/5747/products/SQ-COTTON-NAVY-BLU-2_WeaverDee_sewing-fabric.jpg?v=1547831958"
-              >
-            <img
-              src="https://cdn.shopify.com/s/files/1/0690/5747/products/SQ-COTTON-NAVY-BLU-2_WeaverDee_sewing-fabric.jpg?v=1547831958"
-              >
-            <img
-              src="https://cdn.shopify.com/s/files/1/0690/5747/products/SQ-COTTON-NAVY-BLU-2_WeaverDee_sewing-fabric.jpg?v=1547831958"
-              >
+              src={{productsData.images[0]}}>
           </div>
         </div>
         <div class="img-select">
           <div class="img-item">
             <a href="#" data-id="1">
               <img
-                src="https://cdn.shopify.com/s/files/1/2031/8151/products/Royal_Blue_600x_89555b62-00b6-424b-b72e-e9fbe5c6b949.jpg?v=1613248320"
+                src={{productsData.images[1]}}
                 >
             </a>
           </div>
           <div class="img-item">
             <a href="#" data-id="2">
               <img
-                src="https://cdn03.plentymarkets.com/7snwnbavk6qo/item/images/70009/full/70009-Fahnentuch-dklgruen.jpg"
+                src={{productsData.images[0]}}
               >
             </a>
           </div>
           <div class="img-item">
             <a href="#" data-id="3">
               <img
-                src="https://cdn.shopify.com/s/files/1/0558/3725/products/brown_5a3bfea9-f579-47be-b27b-d192c20c1657_600x.JPG?v=1568684892"
+                src={{productsData.images[0]}}
               >
             </a>
           </div>
           <div class="img-item">
             <a href="#" data-id="4">
               <img
-                src="https://static.fibre2fashion.com/MemberResources/LeadResources/8/2017/5/Buyer/17128709/Images/17128709_0_sub-jersey.jpg"
+                src={{productsData.images[1]}}
                 >
             </a>
           </div>
@@ -54,12 +43,13 @@
     <!-- card right -->
     <div class="col-md-7 mt-4 ml-5 p-2">
       <div class="product-content">
-        <h2 class="product-title">Purple Cotton Suit</h2>
+        <H1>{{id}}</H1>
+        <h2 class="product-title">{{productsData.name}}</h2>
 
         <div class="row">
           <div class="col-md-3">
             <div class="product-price">
-              <p class="new-price"><span>Rs. 1500</span></p>
+              <p class="new-price"><span>{{productsData.price}}</span></p>
             </div>
           </div>
           <div class="col-md-3 mt-4">
@@ -74,11 +64,11 @@
         </div>
 
         <div class="row mt-2">
-          <div style="text-align:center">
-            <span class="dot" style="background-color: #dad3c7;"></span>
-            <span class="dot ml-2" style="background-color: yellow;"></span>
+          <div style="text-align:center" *ngFor="let data of productsData.color">
+            <span  class="dot" style="background-color: #dad3c7;" [ngStyle]="{'background-color':data }"></span>
+            <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
             <span class="dot ml-2" style="background-color: navy;"></span>
-            <span class="dot ml-2" style="background-color: gray;"></span>
+            <span class="dot ml-2" style="background-color: gray;"></span> -->
           </div>
         </div>
 
@@ -93,17 +83,7 @@
         </div>
         <div class="product-detail">
 
-          <p class="con">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga
-            tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
-          <p class="con">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius.
-            Dignissimos, labore suscipit. Unde.</p>
-          <p class="con">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius.
-            Dignissimos, labore suscipit. Unde. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero at atque
-            corporis maxime enim,
-            quam voluptatum aliquid modi eius facilis, sit quod cumque neque voluptas possimus, aperiam porro cupiditate
-            veritatis!</p>
-          <p class="con">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius.
-            Dignissimos, labore suscipit. Unde.</p>
+          <p class="con">{{productsData?.description}}</p>
           <ul>
             <li>Color: <span>Black</span></li>
             <li>Available: <span>in stock</span></li>
@@ -131,7 +111,7 @@
     </div>
     <div class="container-fluid p-5">
       <div class="row">
-        <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
+        <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="featuredIf">
           <div class=" mt-2 carousel-cell">
             <div class="card-sl">
               <div class="card-image">

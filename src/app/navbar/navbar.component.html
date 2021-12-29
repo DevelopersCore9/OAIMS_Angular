@@ -10,7 +10,7 @@
             <mat-form-field appearance="legacy" class="ml-5" style="width: 100%;">
               <mat-label>Search Products</mat-label>
               <input matInput style="color: #514646;">
-              <mat-icon matSuffix>search</mat-icon>
+              <mat-icon matSuffix [(ngModel)]="searchTerm" (keyup)="search($event)">search</mat-icon>
               <!-- <mat-hint>Hint</mat-hint> -->
             </mat-form-field>
           </div>

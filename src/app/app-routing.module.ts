@@ -34,7 +34,7 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'productCotton',
+    path: 'productCotton/:id',
     component: ProductCottonComponent
   },
   {

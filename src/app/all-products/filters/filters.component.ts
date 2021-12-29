@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,14 +18,17 @@ export class FiltersComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<any>();
   panelOpenState = false;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   navigateToProducts(productType: string) {
     console.log(productType);
-    this.filterEvent.emit(productType)
+    this.filterEvent.emit({ "category": productType });
   }
 
+  navigateToProductsBySubCategory(productSubCategory: string) {
+    console.log(productSubCategory);
+    this.filterEvent.emit({"subcategory":productSubCategory})
+
+  }
 }

@@ -31,6 +31,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BoxPageComponent } from './models/box-page/box-page.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     PlacedOrdersComponent,
     OrdersHistoryComponent,
     BoxPageComponent,
+    FilterPipe,
 
   ],
   imports: [
