@@ -11,6 +11,7 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
 } from '@angular/core';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-all-products',
@@ -27,10 +28,12 @@ export class AllProductsComponent implements OnInit {
   public featured: any;
   p: number = 1;
   count: number = 8;
+  public getQueryGetProduct: string | any
   public param: any;
   public subCategory: any;
   public searchkey: string = "";
   public colorFilters: any = [];
+  public categoryName: any;
   constructor(
     private productService: ProductsService,
     private activatedRoute: ActivatedRoute,
@@ -62,22 +65,35 @@ export class AllProductsComponent implements OnInit {
         });
     }
   }
+
   getColorsFromFilters($event: any) {
     console.log($event);
     if (this.colorFilters.includes($event.color)) {
-      this.colorFilters = this.colorFilters.filter((color:any)=> color !== $event.color);
+      this.colorFilters = this.colorFilters.filter((color: any) => color !== $event.color);
       console.log(this.colorFilters)
     }
     else {
       this.colorFilters.push($event.color)
     }
-    console.log("elements",this.allProducts = this.allProducts.some((product:any)=> product.color.includes($event.color)))
-    console.log("The array", this.allProducts)
+    this.colorFilters = ['yellow', 'orange']
+
+    this.allProducts = this.allProducts
+      .filter((product: any) => product.color
+        .some((color: any) => this.colorFilters
+          .some((c: any) => c === color)))
+      .map((product: any) => product);
+    console.log("asdasdasdas", this.allProducts);
+
+    // console.log("elements", this.allProducts = this.allProducts.filter((product: any) => product.color.includes($event.color)))
+    // console.log("The array", this.allProducts)
   }
+
+
   onSave(index: any) {
     this.navigateService.saveData(this.allProducts[index])
-    this.router.navigate(['/productCotton', index])
+    this.router.navigate(['/productCotton'])
   }
+
   getValuesFromFilterBySubCategory($event: any) {
     this.productService.CustomProductsSubCategory($event).subscribe((data) => {
       console.log(data);
@@ -85,16 +101,25 @@ export class AllProductsComponent implements OnInit {
       this.ref.detectChanges();
     });
   }
+
   ngOnInit(): void {
-    this.productService
-      .getAllProducts()
-      .then((data: any) => {
-        this.allProducts = data;
-        console.log('All Products are:', this.allProducts);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.getQueryGetProduct = this.activatedRoute.snapshot.paramMap.get("product")
+    this.productService.CustomProductsCategory(this.getQueryGetProduct).subscribe((data) => {
+      console.log(data);
+      this.allProducts = data;
+      console.log('all Cotton products are:', this.allProducts);
+      this.ref.detectChanges();
+    });
+
+
+    // Default Loading Data of Cotton Products
+    this.productService.CustomProductsCategory('cotton').subscribe((data) => {
+      console.log(data);
+      this.allProducts = data;
+      console.log('all Cotton products are:', this.allProducts);
+      this.ref.detectChanges();
+    });
+
 
     this.featuredProducts.getFeaturedProducts().then((data: any) => {
       this.featured = data;

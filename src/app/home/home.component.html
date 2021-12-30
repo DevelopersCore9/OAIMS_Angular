@@ -25,12 +25,12 @@
 
 </div>
 
-<div class="container-fluid carousel-container mt-5">
+<div class="container-fluid carousel-container mt-3">
   <div class="row">
     <div class="col-lg-4 mb-4 mb-lg-0 ">
       <div class="container bg-overlay">
         <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Cotton</h2>
+          <h2 style="margin-top: 35%;" (click)="onCategory('cotton')">Cotton</h2>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="col-lg-4 mb-4 mb-lg-0 ">
       <div class="container bg-overlay1">
         <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Khakhi</h2>
+          <h2 style="margin-top: 35%;" (click)="onCategory('mvs')">MVS</h2>
         </div>
       </div>
     </div>
@@ -46,17 +46,17 @@
     <div class="col-lg-4 mb-4 mb-lg-0 ">
       <div class="container bg-overlay2">
         <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Wash & Wear</h2>
+          <h2 style="margin-top: 35%;" (click)="onCategory('pvt')">PVT</h2>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row mt-2" *ngIf="isViewMore">
+  <div class="row mt-3" *ngIf="isViewMore">
     <div class="col-lg-4 mb-4 mb-lg-0 ">
       <div class="container bg-overlay">
         <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Cotton</h2>
+          <h2 style="margin-top: 35%;" (click)="onCategory('washnwear')">Wash & Wear</h2>
         </div>
       </div>
     </div>
@@ -64,41 +64,7 @@
     <div class="col-lg-4 mb-4 mb-lg-0 ">
       <div class="container bg-overlay1">
         <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Khakhi</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay2">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Wash & Wear</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-2" *ngIf="isViewMore">
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Cotton</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay1">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Khakhi</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay2">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;">Wash & Wear</h2>
+          <h2 style="margin-top: 35%;" (click)="onCategory('boski')">Boski</h2>
         </div>
       </div>
     </div>
@@ -134,7 +100,7 @@
             <div class="card-text">
               {{homeData[0].price}} PKR / {{homeData[0].quantity}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(0)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -152,7 +118,7 @@
             <div class="card-text">
               {{homeData[1].price}} PKR / {{homeData[1].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(1)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -171,7 +137,7 @@
             <div class="card-text">
               {{homeData[2].price}} PKR / {{homeData[0].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(2)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -190,7 +156,7 @@
             <div class="card-text">
               {{homeData[3].price}} PKR / {{homeData[3].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(3)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -209,7 +175,7 @@
             <div class="card-text">
               {{homeData[4].price}} PKR / {{homeData[4].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(4)"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -238,7 +204,7 @@
             <div class="card-text">
               {{homeData[5].price}} PKR / {{homeData[5].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(5)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -257,7 +223,7 @@
             <div class="card-text">
               {{homeData[6].price}} PKR / {{homeData[6].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(6)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -276,7 +242,7 @@
             <div class="card-text">
               {{homeData[7].price}} PKR / {{homeData[7].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(7)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -295,7 +261,7 @@
             <div class="card-text">
               {{homeData[8].price}} PKR / {{homeData[8].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(8)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -314,7 +280,7 @@
             <div class="card-text">
               {{homeData[9].price}} PKR / {{homeData[9].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(9)"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -351,7 +317,7 @@
             <div class="card-text">
               {{homeData[10].price}} PKR / {{homeData[10].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(10)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -370,7 +336,7 @@
             <div class="card-text">
               {{homeData[11].price}} PKR / {{homeData[11].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(11)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -389,7 +355,7 @@
             <div class="card-text">
               {{homeData[12].price}} PKR / {{homeData[12].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(12)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -408,7 +374,7 @@
             <div class="card-text">
               {{homeData[13].price}} PKR / {{homeData[13].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(13)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -427,7 +393,7 @@
             <div class="card-text">
               {{homeData[14].price}} PKR / {{homeData[14].size}} Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(14)"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -466,7 +432,7 @@
             <div class="card-text">
               {{data.price}} PKR / {{data.size} }Metre
             </div>
-            <a href="#" class="card-button"> Add To Cart</a>
+            <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
           </div>
         </div>
       </div>
@@ -478,7 +444,7 @@
   </div>
   <div class="container-fluid">
     <div class="row d-flex justify-content-center content">
-      <div class="col-md-3" *ngFor="let data of topSelling">
+      <div class="col-md-3" *ngFor="let data of topSelling;let i=index">
         <div class="card-sl">
           <div class="card-image">
             <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" />
@@ -493,7 +459,7 @@
           <div class="card-text">
             {{data.price}} PKR / {{data.size} }Metre
           </div>
-          <a href="#" class="card-button"> Add To Cart</a>
+          <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
         </div>
       </div>
     </div>

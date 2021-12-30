@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row p-5" >
+  <div class="row p-5">
     <div class="col-md-4 mt-5">
       <div class="product-imgs">
         <div class="img-display">
@@ -10,29 +10,29 @@
         </div>
         <div class="img-select">
           <div class="img-item">
-            <a href="#" data-id="1">
-              <img
+            <a  data-id="1">
+              <img (click)="swapImageOnClick(1)"
                 src={{productsData.images[1]}}
                 >
             </a>
           </div>
           <div class="img-item">
-            <a href="#" data-id="2">
-              <img
+            <a  data-id="2">
+              <img (click)="swapImageOnClick(0)"
                 src={{productsData.images[0]}}
               >
             </a>
           </div>
           <div class="img-item">
-            <a href="#" data-id="3">
-              <img
+            <a  data-id="3">
+              <img (click)="swapImageOnClick(0)"
                 src={{productsData.images[0]}}
               >
             </a>
           </div>
           <div class="img-item">
-            <a href="#" data-id="4">
-              <img
+            <a  data-id="4">
+              <img (click)="swapImageOnClick(1)"
                 src={{productsData.images[1]}}
                 >
             </a>
@@ -78,7 +78,7 @@
           </div>
 
           <div class="col-md-3 mt-2">
-            <button mat-button class="a-button">Add to Cart</button>
+            <button mat-button class="a-button" (click)="onSave()">Add to Cart</button>
           </div>
         </div>
         <div class="product-detail">
@@ -128,7 +128,7 @@
               <div class="card-text">
                 {{featured[0].price}} PKR / {{featured[0].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button" > Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -146,7 +146,7 @@
               <div class="card-text">
                 {{featured[1].price}} PKR / {{featured[1].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -164,7 +164,7 @@
               <div class="card-text">
                 {{featured[2].price}} PKR / {{featured[2].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -182,7 +182,7 @@
               <div class="card-text">
                 {{featured[3].price}} PKR / {{featured[3].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -200,7 +200,7 @@
               <div class="card-text">
                 {{featured[4].price}} PKR / {{featured[4].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class="mt-2 carousel-cell">
@@ -218,7 +218,7 @@
               <div class="card-text">
                 {{featured[5].price}} PKR / {{featured[5].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -236,7 +236,7 @@
               <div class="card-text">
                 {{featured[6].price}} PKR / {{featured[6].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -254,7 +254,7 @@
               <div class="card-text">
                 {{featured[7].price}} PKR / {{featured[7].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -271,7 +271,7 @@
               <div class="card-text">
                 {{featured[8].price}} PKR / {{featured[8].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
           <div class=" mt-2 carousel-cell">
@@ -289,7 +289,7 @@
               <div class="card-text">
                 {{featured[9].price}} PKR / {{featured[9].size}} Metre
               </div>
-              <a href="#" class="card-button"> Add To Cart</a>
+              <a  class="card-button"> Add To Cart</a>
             </div>
           </div>
         </carousel>

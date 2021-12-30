@@ -1,5 +1,5 @@
 import { NavigateProductDataService } from './../../services/navigate-product-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { FeaturedService } from 'src/app/services/featured.service';
@@ -20,16 +20,13 @@ export class ProductCottonComponent implements OnInit {
     private featuredProducts: FeaturedService,
     private productService : ProductsService,
     public route : ActivatedRoute,
-    private navigateService : NavigateProductDataService
+    private navigateService : NavigateProductDataService,
+    public router : Router
     ) {}
 
   ngOnInit(): void {
       this.productsData = this.navigateService.getData()
       console.log("the product data:",this.productsData)
-      console.log(this.productsData.name)
-      console.log(this.productsData.images)
-      console.log(this.productsData.price)
-      console.log(this.productsData.description)
       this.productsDataIf = true;
 
     this.featuredProducts.getFeaturedProducts().then((data: any) => {
@@ -37,5 +34,16 @@ export class ProductCottonComponent implements OnInit {
       console.log('Featured :', this.featured);
       this.featuredIf = true;
     });
+  }
+
+  onSave(){
+    this.navigateService.saveData(this.productsData)
+    this.router.navigate(['/checkout'])
+  }
+
+  swapImageOnClick(givenIndex:any){
+    let temp = this.productsData.images[0]
+    this.productsData.images[0] = this.productsData.images[givenIndex]
+    this.productsData.images[givenIndex] = temp
   }
 }

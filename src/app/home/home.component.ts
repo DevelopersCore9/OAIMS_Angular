@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from '../services/home.service';
+import { NavigateProductDataService } from '../services/navigate-product-data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -54,7 +55,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private productService: ProductsService,
     private carouselService: CarouselService,
-    private bannerService: BannersService
+    private bannerService: BannersService,
+    private navigateService: NavigateProductDataService
   ) { }
 
   ngOnInit(): void {
@@ -121,5 +123,14 @@ export class HomeComponent implements OnInit {
   showCard() {
     return (this.isViewMore = !this.isViewMore);
   }
+
+  onSave(index: any) {
+    this.navigateService.saveData(this.homeData[index])
+    this.router.navigate(['/productCotton'], index);
+  }
+  onCategory(name: string) {
+    this.router.navigate(['/all-products', { "product": name }])
+  }
+
 
 }

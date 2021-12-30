@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./box-page.component.css']
 })
 export class BoxPageComponent implements OnInit {
-
+  public box: any;
+  standardPackage:boolean = true
+  PremiumPackage:boolean = false
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  standardRadioEvent(){
+    this.standardPackage = !this.standardPackage;
+  }
+  prmiumRadioEvent(){
+    this.PremiumPackage = !this.PremiumPackage;
+  }
 }

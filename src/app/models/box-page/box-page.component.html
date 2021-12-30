@@ -5,23 +5,27 @@
     <div class="col-md-6">
       <h2>Standard</h2>
       <img src="https://refine.b-cdn.net/wp-content/uploads/2018/01/favor-box-250x250.jpg" alt="">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur obcaecati ab exercitationem delectus tempora, eos quo itaque, vero cumque vitae aspernatur, inventore placeat praesentium quidem nulla. Blanditiis fuga distinctio itaque?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur obcaecati ab exercitationem delectus
+        tempora, eos quo itaque, vero cumque vitae aspernatur, inventore placeat praesentium quidem nulla. Blanditiis
+        fuga distinctio itaque?</p>
 
     </div>
     <div class="col-md-6">
       <h2>Premium</h2>
       <img src="https://5.imimg.com/data5/QE/PU/MY-26978342/luxury-wedding-gift-box-250x250.jpg" alt="">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea qui asperiores nemo facere, cumque cum labore praesentium aperiam laborum incidunt repellat placeat eius unde libero impedit, culpa, at earum nam.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea qui asperiores nemo facere, cumque cum labore
+        praesentium aperiam laborum incidunt repellat placeat eius unde libero impedit, culpa, at earum nam.</p>
     </div>
     <div class="container text-center">
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1" class="mr-2">Standard Package</mat-radio-button>
-      <mat-radio-button value="2" class="mr-2">Premium Package</mat-radio-button>
-    </mat-radio-group>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="Standard" name="package" class="mr-2" checked ngModel>Standard Package</mat-radio-button>
+        <mat-radio-button value="Premium"  name="package" class="mr-2" ngModel>Premium Package</mat-radio-button>
+      </mat-radio-group>
     </div>
   </div>
 </div>
 <mat-dialog-actions align="end">
-  <button class="btn btn-dark" >Cancel</button>
-  <button class="btn" style="background-color:#FFCE31;color: #000;" [mat-dialog-close]="true" cdkFocusInitial routerLink="/payment">Save</button>
+  <button class="btn btn-dark">Cancel</button>
+  <button class="btn" style="background-color:#FFCE31;color: #000;" [mat-dialog-close]="true" cdkFocusInitial
+    routerLink="/payment">Save</button>
 </mat-dialog-actions>
