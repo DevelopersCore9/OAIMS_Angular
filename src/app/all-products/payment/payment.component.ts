@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.allDataCart = this.cartService.onCartGet()
+    this.isChecked = true;
     console.log(this.allDataCart)
   }
 

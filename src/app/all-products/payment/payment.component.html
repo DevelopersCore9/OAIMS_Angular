@@ -17,18 +17,19 @@
       <div class="row">
         <mat-radio-group aria-label="Select an option">
           <div class="row">
-          <mat-radio-button value="1">Cash on Delivery</mat-radio-button>
+            <mat-radio-button value="1">Cash on Delivery</mat-radio-button>
           </div>
-        <!-- <div class="row">
+          <!-- <div class="row">
           <mat-radio-button value="2">Credit or Debit Card</mat-radio-button>
         </div> -->
         </mat-radio-group>
       </div>
       <div class="row" style="float: right">
-        <button class="btn mr-3" style="background-color: #514646;color: #fff;" routerLink="/placed-orders">Place Order</button>
+        <button class="btn mr-3" style="background-color: #514646;color: #fff;" routerLink="/placed-orders">Place
+          Order</button>
       </div>
-  </div>
-    <div class="col-md-7 cart p-5">
+    </div>
+    <div class="col-md-7 cart p-5" *ngIf="isChecked">
       <div class="title">
         <div class="row">
           <h3>Your Orders</h3>
@@ -36,8 +37,8 @@
       </div>
       <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
         <div class="row main align-items-center">
-          <div class="col-2"><img class="img-fluid"
-              src={{order.images}}></div>
+          <!-- <div class="col-2"><img class="img-fluid"
+              src={{order.images}}></div> -->
           <div class="col">
             <div class="row ">{{order.name}}</div>
           </div>
@@ -46,7 +47,7 @@
           <div class="col">{{order.quantity}} M</div>
           <div class="col">Rs.{{order.prcie}} </div>
           <div class="col">
-            <button class="btn btn-danger" ()>Remove</button>
+            <button class="btn btn-danger">Remove</button>
           </div>
         </div>
       </div>
