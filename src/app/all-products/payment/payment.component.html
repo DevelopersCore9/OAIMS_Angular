@@ -34,42 +34,20 @@
           <h3>Your Orders</h3>
         </div>
       </div>
-      <div class="row border-top border-bottom">
+      <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
         <div class="row main align-items-center">
           <div class="col-2"><img class="img-fluid"
-              src="https://static-01.daraz.pk/p/3aea4852a85beafdec079895ed40388b.jpg"></div>
+              src={{order.images}}></div>
           <div class="col">
-            <div class="row ">Cotton</div>
+            <div class="row ">{{order.name}}</div>
           </div>
-          <div class="col">Color <strong>Coffee</strong> </div>
-          <div class="col">4 M</div>
-          <div class="col">Rs. 1000 </div>
-        </div>
-      </div>
-      <div class="row mt-2">
-        <div class="row main align-items-center">
-          <div class="col-2"><img class="img-fluid"
-              src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg">
-          </div>
+          <div class="col">Color <strong>{{order.color}}</strong> </div>
+          <div class="col">{{order.size}} M</div>
+          <div class="col">{{order.quantity}} M</div>
+          <div class="col">Rs.{{order.prcie}} </div>
           <div class="col">
-            <div class="row ">MVS</div>
+            <button class="btn btn-danger" ()>Remove</button>
           </div>
-          <div class="col">Color <strong>Yellow</strong> </div>
-          <div class="col">5 M</div>
-          <div class="col"> Rs. 1500</div>
-        </div>
-      </div>
-      <div class="row border-top border-bottom mt-2">
-        <div class="row main align-items-center">
-          <div class="col-2"><img class="img-fluid"
-              src="http://cdn.shopify.com/s/files/1/0313/7025/products/eggplant-purple-raw-silk-fabric_1200x1200.jpg?v=1562926403">
-          </div>
-          <div class="col">
-            <div class="row text-muted">Wash & Wear</div>
-          </div>
-          <div class="col">Color <strong>Purple</strong> </div>
-          <div class="col">4 M</div>
-          <div class="col">Rs. 1200 </div>
         </div>
       </div>
     </div>

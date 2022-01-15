@@ -4,37 +4,28 @@
       <div class="product-imgs">
         <div class="img-display">
           <div class="img-showcase">
-            <img
-              src={{productsData.images[0]}}>
+            <img src={{productsData.images[0]}}>
           </div>
         </div>
         <div class="img-select">
           <div class="img-item">
-            <a  data-id="1">
-              <img (click)="swapImageOnClick(1)"
-                src={{productsData.images[1]}}
-                >
+            <a data-id="1">
+              <img (click)="swapImageOnClick(1)" src={{productsData.images[1]}}>
             </a>
           </div>
           <div class="img-item">
-            <a  data-id="2">
-              <img (click)="swapImageOnClick(0)"
-                src={{productsData.images[0]}}
-              >
+            <a data-id="2">
+              <img (click)="swapImageOnClick(0)" src={{productsData.images[0]}}>
             </a>
           </div>
           <div class="img-item">
-            <a  data-id="3">
-              <img (click)="swapImageOnClick(0)"
-                src={{productsData.images[0]}}
-              >
+            <a data-id="3">
+              <img (click)="swapImageOnClick(0)" src={{productsData.images[0]}}>
             </a>
           </div>
           <div class="img-item">
-            <a  data-id="4">
-              <img (click)="swapImageOnClick(1)"
-                src={{productsData.images[1]}}
-                >
+            <a data-id="4">
+              <img (click)="swapImageOnClick(1)" src={{productsData.images[1]}}>
             </a>
           </div>
         </div>
@@ -49,7 +40,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="product-price">
-              <p class="new-price"><span>{{productsData.price}}</span></p>
+              <p class="new-price"><span>RS.{{productsData.price}}</span></p>
             </div>
           </div>
           <div class="col-md-3 mt-4">
@@ -63,31 +54,40 @@
           </div>
         </div>
 
+        <form name="demo"></form>
         <div class="row mt-2">
           <div style="text-align:center" *ngFor="let data of productsData.color">
-            <span  class="dot" style="background-color: #dad3c7;" [ngStyle]="{'background-color':data }"></span>
+            <mat-radio-group [(ngModel)]="definedColor">
+              <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color (change)="onRadioButtonChange($event)">
+                <p [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent">color</p>
+              </mat-radio-button>
+            </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
             <span class="dot ml-2" style="background-color: navy;"></span>
             <span class="dot ml-2" style="background-color: gray;"></span> -->
           </div>
         </div>
-
-        <div class="row mt-2 mb-3 ml-1">
+        <div class="row mt-2 mb-3">
           <div class="col-md-3 mt-2">
-            <input type="number" min="0" value="1" class="inp">Quantity
+            <input type="number" min="0" value="1" class="inp" #quantity>Quantity
           </div>
 
           <div class="col-md-3 mt-2">
-            <button mat-button class="a-button" (click)="onSave()">Add to Cart</button>
+            <button mat-button class="a-button" (click)="onCheckout(quantity.value)">Add to Cart</button>
           </div>
         </div>
+        <div class="row mt-2 mb-3"><mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
+          <mat-radio-button value="4.0">4.0 Metre</mat-radio-button>
+          <mat-radio-button value="5.0" class="ml-3">5.0 Metre</mat-radio-button>
+        </mat-radio-group></div>
         <div class="product-detail">
 
           <p class="con">{{productsData?.description}}</p>
           <ul>
-            <li>Color: <span>Black</span></li>
+            <li>Color: <span>{{definedColor}}
+              </span></li>
             <li>Available: <span>in stock</span></li>
-            <li>Category: <span>Shoes</span></li>
+            <li>Category: <span>{{productsData.subCategory.category.categoryName}}</span></li>
             <li>Shipping Area: <span>All over the world</span></li>
             <li>Shipping Fee: <span>Free</span></li>
           </ul>
@@ -96,204 +96,203 @@
         <div class="purchase-info">
 
 
-        <div class="social-links" style="float: right;">
-          <button class="inp2">Continue Shopping</button>
+          <div class="social-links" style="float: right;">
+            <button class="inp2">Continue Shopping</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 
-  <div class="row py-3">
-    <div class="product-content">
-      <h1 class="product-title ml-5 mt-5">You May Also Like</h1>
+<div class="row py-3">
+  <div class="product-content">
+    <h1 class="product-title ml-5 mt-5">You May Also Like</h1>
+  </div>
+  <div class="container-fluid p-5">
+    <div class="row">
+      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="featuredIf">
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img
+                src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[0].name}}
+            </div>
+            <div class="card-text">
+              {{featured[0].description}}
+            </div>
+            <div class="card-text">
+              {{featured[0].price}} PKR / {{featured[0].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(0)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[1].name}}
+            </div>
+            <div class="card-text">
+              {{featured[1].description}}
+            </div>
+            <div class="card-text">
+              {{featured[1].price}} PKR / {{featured[1].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(1)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[2].name}}
+            </div>
+            <div class="card-text">
+              {{featured[2].description}}
+            </div>
+            <div class="card-text">
+              {{featured[2].price}} PKR / {{featured[2].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(2)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[3].name}}
+            </div>
+            <div class="card-text">
+              {{featured[3].description}}
+            </div>
+            <div class="card-text">
+              {{featured[3].price}} PKR / {{featured[3].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(3)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[4].name}}
+            </div>
+            <div class="card-text">
+              {{featured[4].description}}
+            </div>
+            <div class="card-text">
+              {{featured[4].price}} PKR / {{featured[4].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(4)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[5].name}}
+            </div>
+            <div class="card-text">
+              {{featured[5].description}}
+            </div>
+            <div class="card-text">
+              {{featured[5].price}} PKR / {{featured[5].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(5)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[6].name}}
+            </div>
+            <div class="card-text">
+              {{featured[6].description}}
+            </div>
+            <div class="card-text">
+              {{featured[6].price}} PKR / {{featured[6].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(6)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[7].name}}
+            </div>
+            <div class="card-text">
+              {{featured[7].description}}
+            </div>
+            <div class="card-text">
+              {{featured[7].price}} PKR / {{featured[7].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(7)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+            <div class="card-heading">
+              {{featured[8].name}}
+            </div>
+            <div class="card-text">
+              {{featured[8].description}}
+            </div>
+            <div class="card-text">
+              {{featured[8].price}} PKR / {{featured[8].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(8)"> Add To Cart</button>
+          </div>
+        </div>
+        <div class=" mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+            </div>
+
+            <div class="card-heading">
+              {{featured[9].name}}
+            </div>
+            <div class="card-text">
+              {{featured[9].description}}
+            </div>
+            <div class="card-text">
+              {{featured[9].price}} PKR / {{featured[9].size}} Metre
+            </div>
+            <button class="card-button" (click)="onSaveSamePage(9)"> Add To Cart</button>
+          </div>
+        </div>
+      </carousel>
     </div>
-    <div class="container-fluid p-5">
-      <div class="row">
-        <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="featuredIf">
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img
-                  src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[0].name}}
-              </div>
-              <div class="card-text">
-                {{featured[0].description}}
-              </div>
-              <div class="card-text">
-                {{featured[0].price}} PKR / {{featured[0].size}} Metre
-              </div>
-              <a  class="card-button" > Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[1].name}}
-              </div>
-              <div class="card-text">
-                {{featured[1].description}}
-              </div>
-              <div class="card-text">
-                {{featured[1].price}} PKR / {{featured[1].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[2].name}}
-              </div>
-              <div class="card-text">
-                {{featured[2].description}}
-              </div>
-              <div class="card-text">
-                {{featured[2].price}} PKR / {{featured[2].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[3].name}}
-              </div>
-              <div class="card-text">
-                {{featured[3].description}}
-              </div>
-              <div class="card-text">
-                {{featured[3].price}} PKR / {{featured[3].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[4].name}}
-              </div>
-              <div class="card-text">
-                {{featured[4].description}}
-              </div>
-              <div class="card-text">
-                {{featured[4].price}} PKR / {{featured[4].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class="mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[5].name}}
-              </div>
-              <div class="card-text">
-                {{featured[5].description}}
-              </div>
-              <div class="card-text">
-                {{featured[5].price}} PKR / {{featured[5].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[6].name}}
-              </div>
-              <div class="card-text">
-                {{featured[6].description}}
-              </div>
-              <div class="card-text">
-                {{featured[6].price}} PKR / {{featured[6].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[7].name}}
-              </div>
-              <div class="card-text">
-                {{featured[7].description}}
-              </div>
-              <div class="card-text">
-                {{featured[7].price}} PKR / {{featured[7].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-              <div class="card-heading">
-                {{featured[8].name}}
-              </div>
-              <div class="card-text">
-                {{featured[8].description}}
-              </div>
-              <div class="card-text">
-                {{featured[8].price}} PKR / {{featured[8].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-          <div class=" mt-2 carousel-cell">
-            <div class="card-sl">
-              <div class="card-image">
-                <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
-              </div>
-
-              <div class="card-heading">
-                {{featured[9].name}}
-              </div>
-              <div class="card-text">
-                {{featured[9].description}}
-              </div>
-              <div class="card-text">
-                {{featured[9].price}} PKR / {{featured[9].size}} Metre
-              </div>
-              <a  class="card-button"> Add To Cart</a>
-            </div>
-          </div>
-        </carousel>
-      </div>
   </div>
-  </div>
-
+</div>

@@ -75,8 +75,6 @@ export class AllProductsComponent implements OnInit {
     else {
       this.colorFilters.push($event.color)
     }
-    this.colorFilters = ['yellow', 'orange']
-
     this.allProducts = this.allProducts
       .filter((product: any) => product.color
         .some((color: any) => this.colorFilters

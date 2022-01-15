@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigateProductDataService } from 'src/app/services/navigate-product-data.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,13 +25,14 @@ export class CheckoutComponent implements OnInit {
   }
   constructor(
     public dialog: MatDialog,
-    private navigateService: NavigateProductDataService
+    private navigateService: NavigateProductDataService,
+    public cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.edited = !this.edited
 
-    this.cartData = this.navigateService.getData()
+    this.cartData = this.cartService.onCartGet()
     console.log("the cart data is:",this.cartData)
 
   }
@@ -42,6 +44,10 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  removeItem(){
+    this.cartService.onRemoveItem();
+  }
+
   saveInformation(name:any,city:any,number:any,userEmail:any,address:any) {
     this.informationData = {
       name: name,
@@ -51,5 +57,7 @@ export class CheckoutComponent implements OnInit {
       address: address
     }
     console.log("the information of new user is:",this.informationData)
+    this.openDialog()
+    this.cartService.onCartSave(this.cartData);
   }
 }

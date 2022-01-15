@@ -17,15 +17,17 @@
         praesentium aperiam laborum incidunt repellat placeat eius unde libero impedit, culpa, at earum nam.</p>
     </div>
     <div class="container text-center">
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="Standard" name="package" class="mr-2" checked ngModel>Standard Package</mat-radio-button>
-        <mat-radio-button value="Premium"  name="package" class="mr-2" ngModel>Premium Package</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" (change)="onPackageRadioButtonchange($event)">
+        <mat-radio-button value="Standard" name="package" class="mr-2" checked ngModel (change)="standardRadioEvent()">
+          Standard Package</mat-radio-button>
+        <mat-radio-button value="Premium" name="package" class="mr-2" ngModel (change)="prmiumRadioEvent()">Premium
+          Package</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>
 </div>
 <mat-dialog-actions align="end">
   <button class="btn btn-dark">Cancel</button>
-  <button class="btn" style="background-color:#FFCE31;color: #000;" [mat-dialog-close]="true" cdkFocusInitial
-    routerLink="/payment">Save</button>
+  <button class="btn" style="background-color:#FFCE31;color: #000;" [mat-dialog-close]="selected"
+    cdkFocusInitial>Save</button>
 </mat-dialog-actions>
