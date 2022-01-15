@@ -8,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class PaymentComponent implements OnInit {
   public allDataCart : any;
+  public isChecked: boolean = false;
   constructor(
     private cartService : CartService
   ) { }
@@ -19,5 +20,14 @@ export class PaymentComponent implements OnInit {
 
   onRemoveItem(){
     this.cartService.onRemoveItem()
+  }
+  cashOnDeliveryRadioButtonCheck(){
+    if(this.isChecked == true){
+      this.isChecked = false;
+      console.log("false",this.isChecked)
+    }else{
+      this.isChecked = true;
+      console.log("true",this.isChecked)
+    }
   }
 }

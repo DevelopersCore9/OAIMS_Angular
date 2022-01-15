@@ -1,41 +1,56 @@
-<div class="container-fluid">
-  <div class="row text-white">
-    <div class="logo_div col-md-3 d-flex justify-content-center" style="align-items: center;">
-      <h2>OAIM'S</h2>
-    </div>
-    <div class="content_div col-md-9">
-      <div class="mt-4">
-        <div class="row">
-          <div class="col-md-9 d-flex justify-content-center">
-            <mat-form-field appearance="legacy" class="ml-5" style="width: 100%;">
-              <mat-label>Search Products</mat-label>
-              <input matInput style="color: #514646;">
-              <mat-icon matSuffix [(ngModel)]="searchTerm" (keyup)="search($event)">search</mat-icon>
-              <!-- <mat-hint>Hint</mat-hint> -->
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 d-flex justify-content-center mt-3">
-            <mat-icon matSuffix class="ml-4" routerLink="/favourites" style="cursor: pointer;">favorite_border</mat-icon>
-            <mat-icon matSuffix class="ml-4">shopping_cart</mat-icon>
-            <mat-icon matSuffix class="ml-4">person_outline</mat-icon>
-          </div>
-        </div>
-      </div>
+<!-- <div class="col-md-3 d-flex justify-content-center mt-3">
+  <mat-icon matSuffix class="ml-4" routerLink="/favourites" style="cursor: pointer;">favorite_border</mat-icon>
+  <mat-icon matSuffix class="ml-4">shopping_cart</mat-icon>
+  <mat-icon matSuffix class="ml-4">person_outline</mat-icon>
+</div> -->
 
-      <div class="ml-5 mb-3" style="color: #514646 !important;">
-        <a routerLink="" style="color: #514646;">Home</a>
-        <a class="ml-5"  style="color: #514646;">New Arrival</a>
-        <a class="ml-5">New Arrival</a>
-        <mat-form-field appearance="legacy" class="ml-5">
-          <mat-label>Categories</mat-label>
-          <mat-select>
-            <mat-option value="one">Cotton</mat-option>
-            <mat-option value="two">MVS</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <a class="ml-5" routerLink="/about" style="color: #514646;">About Us</a>
+<div class="wrap" style="background-color: #514646;">
+  <div class="container" >
+    <div class="row justify-content-between">
+      <div class="col">
+        <p class="mb-0 phone" ><span class="fa fa-phone phoneColor" ></span> <a style="color: #dad3c7;">+00 1234 567</a></p>
+      </div>
+      <div class="col d-flex justify-content-end">
       </div>
     </div>
   </div>
-
 </div>
+<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand p-1" href="index.html" style="background-color: #dad3c7;"><strong><h1 style="color: #514646;">OAIM'S</h1></strong></a>
+    <!-- <div class="logo_div justify-content-center" style="align-items: center;">
+      <h2>OAIM'S</h2>
+    </div> -->
+    <form action="#" class="searchform order-sm-start order-lg-last">
+      <div class=" d-flex justify-content-center">
+        <mat-icon matSuffix class="ml-4">shopping_cart</mat-icon>
+        <mat-icon matSuffix class="ml-4">person_outline</mat-icon>
+      </div>
+    </form>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse mt-1" id="ftco-nav">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item"><a routerLink="" class="nav-link navItemColor">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navItemColor" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">New Arrival</a>
+          <div class="dropdown-menu navItemColor" aria-labelledby="dropdown04">
+            <a class="dropdown-item navItemColor" href="#">Cotton</a>
+            <a class="dropdown-item navItemColor" href="#">MVS</a>
+            <a class="dropdown-item navItemColor" href="#">PVT</a>
+            <a class="dropdown-item navItemColor" href="#">Boski</a>
+            <a class="dropdown-item navItemColor" href="#">Wash & Wear</a>
+          </div>
+        </li>
+        <li class="nav-item "><a href="#" class="nav-link navItemColor">Orders</a></li>
+        <li class="nav-item "><a routerLink="/about" class="nav-link navItemColor">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

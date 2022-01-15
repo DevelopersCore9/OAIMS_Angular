@@ -11,3 +11,12 @@ h2 {
 .font{
   font-size: xx-large;
 }
+
+.radioDiv{
+  background-color: #dad3c7;
+}
+
+.placeOrderButton{
+  background-color: #514646;
+  color: #fff;
+}

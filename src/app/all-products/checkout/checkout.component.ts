@@ -58,6 +58,6 @@ export class CheckoutComponent implements OnInit {
     }
     console.log("the information of new user is:",this.informationData)
     this.openDialog()
-    this.cartService.onCartSave(this.cartData);
+    // this.cartService.onCartSave(this.cartData);
   }
 }

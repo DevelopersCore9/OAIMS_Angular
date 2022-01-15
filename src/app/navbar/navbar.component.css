@@ -1,6 +1,6 @@
 .logo_div {
-  background-color: #514646 !important;
-
+  background-color: #dad3c7 !important;
+  color: #514646;
 }
 
 h2 {
@@ -33,4 +33,12 @@ h2 {
 
 ::ng-deep .mat-form-field-ripple {
   background-color: #514646 !important;
+}
+
+.phoneColor{
+  color: #dad3c7;
+}
+
+.navItemColor{
+  color: #514646 !important;
 }
