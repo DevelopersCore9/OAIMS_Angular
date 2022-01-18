@@ -1,3 +1,4 @@
+import { InvoiceService } from './../../services/invoice.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./placed-orders.component.css']
 })
 export class PlacedOrdersComponent implements OnInit {
-
-  constructor() { }
+  public placedOrdersData : any;
+  constructor(
+    private invoiceService : InvoiceService
+  ) { }
 
   ngOnInit(): void {
+   this.placedOrdersData =  this.invoiceService.getPaymentItems();
+   console.log("the orders which are placed are", this.placedOrdersData)
   }
 
 }

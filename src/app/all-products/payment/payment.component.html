@@ -25,7 +25,7 @@
         </mat-radio-group>
       </div>
       <div class="row" style="float: right">
-        <button class="btn mr-3" style="background-color: #514646;color: #fff;" routerLink="/placed-orders">Place
+        <button class="btn mr-3" style="background-color: #514646;color: #fff;" (click)="sendDataToInvoice()">Place
           Order</button>
       </div>
     </div>
@@ -45,7 +45,7 @@
           <div class="col">Color <strong>{{order.color}}</strong> </div>
           <div class="col">{{order.size}} M</div>
           <div class="col">{{order.quantity}} M</div>
-          <div class="col">Rs.{{order.prcie}} </div>
+          <div class="col">Rs.{{order.price}} </div>
           <div class="col">
             <button class="btn btn-danger">Remove</button>
           </div>

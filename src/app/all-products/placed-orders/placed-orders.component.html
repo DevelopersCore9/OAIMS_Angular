@@ -17,53 +17,27 @@
               <p class="lead fw-normal mb-0" style="color: #515151;">Receipt</p>
               <p class="small text-muted mb-0">Receipt Number : 1KAU9-84UIL</p>
             </div>
-            <div class="card shadow-0 border mb-4">
+            <div class="card shadow-0 border mb-4" *ngFor="let data of placedOrdersData">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-2">
-                    <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" class="img-fluid"
+                    <img src={{data.images}} class="img-fluid"
                       alt="Phone">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0">Cotton</p>
+                    <p class="font mb-0">{{data.title}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Blue</p>
+                    <p class="font mb-0 ">{{data.color}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Size: 4.5 M</p>
+                    <p class="font mb-0 ">Size: {{data.size}} M</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Qty: 1</p>
+                    <p class="font mb-0 ">Qty: {{data.quantity}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Rs. 1600</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow-0 border mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <img
-                      src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg"
-                      class="img-fluid" alt="Phone">
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0">Wash & Wear</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 ">Pink rose</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 ">Size: 5.0 M</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 ">Qty: 1</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="text-muted mb-0 ">Rs. 2000</p>
+                    <p class="font mb-0 ">Rs. {{data.price}}</p>
                   </div>
                 </div>
               </div>

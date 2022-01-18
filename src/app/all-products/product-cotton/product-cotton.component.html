@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="productsDataIf">
   <div class="row p-5">
     <div class="col-md-4 mt-5">
       <div class="product-imgs">
@@ -32,7 +32,7 @@
       </div>
     </div>
     <!-- card right -->
-    <div class="col-md-7 mt-4 ml-5 p-2">
+    <div class="col-md-7 mt-4 ml-5 p-2" *ngIf="productsDataIf">
       <div class="product-content">
         <H1>{{id}}</H1>
         <h2 class="product-title">{{productsData.name}}</h2>
@@ -109,7 +109,7 @@
   <div class="product-content">
     <h1 class="product-title ml-5 mt-5">You May Also Like</h1>
   </div>
-  <div class="container-fluid p-5">
+  <div class="container-fluid p-5" *ngIf="featuredIf">
     <div class="row">
       <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="featuredIf">
         <div class=" mt-2 carousel-cell">

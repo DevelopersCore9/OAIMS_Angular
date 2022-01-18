@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
   public edited: true | any;
@@ -22,22 +22,21 @@ export class CheckoutComponent implements OnInit {
     private navigateService: NavigateProductDataService,
     public cartService: CartService,
     public router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.edited = !this.edited
+    this.edited = !this.edited;
 
-    this.cartData = this.cartService.onCartGet()
-    console.log("the cart data is:", this.cartData)
-
+    this.cartData = this.cartService.onCartGet();
+    console.log('the cart data is:', this.cartData);
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(BoxPageComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigate(['/payment'])
+      this.router.navigate(['/payment']);
     });
   }
 
@@ -49,20 +48,25 @@ export class CheckoutComponent implements OnInit {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  saveInformation(name: any, city: any, number: any, userEmail: any, address: any) {
+  saveInformation(
+    name: any,
+    city: any,
+    number: any,
+    userEmail: any,
+    address: any
+  ) {
     this.informationData = {
       name: name,
       city: city,
       number: number,
       userEmail: userEmail,
-      address: address
-    }
-    console.log("the information of new user is:", this.informationData)
-    this.openDialog()
+      address: address,
+    };
+    console.log('the information of new user is:', this.informationData);
+    this.openDialog();
     // this.cartService.onCartSave(this.cartData);
   }
 }

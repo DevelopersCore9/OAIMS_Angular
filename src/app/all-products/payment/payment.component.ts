@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { InvoiceService } from './../../services/invoice.service';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,7 +12,9 @@ export class PaymentComponent implements OnInit {
   public allDataCart : any;
   public isChecked: boolean = false;
   constructor(
-    private cartService : CartService
+    private cartService : CartService,
+    private invoiceService : InvoiceService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +34,10 @@ export class PaymentComponent implements OnInit {
       this.isChecked = true;
       console.log("true",this.isChecked)
     }
+  }
+
+  sendDataToInvoice(){
+    this.invoiceService.savePaymentItems(this.allDataCart);
+    this.router.navigate(['/placed-orders'])
   }
 }
