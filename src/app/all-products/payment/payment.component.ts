@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit {
     this.allDataCart = this.cartService.onCartGet()
     this.isChecked = true;
     console.log(this.allDataCart)
+
   }
 
   onRemoveItem(){

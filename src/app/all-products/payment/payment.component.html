@@ -37,12 +37,12 @@
       </div>
       <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
         <div class="row main align-items-center">
-          <!-- <div class="col-2"><img class="img-fluid"
-              src={{order.images}}></div> -->
+          <div class="col-2"><img class="img-fluid"
+              src={{order.images}}></div>
           <div class="col">
             <div class="row ">{{order.name}}</div>
           </div>
-          <div class="col">Color <strong>{{order.color}}</strong> </div>
+          <div class="col">Color <strong>{{order.colorSelected}}</strong> </div>
           <div class="col">{{order.size}} M</div>
           <div class="col">{{order.quantity}} M</div>
           <div class="col">Rs.{{order.price}} </div>

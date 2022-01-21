@@ -10,16 +10,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './all-products/cart/cart.component';
 import { CheckoutComponent } from './all-products/checkout/checkout.component';
 import { PaymentComponent } from './all-products/payment/payment.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
-    path : '',
+    path: '',
     pathMatch: 'full',
-    redirectTo : '/home'
+    redirectTo: '/home'
   },
   {
     path: 'home',
-    component : HomeComponent,
+    component: HomeComponent,
   },
   {
     path: 'all-products',
@@ -51,11 +52,15 @@ const routes: Routes = [
   },
   {
     path: 'placed-orders',
-    component:PlacedOrdersComponent
+    component: PlacedOrdersComponent
   },
   {
     path: 'orders-history',
-    component:OrdersHistoryComponent
+    component: OrdersHistoryComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 

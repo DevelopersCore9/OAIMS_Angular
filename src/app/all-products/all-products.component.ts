@@ -1,3 +1,4 @@
+import { CartNotificationService } from './../services/cart-notification.service';
 import { NavigateProductDataService } from './../services/navigate-product-data.service';
 import { FiltersComponent } from './filters/filters.component';
 import { FeaturedService } from './../services/featured.service';
@@ -34,17 +35,53 @@ export class AllProductsComponent implements OnInit {
   public searchkey: string = "";
   public colorFilters: any = [];
   public categoryName: any;
+
   constructor(
     private productService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private featuredProducts: FeaturedService,
     private ref: ChangeDetectorRef,
     private router: Router,
-    private navigateService: NavigateProductDataService
+    private navigateService: NavigateProductDataService,
+    private notificationsService: CartNotificationService
   ) {
     // this.router.routeReuseStrategy.shouldReuseRoute = function () {
     //   return false;
     // };
+  }
+
+  ngOnInit(): void {
+    this.getQueryGetProduct = this.activatedRoute.snapshot.paramMap.get("product")
+    this.productService.CustomProductsCategory(this.getQueryGetProduct).subscribe((data) => {
+      console.log(data);
+      this.allProducts = data;
+      console.log('all Cotton products are:', this.allProducts);
+      this.ref.detectChanges();
+    });
+
+
+    // Default Loading Data of Cotton Products
+    this.productService.CustomProductsCategory('cotton').subscribe((data) => {
+      console.log(data);
+      this.allProducts = data;
+      console.log('all Cotton products are:', this.allProducts);
+      this.ref.detectChanges();
+    });
+
+
+    this.featuredProducts.getFeaturedProducts().then((data: any) => {
+      this.featured = data;
+      console.log('Featured :', this.featured);
+    });
+
+    this.activatedRoute.queryParams.subscribe((params) => {
+      console.log('Params', params);
+      const countNumber = params.limit;
+      console.log('Limit is:', countNumber);
+    });
+
+
+    this.allProducts = this.allProducts.sort((low: any, high: any) => low.Price - high.Price);
   }
   // Get Data or Category Name from Child
   getValuesFromFilters($event: any) {
@@ -87,7 +124,7 @@ export class AllProductsComponent implements OnInit {
   }
 
 
-  onSave(index: any) {
+  onDataSelection(index: any) {
     this.navigateService.saveData(this.allProducts[index])
     this.router.navigate(['/productCotton'])
   }
@@ -100,34 +137,43 @@ export class AllProductsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.getQueryGetProduct = this.activatedRoute.snapshot.paramMap.get("product")
-    this.productService.CustomProductsCategory(this.getQueryGetProduct).subscribe((data) => {
-      console.log(data);
-      this.allProducts = data;
-      console.log('all Cotton products are:', this.allProducts);
-      this.ref.detectChanges();
-    });
+  sort(event: any) {
+    switch (event.target.value) {
+      case "Low":
+        {
+          this.allProducts = this.allProducts.sort((low: any, high: any) => low.Price - high.Price);
+          break;
+        }
 
+      case "High":
+        {
+          this.allProducts = this.allProducts.sort((low: any, high: any) => high.Price - low.Price);
+          break;
+        }
 
-    // Default Loading Data of Cotton Products
-    this.productService.CustomProductsCategory('cotton').subscribe((data) => {
-      console.log(data);
-      this.allProducts = data;
-      console.log('all Cotton products are:', this.allProducts);
-      this.ref.detectChanges();
-    });
+      case "Name":
+        {
+          this.allProducts = this.allProducts.sort(function (low: any, high: any) {
+            if (low.Name < high.Name) {
+              return -1;
+            }
+            else if (low.Name > high.Name) {
+              return 1;
+            }
+            else {
+              return 0;
+            }
+          })
+          break;
+        }
 
+      default: {
+        this.allProducts = this.allProducts.sort((low: any, high: any) => low.Price - high.Price);
+        break;
+      }
 
-    this.featuredProducts.getFeaturedProducts().then((data: any) => {
-      this.featured = data;
-      console.log('Featured :', this.featured);
-    });
+    }
+    return this.allProducts;
 
-    this.activatedRoute.queryParams.subscribe((params) => {
-      console.log('Params', params);
-      const countNumber = params.limit;
-      console.log('Limit is:', countNumber);
-    });
   }
 }

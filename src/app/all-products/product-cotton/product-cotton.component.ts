@@ -4,6 +4,9 @@ import { ProductsService } from './../../services/products.service';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FeaturedService } from 'src/app/services/featured.service';
 import { CartService } from 'src/app/services/cart.service';
+import { FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartNotificationService } from 'src/app/services/cart-notification.service';
 
 @Component({
   selector: 'app-product-cotton',
@@ -18,19 +21,24 @@ export class ProductCottonComponent implements OnInit {
   public featuredIf: boolean = false;
   public currentCheckedValue = null
   public definedColor: any;
-  public selectedColor: any
-  public selectedMeter: any
+  public selectedColor: any | undefined
+  public selectedMeter: any | undefined
+
   constructor(
     private featuredProducts: FeaturedService,
     private productService: ProductsService,
     public route: ActivatedRoute,
     private navigateService: NavigateProductDataService,
+    private notificationsService: CartNotificationService,
     public router: Router,
     private ren: Renderer2,
-    private cartService: CartService
+    private cartService: CartService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
+
+
     this.route.url.subscribe(url => {
       // Code to get the new notification data
       // and display it
@@ -59,16 +67,26 @@ export class ProductCottonComponent implements OnInit {
   }
 
   onCheckout(qty: any) {
-    this.navigateService.saveData(this.productsData)
-    this.router.navigate(['/checkout'])
-    this.productsData.color = this.selectedColor
-    this.productsData.quantity = qty
-    this.productsData.size = this.selectedMeter
-    console.log(this.productsData);
-
-    this.cartService.onCartSave(this.productsData);
+    if (this.selectedColor == undefined && this.selectedMeter == undefined) {
+      this.openSnackBar("please select the attributes first")
+      // this._snackBar.open("please select the attributes first", " "), {
+      //   horizontalPosition: "right",
+      //   verticalPosition: "top",
+      //   duration: 5 * 1000
+      // };
+    } else {
+      this.navigateService.saveData(this.productsData)
+      this.productsData.colorSelected = this.selectedColor
+      this.productsData.quantity = qty
+      this.productsData.size = this.selectedMeter
+      console.log(this.productsData);
+      this.cartService.onCartSave(this.productsData);
+      this.notificationsService.changeNotification(1);
+      console.log(this.notificationsService.getNotificationValue());
+      this.router.navigate(['/checkout'])
+    }
   }
-  onSaveSamePage(index: any) {
+  onFeaturedProductCard(index: any) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     }
@@ -82,4 +100,11 @@ export class ProductCottonComponent implements OnInit {
     this.productsData.images[givenIndex] = temp
   }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message, " ", {
+      horizontalPosition: "right",
+        verticalPosition: "top",
+      duration: 5 * 1000,
+    });
+  }
 }

@@ -42,3 +42,7 @@ h2 {
 .navItemColor{
   color: #514646 !important;
 }
+
+.cursor{
+  cursor: pointer;
+}

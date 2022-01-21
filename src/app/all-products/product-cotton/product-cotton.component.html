@@ -59,7 +59,7 @@
           <div style="text-align:center" *ngFor="let data of productsData.color">
             <mat-radio-group [(ngModel)]="definedColor">
               <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color (change)="onRadioButtonChange($event)">
-                <p [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent">color</p>
+                <span  class="fa fa-phone fa-2x" [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent"></span>
               </mat-radio-button>
             </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
@@ -87,7 +87,7 @@
             <li>Color: <span>{{definedColor}}
               </span></li>
             <li>Available: <span>in stock</span></li>
-            <li>Category: <span>{{productsData.subCategory.category.categoryName}}</span></li>
+            <!-- <li>Category: <span>{{productsData.subCategory.category.categoryName}}</span></li> -->
             <li>Shipping Area: <span>All over the world</span></li>
             <li>Shipping Fee: <span>Free</span></li>
           </ul>
@@ -128,7 +128,7 @@
             <div class="card-text">
               {{featured[0].price}} PKR / {{featured[0].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(0)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(0)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -146,7 +146,7 @@
             <div class="card-text">
               {{featured[1].price}} PKR / {{featured[1].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(1)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(1)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -164,7 +164,7 @@
             <div class="card-text">
               {{featured[2].price}} PKR / {{featured[2].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(2)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(2)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -182,7 +182,7 @@
             <div class="card-text">
               {{featured[3].price}} PKR / {{featured[3].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(3)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(3)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -200,7 +200,7 @@
             <div class="card-text">
               {{featured[4].price}} PKR / {{featured[4].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(4)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(4)"> Add To Cart</button>
           </div>
         </div>
         <div class="mt-2 carousel-cell">
@@ -218,7 +218,7 @@
             <div class="card-text">
               {{featured[5].price}} PKR / {{featured[5].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(5)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(5)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -236,7 +236,7 @@
             <div class="card-text">
               {{featured[6].price}} PKR / {{featured[6].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(6)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(6)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -254,7 +254,7 @@
             <div class="card-text">
               {{featured[7].price}} PKR / {{featured[7].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(7)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(7)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -271,7 +271,7 @@
             <div class="card-text">
               {{featured[8].price}} PKR / {{featured[8].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(8)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(8)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -289,7 +289,7 @@
             <div class="card-text">
               {{featured[9].price}} PKR / {{featured[9].size}} Metre
             </div>
-            <button class="card-button" (click)="onSaveSamePage(9)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(9)"> Add To Cart</button>
           </div>
         </div>
       </carousel>

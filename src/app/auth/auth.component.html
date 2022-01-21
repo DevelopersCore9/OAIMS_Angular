@@ -1,1 +1,96 @@
-<p>auth works!</p>
+<div class="container">
+  <h2 class="d-flex justify-content-center mt-5 mb-5 text-center">My Account</h2>
+</div>
+<div class="container-fluid pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-5">
+      <!-- <div class="row">
+        <div class="col-md-6 mt-5">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>First Name</mat-label>
+            <input matInput #name>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 mt-5">
+          <mat-form-field appearance="outline" class="mr-5" style="width: 100%;">
+            <mat-label>Last Name</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div> -->
+
+
+      <h3 class="mb-2"><strong>Returning Customer</strong></h3>
+      <p>I am a returning customer</p>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="example-container">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" required #userEmail>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="example-container">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" style="float: right">
+        <button class="btn mr-3" style="background-color: #514646;color: #fff;">Log In</button>
+      </div>
+    </div>
+    <div class="col-md-5 offset-md-1 coffeeColor">
+      <h3 class="mb-2 mt-2"><strong>New Customer
+      </strong></h3>
+      <p>Register Account</p>
+      <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+
+      <div class="row">
+        <div class="col-md-12 mt-3" >
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Full Name</mat-label>
+            <input matInput #name>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-12">
+          <div class="example-container">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" required #userEmail>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="example-container">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row p-2" style="float: right">
+        <button class="btn" style="background-color: #514646;color: #fff;">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>

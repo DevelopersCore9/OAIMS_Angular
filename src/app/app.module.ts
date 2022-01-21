@@ -32,7 +32,8 @@ import { BoxPageComponent } from './models/box-page/box-page.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FilterPipe } from './pipes/filter.pipe';
-
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     OrdersHistoryComponent,
     BoxPageComponent,
     FilterPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -71,7 +71,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     HttpClientModule,
     MatDialogModule,
     NgxPaginationModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -42,4 +42,7 @@ export class BoxPageComponent implements OnInit {
     this.packageButton = event.target.value;
     console.log(this.packageButton)
   }
+  saveSampleClick(event:any){
+    console.log(event)
+  }
 }

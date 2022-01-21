@@ -25,10 +25,10 @@
                       alt="Phone">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0">{{data.title}}</p>
+                    <p class="font mb-0">{{data.name}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">{{data.color}}</p>
+                    <p class="font mb-0 ">{{data.colorSelected}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="font mb-0 ">Size: {{data.size}} M</p>
@@ -45,7 +45,7 @@
 
             <div class="d-flex justify-content-between pt-2">
               <p class="fw-bold mb-0">Order Details</p>
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> Rs. 3600</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> Rs. {{totalprice}}</p>
             </div>
 
             <div class="d-flex justify-content-between pt-2">
@@ -62,7 +62,7 @@
           <div class="card-footer border-0 px-4 py-5"
             style="background-color: #515151; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total paid : <span
-                class="h4 mb-0 ms-2 ml-2">Rs. 3440</span></h5>
+                class="h4 mb-0 ms-2 ml-2">Rs. {{grandTotal}}</span></h5>
           </div>
         </div>
       </div>
