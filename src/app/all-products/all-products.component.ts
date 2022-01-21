@@ -61,12 +61,14 @@ export class AllProductsComponent implements OnInit {
 
 
     // Default Loading Data of Cotton Products
-    this.productService.CustomProductsCategory('cotton').subscribe((data) => {
-      console.log(data);
-      this.allProducts = data;
-      console.log('all Cotton products are:', this.allProducts);
-      this.ref.detectChanges();
-    });
+    if (!this.getQueryGetProduct) {
+      this.productService.CustomProductsCategory('cotton').subscribe((data) => {
+        console.log(data);
+        this.allProducts = data;
+        console.log('all Cotton products are:', this.allProducts);
+        this.ref.detectChanges();
+      });
+    }
 
 
     this.featuredProducts.getFeaturedProducts().then((data: any) => {

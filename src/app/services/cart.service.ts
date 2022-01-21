@@ -4,18 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  public cartArray : any[] = []
+  public cartArray: any[] = []
   constructor() { }
 
-  onCartSave(obj:any){
+  onCartSave(obj: any) {
     this.cartArray.push(obj);
   }
 
-  onCartGet(){
+  onCartGet() {
     return this.cartArray;
   }
 
-  onRemoveItem(){
-    this.cartArray.pop();
+  onRemoveItem(index: any) {
+    this.cartArray.splice(index, 1);
   }
 }

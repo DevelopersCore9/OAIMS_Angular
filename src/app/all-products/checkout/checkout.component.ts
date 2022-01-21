@@ -22,7 +22,7 @@ export class CheckoutComponent implements OnInit {
     private navigateService: NavigateProductDataService,
     public cartService: CartService,
     public router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.edited = !this.edited;
@@ -40,8 +40,8 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  removeItem() {
-    this.cartService.onRemoveItem();
+  removeItem(index: any) {
+    this.cartService.onRemoveItem(index);
   }
 
   getErrorMessage() {

@@ -29,7 +29,8 @@ export class NavbarComponent implements OnInit {
       .then((data: any) => {
         this.allCategoriesName = data;
         console.log("all names of categories", this.allCategoriesName)
-        console.log("CATEGORY:", this.allCategoriesName.categoryName)
+        console.log("CATEGORY:", this.allCategoriesName[0].categoryName)
+        console.log("CATEGORY: lenght", this.allCategoriesName.length)
       })
       .catch((err: any) => {
         console.log(err);

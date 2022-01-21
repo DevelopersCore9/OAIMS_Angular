@@ -97,7 +97,7 @@
                   <h3>Your Orders</h3>
           </div>
       </div>
-      <div class="row border-top border-bottom" *ngFor="let cart of cartData">
+      <div class="row border-top border-bottom" *ngFor="let cart of cartData; index as i">
           <div class="row main align-items-center">
               <div class="col-2"><img class="img-fluid" src={{cart.images}}></div>
               <div class="col">
@@ -107,7 +107,7 @@
               <div class="col">Size {{cart.size}}M</div>
               <div class="col">Quantity {{cart.quantity}}</div>
               <div class="col">Rs.{{cart.price}} </div>
-              <button class="btn btn-danger" (click)="removeItem()">Remove</button>
+              <button class="btn btn-danger" (click)="removeItem(i)">Remove</button>
           </div>
       </div>
 

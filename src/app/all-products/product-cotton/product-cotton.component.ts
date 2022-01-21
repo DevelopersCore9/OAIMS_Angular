@@ -21,8 +21,8 @@ export class ProductCottonComponent implements OnInit {
   public featuredIf: boolean = false;
   public currentCheckedValue = null
   public definedColor: any;
-  public selectedColor: any | undefined
-  public selectedMeter: any | undefined
+  public selectedColor: any | undefined = null;
+  public selectedMeter: any | undefined = null
 
   constructor(
     private featuredProducts: FeaturedService,
@@ -67,13 +67,9 @@ export class ProductCottonComponent implements OnInit {
   }
 
   onCheckout(qty: any) {
-    if (this.selectedColor == undefined && this.selectedMeter == undefined) {
+    console.log("In product Cotton", this.selectedColor, this.selectedMeter)
+    if (this.selectedColor == null || this.selectedMeter == null) {
       this.openSnackBar("please select the attributes first")
-      // this._snackBar.open("please select the attributes first", " "), {
-      //   horizontalPosition: "right",
-      //   verticalPosition: "top",
-      //   duration: 5 * 1000
-      // };
     } else {
       this.navigateService.saveData(this.productsData)
       this.productsData.colorSelected = this.selectedColor
@@ -103,7 +99,7 @@ export class ProductCottonComponent implements OnInit {
   openSnackBar(message: string) {
     this._snackBar.open(message, " ", {
       horizontalPosition: "right",
-        verticalPosition: "top",
+      verticalPosition: "top",
       duration: 5 * 1000,
     });
   }

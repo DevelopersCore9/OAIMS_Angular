@@ -24,8 +24,8 @@ export class PaymentComponent implements OnInit {
 
   }
 
-  onRemoveItem(){
-    this.cartService.onRemoveItem()
+  onRemoveItem(index:number){
+    this.cartService.onRemoveItem(index)
   }
   cashOnDeliveryRadioButtonCheck(){
     if(this.isChecked == true){
