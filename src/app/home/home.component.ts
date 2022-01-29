@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
   public bannerIf: boolean = false;
   public topSelling: any;
   public categoriesImages: any;
+  public categoriesData: any;
+  isViewMore = false;
+  public viewCount = 3;
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -48,7 +52,6 @@ export class HomeComponent implements OnInit {
     nav: true,
   };
 
-  isViewMore = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -81,15 +84,23 @@ export class HomeComponent implements OnInit {
         console.log(err);
       });
 
-    this.bannerService
-      .getCategoriesImages()
+    this.homeService.getCategories()
       .then((data: any) => {
-        this.categoriesImages = data;
-        console.log('Images of categories:', this.categoriesImages);
+        this.categoriesData = data;
+        console.log("all categories", this.categoriesData);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+    // this.bannerService
+    //   .getCategoriesImages()
+    //   .then((data: any) => {
+    //     this.categoriesImages = data;
+    //     console.log('Images of categories:', this.categoriesImages);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
 
     this.bannerService
@@ -120,13 +131,22 @@ export class HomeComponent implements OnInit {
   navigateToProducts() {
     this.router.navigate(['/all-products']);
   }
+
   showCard() {
+    // this.viewCount == 3 ? this.categoriesData.length : 3
+    // console.log(this.viewCount)
+    if (this.viewCount == this.categoriesData.length) {
+      this.viewCount = 3
+    }
+    else {
+      this.viewCount = this.categoriesData.length;
+    }
     return (this.isViewMore = !this.isViewMore);
   }
 
   onSave(index: any) {
     this.navigateService.saveData(this.homeData[index])
-    this.router.navigate(['/productCotton'], index);
+    this.router.navigate(['/productDetails'], index);
   }
   onCategory(name: string) {
     this.router.navigate(['/all-products', { "product": name }])

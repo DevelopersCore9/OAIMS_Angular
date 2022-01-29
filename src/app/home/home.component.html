@@ -27,56 +27,22 @@
 
 <div class="container-fluid carousel-container mt-3">
   <div class="row">
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;" (click)="onCategory('cotton')">Cotton</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay1">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;" (click)="onCategory('mvs')">MVS</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay2">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;" (click)="onCategory('pvt')">PVT</h2>
+    <div class="col-lg-4 mb-4 mb-lg-0 mt-4" *ngFor="let data of categoriesData; let i = index;">
+      <div class="container bg-overlay" *ngIf="i < viewCount" style=" background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(0, 0, 0, 0.7)),
+      url('{{data.image}}');">
+        <div class="d-flex justify-content-center" style="position:relative;top: 50%;transform: translateY(-50%)">
+          <h2 style="text-transform: uppercase;" (click)="onCategory(data.categoryName)">{{data.categoryName}}</h2>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="row mt-3" *ngIf="isViewMore">
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;" (click)="onCategory('washnwear')">Wash & Wear</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4 mb-lg-0 ">
-      <div class="container bg-overlay1">
-        <div class="d-flex justify-content-center ">
-          <h2 style="margin-top: 35%;" (click)="onCategory('boski')">Boski</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Gallery -->
   <a style="float: right;" class="btn mt-3 mr-n1 a-button " target="_blank" (click)="showCard()">{{isViewMore ? 'View
     Less': 'View More'}}</a>
 </div>
 <br><br><br><br>
 
-<div  class="container-fluid">
+<div class="container-fluid">
   <div class="row content">
     <div class="col-md-6" *ngIf="bannerIf">
       <img style="width: 100%;" src={{banner[0].image}} alt="">
@@ -184,7 +150,7 @@
   </div>
 </div>
 
-<div  class="container-fluid">
+<div class="container-fluid">
   <div class="row content">
     <div class="col-md-6 mt-2">
       <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="homeDataIf">
@@ -293,7 +259,7 @@
   </div>
 </div>
 
-<div  class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div *ngIf="bannerIf" class="col-md-6 ">
       <img style="width: 100%;" src={{banner[2].image}} alt="">
@@ -405,9 +371,9 @@
 <div class="container-fluid">
   <div class="row mt-5 content" style="background-color:#dad3c7">
     <div class="col-md-2 offset-md-1">
-      <div class="row ml-5 mr-5 d-flex justify-content-center mt-5">
+      <div class="row mt-5 d-flex justify-content-center">
         <h1 class="font">Summer Collection</h1>
-        <p style="align-items: center;color:#514646">Our legacy and quest for producing the finest cloth continues to be
+        <p class="p-2" style="align-items: center;color:#514646">Our legacy and quest for producing the finest cloth continues to be
           stronger then ever.</p>
       </div>
       <div class="row ml-5 mr-5">
@@ -416,8 +382,8 @@
 
 
     <div class="col-md-8 offset-md-1">
-      <div class="row mt-3 ml-5">
-        <div class="col-md-4 mb-3" *ngFor="let data of collectionData ; let i=index">
+      <div class="row mt-3 ">
+        <div class="col-md-3 mb-3" *ngFor="let data of collectionData ; let i=index">
           <div class="card-sl" *ngIf="i<6">
             <div class="card-image">
               <img src={{data.images}} />
@@ -447,7 +413,7 @@
       <div class="col-md-3" *ngFor="let data of topSelling;let i=index">
         <div class="card-sl">
           <div class="card-image">
-            <img src={{data.images}}/>
+            <img src={{data.images}} />
           </div>
 
           <div class="card-heading">

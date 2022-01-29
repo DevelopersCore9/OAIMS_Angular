@@ -9,11 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartNotificationService } from 'src/app/services/cart-notification.service';
 
 @Component({
-  selector: 'app-product-cotton',
+  selector: 'app-product-details',
   templateUrl: './product-cotton.component.html',
   styleUrls: ['./product-cotton.component.css'],
 })
-export class ProductCottonComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit {
   public featured: any;
   public productsData: any;
   public id: any;
@@ -67,7 +67,7 @@ export class ProductCottonComponent implements OnInit {
   }
 
   onCheckout(qty: any) {
-    console.log("In product Cotton", this.selectedColor, this.selectedMeter)
+    console.log("In product Details", this.selectedColor, this.selectedMeter)
     if (this.selectedColor == null || this.selectedMeter == null) {
       this.openSnackBar("please select the attributes first")
     } else {
@@ -88,7 +88,7 @@ export class ProductCottonComponent implements OnInit {
     }
     this.router.onSameUrlNavigation = 'reload';
     this.navigateService.saveData(this.featured[index])
-    this.router.navigate(['/productCotton'])
+    this.router.navigate(['/productDetails'])
   }
   swapImageOnClick(givenIndex: any) {
     let temp = this.productsData.images[0]

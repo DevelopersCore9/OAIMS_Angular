@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 import { CartNotificationService } from '../services/cart-notification.service';
 import { CategoriesService } from '../services/categories.service';
+import JwtDecode from '../utils/jwt-decode';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public searchTerm: string = '';
   public cartCount: number = 0;
   public allCategoriesName: any;
+
   constructor(
     private notificationService: CartNotificationService,
     private categoriesService: CategoriesService,
@@ -20,6 +23,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.notificationService.currentNotification
       .subscribe((data) => {
         this.cartCount = data
@@ -42,5 +46,23 @@ export class NavbarComponent implements OnInit {
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm);
+  }
+  checkSession(){
+    if (sessionStorage.getItem("token")){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  logout(){
+    if(sessionStorage.getItem("token")){
+      sessionStorage.removeItem("token")
+      this.router.navigate(['/home'])
+      return false
+    }
+    else{
+      return true
+    }
   }
 }

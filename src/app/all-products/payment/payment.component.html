@@ -17,7 +17,7 @@
       <div class="row">
         <mat-radio-group aria-label="Select an option">
           <div class="row">
-            <mat-radio-button value="1">Cash on Delivery</mat-radio-button>
+            <mat-radio-button value="1" (change)="cashOnDeliveryRadioButtonCheck($event)">Cash on Delivery</mat-radio-button>
           </div>
           <!-- <div class="row">
           <mat-radio-button value="2">Credit or Debit Card</mat-radio-button>

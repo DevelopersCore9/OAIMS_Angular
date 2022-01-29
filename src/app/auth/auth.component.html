@@ -27,8 +27,8 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="pat@example.com" required #userEmail>
-              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <input matInput placeholder="Email" required #userLoginEmail>
+              <mat-error *ngIf="loginEmail.invalid">{{getErrorMessageLogin()}}</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -36,7 +36,7 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <input matInput [type]="hide ? 'password' : 'text'"  required #userLoginPassword>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -48,7 +48,7 @@
 
 
       <div class="row" style="float: right">
-        <button class="btn mr-3" style="background-color: #514646;color: #fff;">Log In</button>
+        <button class="btn mr-3" style="background-color: #514646;color: #fff;" (click)="userLogin(userLoginEmail.value,userLoginPassword.value)">Log In</button>
       </div>
     </div>
     <div class="col-md-5 offset-md-1 coffeeColor">
@@ -61,7 +61,7 @@
         <div class="col-md-12 mt-3" >
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Full Name</mat-label>
-            <input matInput #name>
+            <input matInput #firstName>
           </mat-form-field>
         </div>
       </div>
@@ -70,8 +70,8 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="pat@example.com" required #userEmail>
-              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <input matInput placeholder="pat@example.com" required #userSignUpEmail>
+              <mat-error *ngIf="signUpEmail.invalid">{{getErrorMessageSignUp()}}</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -79,6 +79,18 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required #userSignUpPassword>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="example-container">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Retype your password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" required>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
@@ -89,7 +101,7 @@
         </div>
       </div>
       <div class="row p-2" style="float: right">
-        <button class="btn" style="background-color: #514646;color: #fff;">Sign Up</button>
+        <button class="btn" style="background-color: #514646;color: #fff;" (click)="userSignUp(firstName.value,userSignUpEmail.value,userSignUpPassword.value)">Sign Up</button>
       </div>
     </div>
   </div>

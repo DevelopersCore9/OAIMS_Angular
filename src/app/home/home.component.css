@@ -16,19 +16,15 @@ h1 {
   zoom: 1;
 }
 .bg-overlay {
-  background: linear-gradient(rgba(165, 122, 73, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://www.mustdiscover.com/wp-content/uploads/2021/05/Kona-cotton-solid-light-blue-cotton-fabric-by-Robert-Kaufman-228451-5.jpg");
   position: center;
   background-size: cover; /* background-size: cover; */
   background-position: center center;
   color: #fff;
-  height: 50vh !important;
-  padding-top: 50px;
+  height: 20vh !important;
   font-family: "Berlin Sans FB";
 }
 .bg-overlay1 {
-  background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://image.made-in-china.com/2f0j00qZWaesISZDzH/Low-Price-Khaki-Stiffness-Workwear-Polyester-Cotton-Twill-Fabric.jpg");
+
   position: center;
   background-size: cover; /* background-size: cover; */
   background-position: center center;

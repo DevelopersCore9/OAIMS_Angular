@@ -334,6 +334,13 @@ li{
   padding-right: 4% !important;
   padding-left: 4% !important;
 }
+.dot{
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 h2 {
   font-family: "Berlin Sans FB";

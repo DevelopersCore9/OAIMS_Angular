@@ -128,7 +128,7 @@ export class AllProductsComponent implements OnInit {
 
   onDataSelection(index: any) {
     this.navigateService.saveData(this.allProducts[index])
-    this.router.navigate(['/productCotton'])
+    this.router.navigate(['/productDetails'])
   }
 
   getValuesFromFilterBySubCategory($event: any) {

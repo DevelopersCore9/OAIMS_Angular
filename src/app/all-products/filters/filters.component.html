@@ -4,65 +4,65 @@
     <section class="example-section mt-2">
       <h4 class="mt-3 ml-3">Category</h4>
       <div class="container-fluid">
-      <mat-accordion >
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title (click)="navigateToProducts('cotton')">
-              Cotton
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p (click)="navigateToProductsBySubCategory('96-88')">96-88</p>
-          <p (click)="navigateToProductsBySubCategory('sotton')">Sotton</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <p (click)="navigateToProducts('mvs')">MVS</p>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p (click)="navigateToProductsBySubCategory('26-18')">26-18</p>
-          <p (click)="navigateToProductsBySubCategory('pvt')">PVT</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <p (click)="navigateToProducts('pvt')">PVT</p>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p (click)="navigateToProductsBySubCategory('18-18')">18-18</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-             <p (click)="navigateToProducts('washnwear')">Wash & Wear</p>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p (click)="navigateToProductsBySubCategory('100-80')">100-80</p>
-          <p (click)="navigateToProductsBySubCategory('64-64')">64-64</p>
-          <p (click)="navigateToProductsBySubCategory('58-58')">58-58</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <br>
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title >
-          <p (click)="navigateToProducts('boski')">Boski</p>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p (click)="navigateToProductsBySubCategory('china Boski')">China Boski</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+        <mat-accordion >
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let categories of filterCategories">
+            <mat-expansion-panel-header >
+              <mat-panel-title style="text-transform: capitalize;" (click)="navigateToProducts(categories.categoryName)">
+                {{categories.categoryName}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p style="cursor:pointer" *ngFor="let sub of categories.subcategories" (click)="navigateToProductsBySubCategory(sub.subCategoryName)">{{sub.subCategoryName}}</p>
+            <!-- <p (click)="navigateToProductsBySubCategory('sotton')">Sotton</p> -->
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+        <!-- <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p (click)="navigateToProducts('mvs')">MVS</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p (click)="navigateToProductsBySubCategory('26-18')">26-18</p>
+            <p (click)="navigateToProductsBySubCategory('pvt')">PVT</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p (click)="navigateToProducts('pvt')">PVT</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p (click)="navigateToProductsBySubCategory('18-18')">18-18</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p (click)="navigateToProducts('washnwear')">Wash & Wear</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p (click)="navigateToProductsBySubCategory('100-80')">100-80</p>
+            <p (click)="navigateToProductsBySubCategory('64-64')">64-64</p>
+            <p (click)="navigateToProductsBySubCategory('58-58')">58-58</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p (click)="navigateToProducts('boski')">Boski</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p (click)="navigateToProductsBySubCategory('china Boski')">China Boski</p>
+          </mat-expansion-panel>
+        </mat-accordion> -->
+      </div>
     </section>
     <br>
     <section class="example-section ml-3 mt-2">
@@ -75,8 +75,8 @@
         <mat-checkbox>5000 - 10000</mat-checkbox>
       </p>
     </section>
-    <hr style="border: 1px solid #514646;">
     <section class="example-section ml-3 mt-2">
+      <hr style="border: 1px solid #514646;">
       <h4 class="mt-3">Colours</h4>
       <p>
         <mat-checkbox (click)="filterProducts('white')">White</mat-checkbox>

@@ -49,4 +49,21 @@ export class HomeService {
     });
   }
 
+  getCategories(){
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .get(`${this.hostAddress.getHostIp()}/api/categories`)
+        .toPromise()
+        .then((data: any) => {
+          if (data == null) {
+            console.log(data);
+          }
+          resolve(data.payload);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  }
 }

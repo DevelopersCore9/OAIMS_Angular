@@ -1,6 +1,5 @@
 import { OrdersHistoryComponent } from './all-products/orders-history/orders-history.component';
 import { PlacedOrdersComponent } from './all-products/placed-orders/placed-orders.component';
-import { ProductCottonComponent } from './all-products/product-cotton/product-cotton.component';
 import { AboutComponent } from './about/about.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AllProductsComponent } from './all-products/all-products.component';
@@ -11,6 +10,7 @@ import { CartComponent } from './all-products/cart/cart.component';
 import { CheckoutComponent } from './all-products/checkout/checkout.component';
 import { PaymentComponent } from './all-products/payment/payment.component';
 import { AuthComponent } from './auth/auth.component';
+import { ProductDetailsComponent } from './all-products/product-details/product-cotton.component';
 
 const routes: Routes = [
   {
@@ -35,8 +35,8 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'productCotton',
-    component: ProductCottonComponent
+    path: 'productDetails',
+    component: ProductDetailsComponent
   },
   {
     path: 'cart',

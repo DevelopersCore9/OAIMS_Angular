@@ -25,10 +25,13 @@
     <!-- <div class="logo_div justify-content-center" style="align-items: center;">
       <h2>OAIM'S</h2>
     </div> -->
+
     <form action="#" class="searchform order-sm-start order-lg-last">
+
       <div class=" d-flex justify-content-center">
-        <mat-icon matSuffix matBadge="{{cartCount}}" class="ml-4 cursor">shopping_cart{{cartCount}}</mat-icon>
-        <mat-icon matSuffix class="ml-4 cursor" routerLink="/auth">person_outline</mat-icon>
+        <mat-icon matSuffix matBadge="{{cartCount}}" class="ml-4 mt-3 cursor">shopping_cart{{cartCount}}</mat-icon>
+        <mat-icon matSuffix class="ml-4 mt-3 cursor" routerLink="/auth" *ngIf="!checkSession()">person</mat-icon>&nbsp;&nbsp;&nbsp;
+        <button class="btn" style="background-color:#FFCE31;color: #000;" *ngIf="checkSession()" (click)="logout()">Logout</button>
       </div>
     </form>
 
@@ -39,6 +42,7 @@
 
     <div class="collapse navbar-collapse mt-1" id="ftco-nav">
       <ul class="navbar-nav m-auto">
+
         <li class="nav-item"><a routerLink="" class="nav-link navItemColor">Home</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle navItemColor" href="#" id="dropdown04" data-toggle="dropdown"
@@ -50,8 +54,10 @@
             </div>
           </div>
         </li>
-        <li class="nav-item "><a href="#" class="nav-link navItemColor">Orders</a></li>
+        <li class="nav-item "><a routerLink="/orders-history" class="nav-link navItemColor">Orders</a></li>
         <li class="nav-item "><a routerLink="/about" class="nav-link navItemColor">About Us</a></li>
+
+
       </ul>
     </div>
   </div>

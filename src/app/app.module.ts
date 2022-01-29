@@ -18,7 +18,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FiltersComponent } from './all-products/filters/filters.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AboutComponent } from './about/about.component';
-import { ProductCottonComponent } from './all-products/product-cotton/product-cotton.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CartComponent } from './all-products/cart/cart.component';
 import { CheckoutComponent } from './all-products/checkout/checkout.component';
@@ -34,6 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FilterPipe } from './pipes/filter.pipe';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ProductDetailsComponent } from './all-products/product-details/product-cotton.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FiltersComponent,
     FavouritesComponent,
     AboutComponent,
-    ProductCottonComponent,
+    ProductDetailsComponent,
     CartComponent,
     CheckoutComponent,
     PaymentComponent,

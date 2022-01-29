@@ -59,7 +59,7 @@
           <div style="text-align:center" *ngFor="let data of productsData.color">
             <mat-radio-group [(ngModel)]="definedColor">
               <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color (change)="onRadioButtonChange($event)">
-                <span  class="fa fa-phone fa-2x" [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent"></span>
+                <span  class="fa fa-phone fa-2x dot mt-2" [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent"></span>
               </mat-radio-button>
             </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
