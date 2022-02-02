@@ -1,6 +1,6 @@
-import { NavigateProductDataService } from './../../services/navigate-product-data.service';
+import { NavigateProductDataService } from './../../../services/navigate-product-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from './../../services/products.service';
+import { ProductsService } from './../../../services/products.service';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FeaturedService } from 'src/app/services/featured.service';
 import { CartService } from 'src/app/services/cart.service';

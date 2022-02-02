@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HostService } from './host.service';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
 
-  constructor(private http: HttpClient, private hostAddress: HostService,) { }
+  constructor(
+    private http: HttpClient,
+    private hostAddress: HostService,
+    protected spin: SpinnerService
+  ) { }
 
   addCustomerMessage(name: string, email: string, subject: string, comment: string) {
     let customer = {
@@ -16,8 +21,8 @@ export class ContactService {
       "subject": subject,
       "comment": comment
     }
-    console.log("customer :",customer);
-
+    console.log("customer :", customer);
+    this.spin.changeSpinnerState(true)
     return new Promise((resolve, reject) => {
       this.http.post(`${this.hostAddress.getHostIp()}/api/contactUs`, customer)
         .toPromise()
@@ -27,6 +32,7 @@ export class ContactService {
             console.log(data)
           }
           resolve(data)
+          this.spin.changeSpinnerState(false)
         })
         .catch((err) => {
           console.log(err)

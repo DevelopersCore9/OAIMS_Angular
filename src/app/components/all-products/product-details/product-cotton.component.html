@@ -111,12 +111,12 @@
   </div>
   <div class="container-fluid p-5" *ngIf="featuredIf">
     <div class="row">
-      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="featuredIf">
+      <carousel [height]="700" [cellWidth]="350" [loop]=true [autoplay]=true *ngIf="featuredIf">
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img
-                src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
+              <img appFeaturedImages
+                src={{featured[0].images}} />
             </div>
 
             <div class="card-heading">
@@ -134,7 +134,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[1].images}} />
             </div>
 
             <div class="card-heading">
@@ -152,7 +152,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[2].images}} />
             </div>
 
             <div class="card-heading">
@@ -170,7 +170,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[3].images}} />
             </div>
 
             <div class="card-heading">
@@ -188,7 +188,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[4].images}} />
             </div>
 
             <div class="card-heading">
@@ -206,7 +206,7 @@
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[5].images}} />
             </div>
 
             <div class="card-heading">
@@ -224,7 +224,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[6].images}} />
             </div>
 
             <div class="card-heading">
@@ -242,7 +242,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[7].images}} />
             </div>
 
             <div class="card-heading">
@@ -260,7 +260,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[8].images}} />
             </div>
             <div class="card-heading">
               {{featured[8].name}}
@@ -277,7 +277,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[9].images}} />
             </div>
 
             <div class="card-heading">

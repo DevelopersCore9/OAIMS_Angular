@@ -1,9 +1,9 @@
-import { CartNotificationService } from './../services/cart-notification.service';
-import { NavigateProductDataService } from './../services/navigate-product-data.service';
+import { CartNotificationService } from './../../services/cart-notification.service';
+import { NavigateProductDataService } from './../../services/navigate-product-data.service';
 import { FiltersComponent } from './filters/filters.component';
-import { FeaturedService } from './../services/featured.service';
+import { FeaturedService } from './../../services/featured.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ProductsService } from './../services/products.service';
+import { ProductsService } from './../../services/products.service';
 import {
   Component,
   Input,

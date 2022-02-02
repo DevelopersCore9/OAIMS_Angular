@@ -1,16 +1,16 @@
-import { OrdersHistoryComponent } from './all-products/orders-history/orders-history.component';
-import { PlacedOrdersComponent } from './all-products/placed-orders/placed-orders.component';
-import { AboutComponent } from './about/about.component';
-import { FavouritesComponent } from './favourites/favourites.component';
-import { AllProductsComponent } from './all-products/all-products.component';
-import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './all-products/cart/cart.component';
-import { CheckoutComponent } from './all-products/checkout/checkout.component';
-import { PaymentComponent } from './all-products/payment/payment.component';
-import { AuthComponent } from './auth/auth.component';
-import { ProductDetailsComponent } from './all-products/product-details/product-cotton.component';
+import { PlacedOrdersComponent } from './components/all-products/placed-orders/placed-orders.component';
+import { OrdersHistoryComponent } from './components/all-products/orders-history/orders-history.component';
+import { PaymentComponent } from './components/all-products/payment/payment.component';
+import { CheckoutComponent } from './components/all-products/checkout/checkout.component';
+import { CartComponent } from './components/all-products/cart/cart.component';
+import { ProductDetailsComponent } from './components/all-products/product-details/product-cotton.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { HomeComponent } from './components/home/home.component';
+import { AllProductsComponent } from './components/all-products/all-products.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {

@@ -1,3 +1,4 @@
+import { SpinnerService } from './spinner.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HostService } from './host.service';
@@ -6,9 +7,14 @@ import { HostService } from './host.service';
   providedIn: 'root',
 })
 export class HomeService {
-  constructor(private hostAddress: HostService, protected http: HttpClient) {}
+  constructor(
+    private hostAddress: HostService,
+    protected http: HttpClient,
+    protected spin: SpinnerService
+  ) { }
 
   SliderData() {
+    this.spin.changeSpinnerState(true)
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products/featured`)
@@ -17,6 +23,7 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
+          this.spin.changeSpinnerState(false)
           resolve(data.payload);
         })
         .catch((err) => {
@@ -27,19 +34,21 @@ export class HomeService {
   }
 
   getCollectionData() {
+    this.spin.changeSpinnerState(true)
     return new Promise<any>((resolve, reject) => {
       const formData = new FormData()
       formData.append("type", "summer")
 
       let params = new HttpParams().set("type", "summer");
       this.http
-        .get(`${this.hostAddress.getHostIp()}/api/products/collection`, {params})
+        .get(`${this.hostAddress.getHostIp()}/api/products/collection`, { params })
         .toPromise()
         .then((data: any) => {
           console.log(data);
           if (data == null) {
             console.log(data);
           }
+          this.spin.changeSpinnerState(false)
           resolve(data.payload);
         })
         .catch((err) => {
@@ -49,7 +58,8 @@ export class HomeService {
     });
   }
 
-  getCategories(){
+  getCategories() {
+    this.spin.changeSpinnerState(true)
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/categories`)
@@ -58,6 +68,7 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
+          this.spin.changeSpinnerState(false)
           resolve(data.payload);
         })
         .catch((err) => {

@@ -1,4 +1,4 @@
-import { BoxPageComponent } from './../../models/box-page/box-page.component';
+import { BoxPageComponent } from './../../../models/box-page/box-page.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';

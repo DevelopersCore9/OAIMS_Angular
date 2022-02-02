@@ -1,3 +1,4 @@
+import { SpinnerService } from './spinner.service';
 import { HttpClient } from '@angular/common/http';
 import { HostService } from './host.service';
 import { Injectable } from '@angular/core';
@@ -9,9 +10,11 @@ export class BannersService {
 
   constructor(
     private hostAddress : HostService,
-    private http : HttpClient
+    private http : HttpClient,
+    protected spin: SpinnerService
   ) { }
   getBanner(){
+    this.spin.changeSpinnerState(true)
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/banners/`)
@@ -31,6 +34,7 @@ export class BannersService {
   }
 
   getCategoriesImages(){
+    this.spin.changeSpinnerState(true)
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/categoryImages/`)
@@ -40,6 +44,7 @@ export class BannersService {
           if (data == null) {
             console.log(data);
           }
+          this.spin.changeSpinnerState(false)
           resolve(data.payload);
         })
         .catch((err) => {

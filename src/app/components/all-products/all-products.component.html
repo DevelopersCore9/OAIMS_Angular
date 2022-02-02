@@ -26,7 +26,7 @@
           *ngFor="let data of allProducts |filter:searchkey:'title' | paginate:{itemsPerPage:count,currentPage:p}; let i=index">
           <div class="card-sl mb-3">
             <div class="card-image">
-              <img src={{data.images}} />
+              <img appImage src={{data.images}} />
             </div>
 
             <div class="card-heading">
@@ -49,16 +49,16 @@
   </div>
 
   <div class="container">
-    <h1 class="d-flex justify-content-center mt-5 mb-5 text-center">Featured Products</h1>
+    <h1 class="d-flex justify-content-center mt-5 text-center">Featured Products</h1>
   </div>
   <div class="container-fluid">
     <div class="row" *ngIf="featured">
-      <carousel [height]="500" [cellWidth]="300" [loop]=true [autoplay]=true>
+      <carousel [height]="700" [cellWidth]="350" [loop]=true [autoplay]=true>
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img
-                src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg" />
+              <img appFeaturedImages
+                src={{featured[0].images}} />
             </div>
 
             <div class="card-heading">
@@ -76,7 +76,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[1].images}} />
             </div>
 
             <div class="card-heading">
@@ -94,7 +94,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[2].images}} />
             </div>
 
             <div class="card-heading">
@@ -112,7 +112,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[3].images}} />
             </div>
 
             <div class="card-heading">
@@ -130,7 +130,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[4].images}} />
             </div>
 
             <div class="card-heading">
@@ -148,7 +148,7 @@
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[5].images}} />
             </div>
 
             <div class="card-heading">
@@ -166,7 +166,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[6].images}} />
             </div>
 
             <div class="card-heading">
@@ -184,7 +184,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[7].images}} />
             </div>
 
             <div class="card-heading">
@@ -202,7 +202,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[8].images}} />
             </div>
             <div class="card-heading">
               {{featured[8].name}}
@@ -219,7 +219,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src="https://static-01.daraz.pk/p/bf268612ddafda18eecd391ca889ad60.jpg" />
+              <img appFeaturedImages src={{featured[9].images}} />
             </div>
 
             <div class="card-heading">

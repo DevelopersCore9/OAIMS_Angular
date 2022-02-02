@@ -1,12 +1,13 @@
+import { SpinnerService } from './../../services/spinner.service';
 import { Observable } from 'rxjs';
-import { BannersService } from './../services/banners.service';
-import { CarouselService } from './../services/carousel.service';
-import { ProductsService } from './../services/products.service';
+import { BannersService } from './../../services/banners.service';
+import { CarouselService } from './../../services/carousel.service';
+import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { HomeService } from '../services/home.service';
-import { NavigateProductDataService } from '../services/navigate-product-data.service';
+import { HomeService } from '../../services/home.service';
+import { NavigateProductDataService } from '../../services/navigate-product-data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -59,7 +60,8 @@ export class HomeComponent implements OnInit {
     private productService: ProductsService,
     private carouselService: CarouselService,
     private bannerService: BannersService,
-    private navigateService: NavigateProductDataService
+    private navigateService: NavigateProductDataService,
+    protected spin: SpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -113,7 +115,7 @@ export class HomeComponent implements OnInit {
 
     this.productService.getTopSelling().then((data: any) => {
       this.topSelling = data;
-      console.log('Banner:', this.topSelling);
+      console.log('Top Selling:', this.topSelling);
     });
 
     this.carouselService

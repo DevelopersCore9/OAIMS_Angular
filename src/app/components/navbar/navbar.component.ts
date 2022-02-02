@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { CartNotificationService } from '../services/cart-notification.service';
-import { CategoriesService } from '../services/categories.service';
-import JwtDecode from '../utils/jwt-decode';
+import { AuthService } from '../../services/auth.service';
+import { CartNotificationService } from '../../services/cart-notification.service';
+import { CategoriesService } from '../../services/categories.service';
+import JwtDecode from '../../utils/jwt-decode';
 
 @Component({
   selector: 'app-navbar',
