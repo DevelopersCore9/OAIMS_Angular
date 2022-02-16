@@ -12,9 +12,9 @@ export class CartNotificationService {
 
   changeNotification(notify: number) {
     console.log(this.getNotificationValue() + notify);
-
     this.notification.next(this.getNotificationValue() + notify);
   }
+
   getNotificationValue() {
     return this.notification.value
   }
