@@ -19,7 +19,7 @@
     <div class="col-md-5">
       <div class="row">
         <div class="col-md-12 mt-5">
-          <mat-form-field appearance="outline" style="width: 100%;" >
+          <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Full Name</mat-label>
             <input matInput #name [(ngModel)]="this.loggedInUserData.name">
           </mat-form-field>
@@ -72,14 +72,14 @@
       </div>
       <div class="row border-top border-bottom" *ngFor="let cart of cartData; index as i">
         <div class="row main align-items-center">
-          <div class="col-2"><img class="img-fluid" src={{cart.images}}></div>
+          <div class="col-2"><img class="img-fluid" src={{cart.images[0]}}></div>
           <div class="col">
             <div class="row ">{{cart.name}}</div>
           </div>
           <div class="col">Color <strong>{{cart.colorSelected}}</strong> </div>
           <div class="col">Size {{cart.size}}M</div>
           <div class="col">Quantity {{cart.quantity}}</div>
-          <div class="col">Rs.{{cart.price}} </div>
+          <div class="col">Rs.{{cart.selectedPrice}} </div>
           <button class="btn btn-danger" (click)="removeItem(i)">Remove</button>
         </div>
       </div>

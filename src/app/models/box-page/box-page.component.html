@@ -17,18 +17,20 @@
         praesentium aperiam laborum incidunt repellat placeat eius unde libero impedit, culpa, at earum nam.</p>
     </div>
     <div class="container text-center">
-      <mat-radio-group aria-label="Select an option" (change)="onPackageRadioButtonchange($event)">
-        <mat-radio-button value="Standard" name="package" class="mr-2" checked ngModel (change)="standardRadioEvent()">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value=1 name="package" class="mr-2" checked (change)="standardRadioEvent()">
           Standard Package</mat-radio-button>
-        <mat-radio-button value="Premium" name="package" class="mr-2" ngModel (change)="prmiumRadioEvent()">Premium
+        <mat-radio-button value=2 name="package" class="mr-2" (change)="prmiumRadioEvent()">Premium
           Package</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>
 </div>
-<mat-checkbox class="example-margin" align="start" #checkButton (change)="saveSampleClick(!checkButton.checked)">Do you want a free product sample book?</mat-checkbox>
+<mat-checkbox class="example-margin" align="start" #checkButton [checked]="isSample" (change)="saveSampleClick($event)">
+  Do you
+  want a free product sample book?</mat-checkbox>
 <mat-dialog-actions align="end">
   <button class="btn btn-dark" [mat-dialog-close]>Cancel</button>
-  <button class="btn" style="background-color:#FFCE31;color: #000;" [mat-dialog-close]="selected"
+  <button class="btn" style="background-color:#FFCE31;color: #000;" (click)="this.closeDialog()"
     cdkFocusInitial>Save</button>
 </mat-dialog-actions>
