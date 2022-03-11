@@ -19,10 +19,12 @@ export class ProductDetailsComponent implements OnInit {
   public id: any;
   public productsDataIf: boolean = false;
   public featuredIf: boolean = false;
-  public currentCheckedValue = null
+  public currentCheckedValue = null;
   public definedColor: any;
   public selectedColor: any | undefined = null;
-  public selectedMeter: any | undefined = null
+  public selectedMeter: any | undefined = null;
+  public priceCheck = true;
+  public selectedPrice: number = 0;
 
   constructor(
     private featuredProducts: FeaturedService,
@@ -34,20 +36,31 @@ export class ProductDetailsComponent implements OnInit {
     private ren: Renderer2,
     private cartService: CartService,
     private _snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-
-
-    this.route.url.subscribe(url => {
+    this.route.url.subscribe((url) => {
       // Code to get the new notification data
       // and display it
-      console.log("hello")
-      this.productsData = this.navigateService.getData()
-      console.log("the product data:", this.productsData)
-      this.productsDataIf = true;
+      console.log('hello', url);
+      this.productsData = this.navigateService.getData();
+      console.log('the product data:', this.productsData);
+      if (this.productsData) {
+        this.selectedMeter = this.productsData.size[0];
+        this.productsDataIf = true;
+      }
     });
 
+    this.route.queryParams.subscribe((params) => {
+      console.log(params.product_id);
+      if (!this.productsData) {
+        this.productService.getProduct(params.product_id).then((product) => {
+          this.productsData = product;
+          this.selectedMeter = this.productsData.size[0];
+          this.productsDataIf = true;
+        });
+      }
+    });
 
     this.featuredProducts.getFeaturedProducts().then((data: any) => {
       this.featured = data;
@@ -58,49 +71,62 @@ export class ProductDetailsComponent implements OnInit {
 
   onRadioButtonChange(event: any) {
     console.log(event.value);
-    this.selectedColor = event.value
+    this.selectedColor = event.value;
   }
 
   onMeterRadioButtonChange(event: any) {
     console.log(event.value);
-    this.selectedMeter = event.value
+    this.priceCheck = !this.priceCheck;
+    this.selectedMeter = event.value;
+    if (this.priceCheck) {
+      this.selectedPrice = this.productsData.price[0];
+    } else {
+      this.selectedPrice = this.productsData.price[1];
+    }
   }
 
   onCheckout(qty: any) {
-    console.log("In product Details", this.selectedColor, this.selectedMeter)
+    console.log('In product Details', this.selectedColor, this.selectedMeter);
     if (this.selectedColor == null || this.selectedMeter == null) {
-      this.openSnackBar("please select the attributes first")
+      this.openSnackBar('please select the attributes first');
     } else {
-      this.navigateService.saveData(this.productsData)
-      this.productsData.colorSelected = this.selectedColor
-      this.productsData.quantity = qty
-      this.productsData.size = this.selectedMeter
+      this.navigateService.saveData(this.productsData);
+      this.productsData.colorSelected = this.selectedColor;
+      this.productsData.quantity = qty;
+      this.productsData.size = this.selectedMeter;
+      this.productsData.selectedPrice = this.selectedPrice;
       console.log(this.productsData);
       this.cartService.onCartSave(this.productsData);
       this.notificationsService.changeNotification(1);
       console.log(this.notificationsService.getNotificationValue());
-      this.router.navigate(['/checkout'])
+      this.router.navigate(['/checkout']);
     }
   }
+
   onFeaturedProductCard(index: any) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
-    }
+    };
     this.router.onSameUrlNavigation = 'reload';
-    this.navigateService.saveData(this.featured[index])
-    this.router.navigate(['/productDetails'])
+    this.navigateService.saveData(this.featured[index]);
+    this.router.navigate(['/productDetails']);
   }
+
   swapImageOnClick(givenIndex: any) {
-    let temp = this.productsData.images[0]
-    this.productsData.images[0] = this.productsData.images[givenIndex]
-    this.productsData.images[givenIndex] = temp
+    let temp = this.productsData.images[0];
+    this.productsData.images[0] = this.productsData.images[givenIndex];
+    this.productsData.images[givenIndex] = temp;
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, " ", {
-      horizontalPosition: "right",
-      verticalPosition: "top",
+    this._snackBar.open(message, ' ', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
       duration: 5 * 1000,
     });
+  }
+
+  changePriceRadioButton() {
+    this.priceCheck = !this.priceCheck;
   }
 }

@@ -26,7 +26,7 @@
           *ngFor="let data of allProducts |filter:searchkey:'title' | paginate:{itemsPerPage:count,currentPage:p}; let i=index">
           <div class="card-sl mb-3">
             <div class="card-image">
-              <img appImage src={{data.images}} />
+              <img appImage src={{data.images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -57,8 +57,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages
-                src={{featured[0].images}} />
+              <img appFeaturedImages src={{featured[0].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -76,7 +75,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[1].images}} />
+              <img appFeaturedImages src={{featured[1].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -94,7 +93,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[2].images}} />
+              <img appFeaturedImages src={{featured[2].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -112,7 +111,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[3].images}} />
+              <img appFeaturedImages src={{featured[3].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -130,7 +129,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[4].images}} />
+              <img appFeaturedImages src={{featured[4].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -148,7 +147,7 @@
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[5].images}} />
+              <img appFeaturedImages src={{featured[5].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -166,7 +165,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[6].images}} />
+              <img appFeaturedImages src={{featured[6].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -184,7 +183,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[7].images}} />
+              <img appFeaturedImages src={{featured[7].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -202,7 +201,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[8].images}} />
+              <img appFeaturedImages src={{featured[8].images[0]}} />
             </div>
             <div class="card-heading">
               {{featured[8].name}}
@@ -219,7 +218,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[9].images}} />
+              <img appFeaturedImages src={{featured[9].images[0]}} />
             </div>
 
             <div class="card-heading">

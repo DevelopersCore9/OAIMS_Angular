@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="product-price">
-              <p class="new-price"><span>RS.{{productsData.price}}</span></p>
+              <p class="new-price"><span>RS.{{this.selectedPrice}}</span></p>
             </div>
           </div>
           <div class="col-md-3 mt-4">
@@ -58,8 +58,10 @@
         <div class="row mt-2">
           <div style="text-align:center" *ngFor="let data of productsData.color">
             <mat-radio-group [(ngModel)]="definedColor">
-              <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color (change)="onRadioButtonChange($event)">
-                <span  class="fa fa-phone fa-2x dot mt-2" [ngStyle]="{'background-color':data}" ng-model="button.value" style="color:transparent"></span>
+              <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color
+                (change)="onRadioButtonChange($event)">
+                <span class="fa fa-phone fa-2x dot mt-2" [ngStyle]="{'background-color':data}" ng-model="button.value"
+                  style="color:transparent"></span>
               </mat-radio-button>
             </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
@@ -76,10 +78,14 @@
             <button mat-button class="a-button" (click)="onCheckout(quantity.value)">Add to Cart</button>
           </div>
         </div>
-        <div class="row mt-2 mb-3"><mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
-          <mat-radio-button value="4.0">4.0 Metre</mat-radio-button>
-          <mat-radio-button value="5.0" class="ml-3">5.0 Metre</mat-radio-button>
-        </mat-radio-group></div>
+        <div class="row mt-2 mb-3">
+          <mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
+            <mat-radio-button [value]="productsData.size[0]" [checked]="priceCheck">{{productsData.size[0]}}
+            </mat-radio-button>
+            <mat-radio-button [value]="productsData.size[1]" [checked]="!priceCheck" class="ml-3">
+              {{productsData.size[1]}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
         <div class="product-detail">
 
           <p class="con">{{productsData?.description}}</p>
@@ -115,8 +121,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages
-                src={{featured[0].images}} />
+              <img appFeaturedImages src={{featured[0].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -134,7 +139,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[1].images}} />
+              <img appFeaturedImages src={{featured[1].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -152,7 +157,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[2].images}} />
+              <img appFeaturedImages src={{featured[2].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -170,7 +175,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[3].images}} />
+              <img appFeaturedImages src={{featured[3].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -188,7 +193,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[4].images}} />
+              <img appFeaturedImages src={{featured[4].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -206,7 +211,7 @@
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[5].images}} />
+              <img appFeaturedImages src={{featured[5].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -224,7 +229,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[6].images}} />
+              <img appFeaturedImages src={{featured[6].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -242,7 +247,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[7].images}} />
+              <img appFeaturedImages src={{featured[7].images[0]}} />
             </div>
 
             <div class="card-heading">
@@ -260,7 +265,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[8].images}} />
+              <img appFeaturedImages src={{featured[8].images[0]}} />
             </div>
             <div class="card-heading">
               {{featured[8].name}}
@@ -277,7 +282,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[9].images}} />
+              <img appFeaturedImages src={{featured[9].images[0]}} />
             </div>
 
             <div class="card-heading">
