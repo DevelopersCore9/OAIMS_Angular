@@ -4,36 +4,57 @@ import { BehaviorSubject } from 'rxjs';
 import JwtDecode from '../utils/jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserIdentityService {
-  private userIdentity = new BehaviorSubject<string>("");
+  private userIdentity = new BehaviorSubject<string>('');
   userIdentityValue = this.userIdentity.asObservable();
-
-  constructor(
-    private jwtBreaker: JwtDecode,
-    protected spin: SpinnerService
-  ) { }
-
+  userArray: any;
+  cartCount: any;
+  constructor(private jwtBreaker: JwtDecode, protected spin: SpinnerService) {}
 
   changeUserIdentity(id: string): void {
-    this.userIdentity.next(id)
+    this.userIdentity.next(id);
     console.log(this.userIdentity);
     console.log(this.userIdentity.value);
   }
 
   getUserIdentity(): string {
-
-    this.spin.changeSpinnerState(true)
+    this.spin.changeSpinnerState(true);
     if (!this.userIdentity.value) {
-      let data = this.jwtBreaker.decodedToken(sessionStorage.getItem("token"));
-      this.spin.changeSpinnerState(false)
-      return data.id
-    }
-    else {
-      console.log(this.userIdentity)
+      let data = this.jwtBreaker.decodedToken(sessionStorage.getItem('token'));
+      this.spin.changeSpinnerState(false);
+      return data.id;
+    } else {
+      console.log(this.userIdentity);
       // return "6176b7480d43e54348a62c6b"
-      return this.userIdentity.value
+      return this.userIdentity.value;
     }
+  }
+
+  onUserSave(obj: any) {
+    this.userArray = obj;
+    localStorage.setItem('userArray', JSON.stringify(this.userArray));
+  }
+
+  onUserGet() {
+    if (localStorage.getItem('userArray')) {
+      return JSON.parse(localStorage.getItem('userArray') || '{}');
+    }
+  }
+
+  onRemoveItem() {
+    this.userArray = null;
+    localStorage.removeItem('userArray');
+  }
+
+  onCartGet() {
+    if (localStorage.getItem('cartCount')) {
+      return JSON.parse(localStorage.getItem('cartCount') || '{}');
+    }
+  }
+  onCountSave(count: any) {
+    this.cartCount = count;
+    localStorage.setItem('cartCount', JSON.stringify(this.cartCount));
   }
 }

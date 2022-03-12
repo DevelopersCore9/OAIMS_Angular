@@ -17,7 +17,8 @@
       <div class="row">
         <mat-radio-group aria-label="Select an option">
           <div class="row">
-            <mat-radio-button value="1" (change)="cashOnDeliveryRadioButtonCheck($event)">Cash on Delivery</mat-radio-button>
+            <mat-radio-button value="1" (change)="cashOnDeliveryRadioButtonCheck($event)">Cash on Delivery
+            </mat-radio-button>
           </div>
           <!-- <div class="row">
           <mat-radio-button value="2">Credit or Debit Card</mat-radio-button>
@@ -37,15 +38,14 @@
       </div>
       <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
         <div class="row main align-items-center">
-          <div class="col-2"><img class="img-fluid"
-              src={{order.images}}></div>
+          <div class="col-2"><img class="img-fluid" src={{order.images[0]}}></div>
           <div class="col">
             <div class="row ">{{order.name}}</div>
           </div>
           <div class="col">Color <strong>{{order.colorSelected}}</strong> </div>
           <div class="col">{{order.size}} M</div>
           <div class="col">{{order.quantity}} M</div>
-          <div class="col">Rs.{{order.price}} </div>
+          <div class="col">Rs.{{order.selectedPrice}} </div>
           <div class="col">
             <button class="btn btn-danger">Remove</button>
           </div>

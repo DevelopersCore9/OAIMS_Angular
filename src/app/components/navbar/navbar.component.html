@@ -29,9 +29,12 @@
     <form action="#" class="searchform order-sm-start order-lg-last">
 
       <div class=" d-flex justify-content-center">
-        <mat-icon matSuffix matBadge="{{cartCount}}" class="ml-4 mt-3 cursor">shopping_cart{{cartCount}}</mat-icon>
-        <mat-icon matSuffix class="ml-4 mt-3 cursor" routerLink="/auth" *ngIf="!checkSession()">person</mat-icon>&nbsp;&nbsp;&nbsp;
-        <button class="btn" style="background-color:#FFCE31;color: #000;" *ngIf="checkSession()" (click)="logout()">Logout</button>
+        <mat-icon matSuffix matBadge="{{cartCount}}" class="ml-4 mt-3 cursor" (click)="checkout()">
+          shopping_cart{{cartCount}}</mat-icon>
+        <mat-icon matSuffix class="ml-4 mt-3 cursor" routerLink="/auth" *ngIf="!checkSession()">person</mat-icon>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn" style="background-color:#FFCE31;color: #000;" *ngIf="checkSession()"
+          (click)="logout()">Logout</button>
       </div>
     </form>
 

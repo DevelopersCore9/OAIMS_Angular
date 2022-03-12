@@ -99,7 +99,7 @@ export class ProductDetailsComponent implements OnInit {
       this.cartService.onCartSave(this.productsData);
       this.notificationsService.changeNotification(1);
       console.log(this.notificationsService.getNotificationValue());
-      this.router.navigate(['/checkout']);
+      // this.router.navigate(['/checkout']);
     }
   }
 

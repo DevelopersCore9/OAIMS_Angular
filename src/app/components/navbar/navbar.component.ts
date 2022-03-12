@@ -1,3 +1,4 @@
+import { UserIdentityService } from './../../services/user-identity.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -9,60 +10,66 @@ import JwtDecode from '../../utils/jwt-decode';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   public searchTerm: string = '';
   public cartCount: number = 0;
   public allCategoriesName: any;
+  public loggedInUserData: any = {};
 
   constructor(
     private notificationService: CartNotificationService,
     private categoriesService: CategoriesService,
     private router: Router,
-  ) { }
+    private UserIdentityService: UserIdentityService,
+    private jwtBreaker: JwtDecode
+  ) {}
 
   ngOnInit(): void {
+    this.notificationService.currentNotification.subscribe((data) => {
+      console.log('data', data);
+      this.cartCount = data;
+    });
 
-    this.notificationService.currentNotification
-      .subscribe((data) => {
-        this.cartCount = data
-      })
-
-    this.categoriesService.getCategoriesName()
+    this.categoriesService
+      .getCategoriesName()
       .then((data: any) => {
         this.allCategoriesName = data;
-        console.log("all names of categories", this.allCategoriesName)
-        console.log("CATEGORY:", this.allCategoriesName[0].categoryName)
-        console.log("CATEGORY: lenght", this.allCategoriesName.length)
+        console.log('all names of categories', this.allCategoriesName);
+        console.log('CATEGORY:', this.allCategoriesName[0].categoryName);
+        console.log('CATEGORY: lenght', this.allCategoriesName.length);
       })
       .catch((err: any) => {
         console.log(err);
-      })
+      });
   }
   onCategory(name: string) {
-    this.router.navigate(['/all-products', { "product": name }])
+    this.router.navigate(['/all-products', { product: name }]);
   }
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm);
   }
-  checkSession(){
-    if (sessionStorage.getItem("token")){
-      return true
-    }else{
-      return false
+  checkSession() {
+    if (sessionStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
     }
   }
 
-  logout(){
-    if(sessionStorage.getItem("token")){
-      sessionStorage.removeItem("token")
-      this.router.navigate(['/home'])
-      return false
+  logout() {
+    if (sessionStorage.getItem('token')) {
+      sessionStorage.removeItem('token');
+      this.router.navigate(['/home']);
+      return false;
+    } else {
+      return true;
     }
-    else{
-      return true
-    }
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout']);
   }
 }

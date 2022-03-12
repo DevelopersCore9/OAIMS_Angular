@@ -1,13 +1,34 @@
 import { BoxPageComponent } from './../../../models/box-page/box-page.component';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigateProductDataService } from 'src/app/services/navigate-product-data.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import JwtDecode from 'src/app/utils/jwt-decode';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { UserIdentityService } from 'src/app/services/user-identity.service';
 
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+}
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -18,16 +39,33 @@ export class CheckoutComponent implements OnInit {
   public cartData: any;
   public informationData: any;
   public loggedInUserData: any = {};
+  public cartCount: any = {};
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
+  nameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+  phoneFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern('^((\\+91-?)|0)?[0-9]{11}$'),
+  ]);
+  cityFormControl = new FormControl('', [Validators.required]);
+  addressFormControl = new FormControl('', [Validators.required]);
+
+  matcher = new MyErrorStateMatcher();
   constructor(
     public dialog: MatDialog,
     private navigateService: NavigateProductDataService,
     public cartService: CartService,
     public router: Router,
     private jwtBreaker: JwtDecode,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private UserIdentityService: UserIdentityService
   ) {}
 
   ngOnInit(): void {
@@ -41,9 +79,13 @@ export class CheckoutComponent implements OnInit {
         sessionStorage.getItem('token')
       );
       console.log('logged in user datga', this.loggedInUserData);
-    } else {
-      console.log(this.loggedInUserData);
-      this.loggedInUserData.name = '';
+    } else if (this.UserIdentityService.onUserGet()) {
+      console.log(
+        'this.loggedInUserData',
+        (this.loggedInUserData = this.UserIdentityService.onUserGet())
+      );
+
+      this.loggedInUserData = this.UserIdentityService.onUserGet();
     }
   }
 
@@ -55,7 +97,7 @@ export class CheckoutComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result.package}`);
       console.log(`Dialog result: ${result.sample}`);
-      // this.router.navigate(['/payment']);
+      this.router.navigate(['/payment']);
     });
   }
 
@@ -63,12 +105,6 @@ export class CheckoutComponent implements OnInit {
     this.cartService.onRemoveItem(index);
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
   saveInformation(
     name: any,
     city: any,
@@ -76,6 +112,11 @@ export class CheckoutComponent implements OnInit {
     userEmail: any,
     address: any
   ) {
+    console.log('name', name);
+    console.log('city', city);
+    console.log('number', number);
+    console.log('userEmail', userEmail);
+    console.log('address', address);
     this.informationData = {
       name: name,
       city: city,
@@ -84,7 +125,7 @@ export class CheckoutComponent implements OnInit {
       address: address,
     };
     console.log(this.informationData);
-
+    this.UserIdentityService.onUserSave(this.informationData);
     console.log('the information of new user is:', this.informationData);
     this.openDialog();
     // this.cartService.onCartSave(this.cartData);
