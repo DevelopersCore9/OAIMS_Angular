@@ -68,7 +68,7 @@ export class PaymentComponent implements OnInit {
       };
       console.log(finalObj);
       this.orderService.placeOrder(finalObj)
-      .subscribe((data) => {
+      .subscribe((data:any) => {
         console.log(data)
         this.invoiceService.savePaymentItems(this.allDataCart);
       this.router.navigate(['/placed-orders']);
