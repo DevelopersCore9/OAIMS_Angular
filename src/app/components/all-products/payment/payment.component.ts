@@ -22,8 +22,7 @@ export class PaymentComponent implements OnInit {
     private invoiceService: InvoiceService,
     private userInformation: UserIdentityService,
     private router: Router,
-    private _snackBar: MatSnackBar,
-    private orderService: OrderService
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -57,24 +56,22 @@ export class PaymentComponent implements OnInit {
     if (this.isChecked == null) {
       this.openSnackBar('Please select the option first');
     } else {
-      let finalObj :any= {
+      let finalObj: any = {
         orderItems: orderItems,
         shippingAddress: this.user.address,
         city: this.user.city,
         country: 'Pakistan',
         phone: this.user.number,
-        user: "61b386753c757654ccce46dd",
+        user: '61b386753c757654ccce46dd',
         comments: 'This is a comment of order',
       };
       console.log(finalObj);
-      this.orderService.placeOrder(finalObj)
-      .subscribe((data:any) => {
-        console.log(data)
-        this.invoiceService.savePaymentItems(this.allDataCart);
+      // this.orderService.placeOrder(finalObj)
+      // .subscribe((data:any) => {
+      //   console.log(data)
+      this.invoiceService.savePaymentItems(this.allDataCart);
       this.router.navigate(['/placed-orders']);
-      })
-      
-      
+      // })
     }
   }
   openSnackBar(message: string) {
