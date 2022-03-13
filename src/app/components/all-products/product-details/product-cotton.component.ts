@@ -47,6 +47,7 @@ export class ProductDetailsComponent implements OnInit {
       console.log('the product data:', this.productsData);
       if (this.productsData) {
         this.selectedMeter = this.productsData.size[0];
+        this.selectedPrice = this.productsData.price[0]
         this.productsDataIf = true;
       }
     });
@@ -57,6 +58,7 @@ export class ProductDetailsComponent implements OnInit {
         this.productService.getProduct(params.product_id).then((product) => {
           this.productsData = product;
           this.selectedMeter = this.productsData.size[0];
+        this.selectedPrice = this.productsData.price[0]
           this.productsDataIf = true;
         });
       }
@@ -67,6 +69,9 @@ export class ProductDetailsComponent implements OnInit {
       console.log('Featured :', this.featured);
       this.featuredIf = true;
     });
+
+    this.priceCheck = true
+    console.log(this.priceCheck, "abc ")
   }
 
   onRadioButtonChange(event: any) {
@@ -93,13 +98,17 @@ export class ProductDetailsComponent implements OnInit {
       this.navigateService.saveData(this.productsData);
       this.productsData.colorSelected = this.selectedColor;
       this.productsData.quantity = qty;
-      this.productsData.size = this.selectedMeter;
+      this.productsData.selectedSize = this.selectedMeter;
       this.productsData.selectedPrice = this.selectedPrice;
       console.log(this.productsData);
       this.cartService.onCartSave(this.productsData);
       this.notificationsService.changeNotification(1);
       console.log(this.notificationsService.getNotificationValue());
-      // this.router.navigate(['/checkout']);
+      this.router.navigate(['/all-products']);
+      console.log(this.priceCheck)
+      console.log(this.productsData.size[0])
+      console.log(this.productsData)
+
     }
   }
 

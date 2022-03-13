@@ -102,7 +102,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   removeItem(index: any) {
-    this.cartService.onRemoveItem(index);
+    this.cartData = this.cartService.onRemoveItem(index);
   }
 
   saveInformation(

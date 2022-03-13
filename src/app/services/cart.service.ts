@@ -8,8 +8,15 @@ export class CartService {
   constructor() {}
 
   onCartSave(obj: any) {
-    this.cartArray.push(obj);
-    localStorage.setItem('names', JSON.stringify(this.cartArray));
+    let objs = this.onCartGet();
+    if (objs) {
+      this.cartArray = objs;
+      this.cartArray.push(obj);
+      localStorage.setItem('names', JSON.stringify(this.cartArray));
+    } else {
+      this.cartArray.push(obj);
+      localStorage.setItem('names', JSON.stringify(this.cartArray));
+    }
   }
 
   onCartGet() {
@@ -19,7 +26,9 @@ export class CartService {
   }
 
   onRemoveItem(index: any) {
+    this.cartArray = this.onCartGet();
     this.cartArray.splice(index, 1);
     localStorage.setItem('names', JSON.stringify(this.cartArray));
+    return this.cartArray
   }
 }
