@@ -2275,8 +2275,7 @@ chokidar@^2.1.8:
     path-is-absolute "^1.0.0"
     readdirp "^2.2.1"
     upath "^1.1.1"
-  optionalDependencies:
-    fsevents "^1.2.7"
+
 
 chownr@^2.0.0:
   version "2.0.0"
