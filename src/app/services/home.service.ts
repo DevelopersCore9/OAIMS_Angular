@@ -11,10 +11,10 @@ export class HomeService {
     private hostAddress: HostService,
     protected http: HttpClient,
     protected spin: SpinnerService
-  ) { }
+  ) {}
 
   SliderData() {
-    this.spin.changeSpinnerState(true)
+    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products/featured`)
@@ -23,7 +23,7 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false)
+          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {
@@ -34,21 +34,23 @@ export class HomeService {
   }
 
   getCollectionData() {
-    this.spin.changeSpinnerState(true)
+    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
-      const formData = new FormData()
-      formData.append("type", "summer")
+      const formData = new FormData();
+      formData.append('type', 'summer');
 
-      let params = new HttpParams().set("type", "summer");
+      let params = new HttpParams().set('type', 'summer');
       this.http
-        .get(`${this.hostAddress.getHostIp()}/api/products/collection`, { params })
+        .get(
+          `${this.hostAddress.getHostIp()}/api/products/collection?type=collection`
+        )
         .toPromise()
         .then((data: any) => {
           console.log(data);
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false)
+          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {
@@ -59,7 +61,7 @@ export class HomeService {
   }
 
   getCategories() {
-    this.spin.changeSpinnerState(true)
+    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/categories`)
@@ -68,7 +70,7 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false)
+          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {
