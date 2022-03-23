@@ -7,117 +7,30 @@
       <div class="col-lg-10 col-xl-8">
         <div class="card" style="border-radius: 10px;">
           <div class="card-body p-4">
-            <div class="card shadow-0 border mb-4">
+            <div class="card shadow-0 border mb-4" *ngFor="let order of orders; let i = index">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-2">
-                    <img
-                      src="https://static-01.daraz.pk/p/3aea4852a85beafdec079895ed40388b.jpg"
-                      class="img-fluid" alt="Phone">
+                    <img src={{order.orderItems[0].product.images[0]}} class="img-fluid" alt="Phone">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">MVS</p>
+                    <p class=" mb-0 ">{{order._id}}</p>
                   </div>
                   <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Magenta</p>
+                    <p class=" mb-0">{{order.orderItems[0].product.name}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Size: 5.0 M</p>
+                    <p class=" mb-0 ">Size: {{order.orderItems[0].size}} M</p>
                   </div>
                   <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Qty: 1</p>
+                    <p class=" mb-0 ">Qty: {{order.orderItems[0].quantity}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Rs. 1000</p>
+                    <p class=" mb-0 ">Status {{order.status}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">Date : 06 Dec,2021</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow-0 border mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <img
-                      src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg"
-                      class="img-fluid" alt="Phone">
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">PVT</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Cyan</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Size: 5.0 M</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Qty: 1</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Rs. 1400</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">Date : 04 Nov,2021</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow-0 border mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <img src="https://m.media-amazon.com/images/I/71YwM46ucEL._AC_SL1200_.jpg" class="img-fluid"
-                      alt="Phone">
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0">Cotton</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Blue</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Size: 4.5 M</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Qty: 1</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Rs. 1600</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">Date : 22 Sep,2021</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow-0 border mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <img
-                      src="https://image.made-in-china.com/2f0j00hukGmbePfHon/Knitting-Fabric-Solid-Cotton-Fabric-Cotton-Spandex-Fabric-for-T-Shirt-Pullover.jpg"
-                      class="img-fluid" alt="Phone">
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">Wash & Wear</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Pink rose</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Size: 5.0 M</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Qty: 1</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Rs. 2000</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">Date : 04 Dec,2021</p>
+                    <button class="btn btn-large" style="background-color:#FFCE31;color: #000;"
+                      (click)="displayOrders(order._id)">CHECKOUT</button>
                   </div>
                 </div>
               </div>

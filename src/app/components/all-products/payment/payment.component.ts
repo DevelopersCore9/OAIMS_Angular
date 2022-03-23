@@ -22,7 +22,8 @@ export class PaymentComponent implements OnInit {
     private invoiceService: InvoiceService,
     private userInformation: UserIdentityService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -66,12 +67,11 @@ export class PaymentComponent implements OnInit {
         comments: 'This is a comment of order',
       };
       console.log(finalObj);
-      // this.orderService.placeOrder(finalObj)
-      // .subscribe((data:any) => {
-      //   console.log(data)
-      this.invoiceService.savePaymentItems(this.allDataCart);
-      this.router.navigate(['/placed-orders']);
-      // })
+      this.orderService.placeOrder(finalObj).subscribe((data: any) => {
+        console.log(data);
+        this.invoiceService.savePaymentItems(this.allDataCart);
+        this.router.navigate(['/placed-orders']);
+      });
     }
   }
   openSnackBar(message: string) {
