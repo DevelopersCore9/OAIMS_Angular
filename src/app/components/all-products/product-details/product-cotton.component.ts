@@ -92,7 +92,7 @@ export class ProductDetailsComponent implements OnInit {
         this.reviews = data.reviews;
         console.log('data', data);
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
     this.priceCheck = true;
