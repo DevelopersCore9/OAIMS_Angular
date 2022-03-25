@@ -3,7 +3,6 @@ frontend:
   phases:
     build:
       commands:
-        - npm i npm@latest -g
         - npm run build
   artifacts:
     baseDirectory: dist/OAIMS
