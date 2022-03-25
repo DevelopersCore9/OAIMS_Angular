@@ -7,6 +7,9 @@ import { CartService } from 'src/app/services/cart.service';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartNotificationService } from 'src/app/services/cart-notification.service';
+import { ReviewService } from 'src/app/services/review.service';
+import { UserIdentityService } from 'src/app/services/user-identity.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +17,7 @@ import { CartNotificationService } from 'src/app/services/cart-notification.serv
   styleUrls: ['./product-cotton.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
+  public momentdata = moment;
   public featured: any;
   public productsData: any;
   public id: any;
@@ -25,6 +29,8 @@ export class ProductDetailsComponent implements OnInit {
   public selectedMeter: any | undefined = null;
   public priceCheck = true;
   public selectedPrice: number = 0;
+  public productId: any;
+  public reviews: any;
 
   formatLabel(value: number) {
     if (value >= 1000) {
@@ -42,7 +48,9 @@ export class ProductDetailsComponent implements OnInit {
     public router: Router,
     private ren: Renderer2,
     private cartService: CartService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private reviewService: ReviewService,
+    private userIdentityService: UserIdentityService
   ) {}
 
   ngOnInit(): void {
@@ -54,18 +62,19 @@ export class ProductDetailsComponent implements OnInit {
       console.log('the product data:', this.productsData);
       if (this.productsData) {
         this.selectedMeter = this.productsData.size[0];
-        this.selectedPrice = this.productsData.price[0]
+        this.selectedPrice = this.productsData.price[0];
         this.productsDataIf = true;
       }
     });
 
     this.route.queryParams.subscribe((params) => {
       console.log(params.product_id);
+      this.productId = params.product_id;
       if (!this.productsData) {
         this.productService.getProduct(params.product_id).then((product) => {
           this.productsData = product;
           this.selectedMeter = this.productsData.size[0];
-        this.selectedPrice = this.productsData.price[0]
+          this.selectedPrice = this.productsData.price[0];
           this.productsDataIf = true;
         });
       }
@@ -77,8 +86,17 @@ export class ProductDetailsComponent implements OnInit {
       this.featuredIf = true;
     });
 
-    this.priceCheck = true
-    console.log(this.priceCheck, "abc ")
+    this.reviewService
+      .getReview(this.productId)
+      .then((data: any) => {
+        this.reviews = data.reviews;
+        console.log('data', data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.priceCheck = true;
+    console.log(this.priceCheck, 'abc ');
   }
 
   onRadioButtonChange(event: any) {
@@ -112,10 +130,9 @@ export class ProductDetailsComponent implements OnInit {
       this.notificationsService.changeNotification(1);
       console.log(this.notificationsService.getNotificationValue());
       this.router.navigate(['/all-products']);
-      console.log(this.priceCheck)
-      console.log(this.productsData.size[0])
-      console.log(this.productsData)
-
+      console.log(this.priceCheck);
+      console.log(this.productsData.size[0]);
+      console.log(this.productsData);
     }
   }
 
@@ -144,5 +161,40 @@ export class ProductDetailsComponent implements OnInit {
 
   changePriceRadioButton() {
     this.priceCheck = !this.priceCheck;
+  }
+
+  saveReview(message: string, rating: number) {
+    let date = moment().toDate();
+    let date2 = moment(date).format('MMM DD YYYY');
+    console.log(moment(date).format('MMM Do YYYY'));
+    console.log(moment(moment().toDate()).fromNow());
+    console.log(moment(date2).fromNow());
+    console.log(date2);
+    let user_name = '';
+    let user_obj = this.userIdentityService.onUserGet();
+    if (user_obj || user_obj?.name) {
+      user_name = user_obj.name;
+    }
+    console.log({
+      id: this.productId,
+      reviews: {
+        name: user_name,
+        review: message,
+        rating: rating,
+      },
+    });
+    this.reviewService
+      .addReview({
+        id: this.productId,
+        reviews: {
+          name: user_name,
+          review: message,
+          rating: rating,
+          date: moment(moment().toDate()).format('MMM DD YYYY'),
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

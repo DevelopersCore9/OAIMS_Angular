@@ -63,7 +63,7 @@ export class PaymentComponent implements OnInit {
         city: this.user.city,
         country: 'Pakistan',
         phone: this.user.number,
-        user: '61b386753c757654ccce46dd',
+        user: this.user.userId,
         comments: 'This is a comment of order',
       };
       console.log(finalObj);

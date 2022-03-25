@@ -10,34 +10,22 @@
         <div class="img-select">
           <div class="img-item">
             <a data-id="1">
-              <img
-                (click)="swapImageOnClick(1)"
-                src="{{ productsData.images[1] }}"
-              />
+              <img (click)="swapImageOnClick(1)" src="{{ productsData.images[1] }}" />
             </a>
           </div>
           <div class="img-item">
             <a data-id="2">
-              <img
-                (click)="swapImageOnClick(0)"
-                src="{{ productsData.images[0] }}"
-              />
+              <img (click)="swapImageOnClick(0)" src="{{ productsData.images[0] }}" />
             </a>
           </div>
           <div class="img-item">
             <a data-id="3">
-              <img
-                (click)="swapImageOnClick(0)"
-                src="{{ productsData.images[0] }}"
-              />
+              <img (click)="swapImageOnClick(0)" src="{{ productsData.images[0] }}" />
             </a>
           </div>
           <div class="img-item">
             <a data-id="4">
-              <img
-                (click)="swapImageOnClick(1)"
-                src="{{ productsData.images[1] }}"
-              />
+              <img (click)="swapImageOnClick(1)" src="{{ productsData.images[1] }}" />
             </a>
           </div>
         </div>
@@ -70,26 +58,12 @@
 
         <form name="demo"></form>
         <div class="row mt-2">
-          <div
-            style="text-align: center"
-            *ngFor="let data of productsData.color"
-          >
+          <div style="text-align: center" *ngFor="let data of productsData.color">
             <mat-radio-group [(ngModel)]="definedColor">
-              <mat-radio-button
-                [value]="data"
-                class="mr-2"
-                #button
-                [value]="data"
-                checked
-                #color
-                (change)="onRadioButtonChange($event)"
-              >
-                <span
-                  class="fa fa-phone fa-2x dot mt-2"
-                  [ngStyle]="{ 'background-color': data }"
-                  ng-model="button.value"
-                  style="color: transparent"
-                ></span>
+              <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color
+                (change)="onRadioButtonChange($event)">
+                <span class="fa fa-phone fa-2x dot mt-2" [ngStyle]="{ 'background-color': data }"
+                  ng-model="button.value" style="color: transparent"></span>
               </mat-radio-button>
             </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
@@ -99,42 +73,21 @@
         </div>
         <div class="row mt-2 mb-3">
           <div class="col-md-3 mt-2">
-            <input
-              type="number"
-              min="0"
-              value="1"
-              class="inp"
-              #quantity
-            />Quantity
+            <input type="number" min="0" value="1" class="inp" #quantity />Quantity
           </div>
 
           <div class="col-md-3 mt-2">
-            <button
-              mat-button
-              class="a-button"
-              (click)="onCheckout(quantity.value)"
-            >
+            <button mat-button class="a-button" (click)="onCheckout(quantity.value)">
               Add to Cart
             </button>
           </div>
         </div>
         <div class="row mt-2 mb-3">
-          <mat-radio-group
-            aria-label="Select an option"
-            (change)="onMeterRadioButtonChange($event)"
-          >
-            <mat-radio-button
-              [value]="productsData.size[0]"
-              [checked]="priceCheck"
-              >{{ productsData.size[0] }}
+          <mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
+            <mat-radio-button [value]="productsData.size[0]" [checked]="priceCheck">{{ productsData.size[0] }}
             </mat-radio-button>
-            <mat-radio-button
-              [value]="productsData.size[1]"
-              [checked]="!priceCheck"
-              class="ml-3"
-            >
-              {{ productsData.size[1] }}</mat-radio-button
-            >
+            <mat-radio-button [value]="productsData.size[1]" [checked]="!priceCheck" class="ml-3">
+              {{ productsData.size[1] }}</mat-radio-button>
           </mat-radio-group>
         </div>
         <div class="product-detail">
@@ -163,13 +116,7 @@
   </div>
   <div class="container-fluid p-5" *ngIf="featuredIf">
     <div class="row">
-      <carousel
-        [height]="700"
-        [cellWidth]="350"
-        [loop]="true"
-        [autoplay]="true"
-        *ngIf="featuredIf"
-      >
+      <carousel [height]="700" [cellWidth]="350" [loop]="true" [autoplay]="true" *ngIf="featuredIf">
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
@@ -378,251 +325,55 @@
   <div class="row">
     <div class="col-sm-6">
       <hr />
-      <div class="review-block">
+      <div class="review-block" *ngFor="let review of reviews">
         <div class="row">
           <div class="col-sm-2">
-            <img
-              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
-              class="img-rounded"
-            />
-            <div class="review-block-name"><a href="#">nktailor</a></div>
-            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+            <img src="https://www.pngitem.com/pimgs/m/504-5040528_empty-profile-picture-png-transparent-png.png"
+              class="img-rounded" />
+            <div class="review-block-date">{{review.date}}<br />{{momentdata(momentdata(review.date)).fromNow()}}</div>
           </div>
           <div class="col-sm-9 ml-2">
             <div class="review-block-rate">
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
               </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
               </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
               </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
               </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
               </button>
             </div>
-            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-title">{{review.name}}</div>
             <div class="review-block-description">
-              this was nice in buy. this was nice in buy. this was nice in buy.
-              this was nice in buy this was nice in buy this was nice in buy
-              this was nice in buy this was nice in buy
+              {{review.review}}
             </div>
           </div>
         </div>
         <hr />
-        <div class="row">
-          <div class="col-sm-2">
-            <img
-              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
-              class="img-rounded"
-            />
-            <div class="review-block-name"><a href="#">nktailor</a></div>
-            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
-          </div>
-          <div class="col-sm-9 ml-2">
-            <div class="review-block-rate">
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-            </div>
-            <div class="review-block-title">this was nice in buy</div>
-            <div class="review-block-description">
-              this was nice in buy. this was nice in buy. this was nice in buy.
-              this was nice in buy this was nice in buy this was nice in buy
-              this was nice in buy this was nice in buy
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-sm-2">
-            <img
-              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
-              class="img-rounded"
-            />
-            <div class="review-block-name"><a href="#">nktailor</a></div>
-            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
-          </div>
-          <div class="col-sm-9 ml-2">
-            <div class="review-block-rate">
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-default btn-grey btn-xs"
-                aria-label="Left Align"
-              >
-                <span
-                  class="glyphicon glyphicon-star"
-                  aria-hidden="true"
-                ></span>
-              </button>
-            </div>
-            <div class="review-block-title">this was nice in buy</div>
-            <div class="review-block-description">
-              this was nice in buy. this was nice in buy. this was nice in buy.
-              this was nice in buy this was nice in buy this was nice in buy
-              this was nice in buy this was nice in buy
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="col-sm-5 ml-5">
       <div class="row">
-        <mat-form-field
-          class="example-full-width"
-          appearance="outline"
-          style="width: 100%"
-        >
+        <mat-form-field class="example-full-width" appearance="outline" style="width: 100%">
           <mat-label>Leave a review</mat-label>
-          <textarea
-            cols="10"
-            rows="10"
-            matInput
-            placeholder="Ex. It makes me feel..."
-          ></textarea>
+          <textarea cols="10" rows="10" matInput placeholder="Ex. It makes me feel..." #messgae></textarea>
         </mat-form-field>
       </div>
       <div class="row">
-        <mat-slider style="width:100%"
-          thumbLabel
-          [displayWith]="formatLabel"
-          tickInterval="1000"
-          step="1000"
-          min="0"
-          max="100000"
-          aria-label="units"
-        ></mat-slider>
+        <mat-slider style="width:100%" thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1" min="0"
+          max="10" aria-label="units" #rating></mat-slider>
 
       </div>
-      <button mat-raised-button color="primary" style="float:right">Add Review</button>
+      <button mat-raised-button color="primary" style="float:right"
+        (click)="saveReview(messgae.value, rating.value)">Add Review</button>
     </div>
   </div>
 </div>

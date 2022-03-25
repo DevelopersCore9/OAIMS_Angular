@@ -4,7 +4,12 @@ import { BannersService } from './../../services/banners.service';
 import { CarouselService } from './../../services/carousel.service';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from '../../services/home.service';
 import { NavigateProductDataService } from '../../services/navigate-product-data.service';
@@ -26,7 +31,6 @@ export class HomeComponent implements OnInit {
   public categoriesData: any;
   isViewMore = false;
   public viewCount = 3;
-
 
   customOptions: OwlOptions = {
     loop: true,
@@ -61,8 +65,8 @@ export class HomeComponent implements OnInit {
     private carouselService: CarouselService,
     private bannerService: BannersService,
     private navigateService: NavigateProductDataService,
-    protected spin: SpinnerService,
-  ) { }
+    protected spin: SpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.homeService
@@ -86,14 +90,15 @@ export class HomeComponent implements OnInit {
         console.log(err);
       });
 
-    this.homeService.getCategories()
+    this.homeService
+      .getCategories()
       .then((data: any) => {
         this.categoriesData = data;
-        console.log("all categories", this.categoriesData);
+        console.log('all categories', this.categoriesData);
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
     // this.bannerService
     //   .getCategoriesImages()
     //   .then((data: any) => {
@@ -104,14 +109,11 @@ export class HomeComponent implements OnInit {
     //     console.log(err);
     //   });
 
-
-    this.bannerService
-      .getBanner()
-      .then((data: any) => {
-        this.banner = data;
-        this.bannerIf = true;
-        console.log('Banner:', this.banner);
-      });
+    this.bannerService.getBanner().then((data: any) => {
+      this.banner = data;
+      this.bannerIf = true;
+      console.log('Banner:', this.banner);
+    });
 
     this.productService.getTopSelling().then((data: any) => {
       this.topSelling = data;
@@ -122,7 +124,7 @@ export class HomeComponent implements OnInit {
       .getCarouselImages()
       .then((data: any) => {
         this.carouselImages = data;
-        this.carouselImagesIf = true
+        this.carouselImagesIf = true;
         console.log('Carousel Images:', this.carouselImages);
       })
       .catch((err) => {
@@ -138,21 +140,22 @@ export class HomeComponent implements OnInit {
     // this.viewCount == 3 ? this.categoriesData.length : 3
     // console.log(this.viewCount)
     if (this.viewCount == this.categoriesData.length) {
-      this.viewCount = 3
-    }
-    else {
+      this.viewCount = 3;
+    } else {
       this.viewCount = this.categoriesData.length;
     }
     return (this.isViewMore = !this.isViewMore);
   }
 
   onSave(index: any) {
-    this.navigateService.saveData(this.homeData[index])
-    this.router.navigate(['/productDetails'], index);
+    this.navigateService.saveData(this.homeData[index]);
+    console.log(this.homeData[index]._id);
+    this.router.navigate(['/productDetails'], {
+      queryParams: { product_id: this.homeData[index]._id },
+    });
   }
+
   onCategory(name: string) {
-    this.router.navigate(['/all-products', { "product": name }])
+    this.router.navigate(['/all-products', { product: name }]);
   }
-
-
 }

@@ -33,4 +33,15 @@ export class CartNotificationService {
       return 0;
     }
   }
+
+  minusNotificationValue() {
+    if (localStorage.getItem('cartCount')) {
+      let value = parseInt(localStorage.getItem('cartCount') || '{}') - 1;
+      localStorage.setItem('cartCount', value.toString());
+      this.notification.next(value);
+      return parseInt(localStorage.getItem('cartCount') || '{}');
+    } else {
+      return 0;
+    }
+  }
 }

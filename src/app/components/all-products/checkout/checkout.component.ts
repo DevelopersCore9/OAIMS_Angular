@@ -14,6 +14,7 @@ import JwtDecode from 'src/app/utils/jwt-decode';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserIdentityService } from 'src/app/services/user-identity.service';
+import { CartNotificationService } from 'src/app/services/cart-notification.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -65,7 +66,8 @@ export class CheckoutComponent implements OnInit {
     public router: Router,
     private jwtBreaker: JwtDecode,
     private _snackBar: MatSnackBar,
-    private UserIdentityService: UserIdentityService
+    private UserIdentityService: UserIdentityService,
+    private cartNotificationService: CartNotificationService
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +105,7 @@ export class CheckoutComponent implements OnInit {
 
   removeItem(index: any) {
     this.cartData = this.cartService.onRemoveItem(index);
+    this.cartNotificationService.minusNotificationValue();
   }
 
   saveInformation(
@@ -124,6 +127,9 @@ export class CheckoutComponent implements OnInit {
       userEmail: userEmail,
       address: address,
     };
+    if (this.loggedInUserData?.userId) {
+      this.informationData.userId = this.loggedInUserData?.userId;
+    }
     console.log(this.informationData);
     this.UserIdentityService.onUserSave(this.informationData);
     console.log('the information of new user is:', this.informationData);

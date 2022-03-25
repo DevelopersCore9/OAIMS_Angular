@@ -14,15 +14,12 @@
                     <img src={{order.orderItems[0].product.images[0]}} class="img-fluid" alt="Phone">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">{{order._id}}</p>
-                  </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
                     <p class=" mb-0">{{order.orderItems[0].product.name}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class=" mb-0 ">Size: {{order.orderItems[0].size}} M</p>
                   </div>
-                  <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class=" mb-0 ">Qty: {{order.orderItems[0].quantity}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
@@ -30,7 +27,7 @@
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <button class="btn btn-large" style="background-color:#FFCE31;color: #000;"
-                      (click)="displayOrders(order._id)">CHECKOUT</button>
+                      (click)="displayOrders(order._id)">Details</button>
                   </div>
                 </div>
               </div>
