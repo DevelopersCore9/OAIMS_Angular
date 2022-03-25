@@ -12,7 +12,7 @@ export class ReviewService {
     private hostAddress: HostService,
     protected spin: SpinnerService
   ) {}
-
+  //as
   addReview(review_obj: any) {
     this.spin.changeSpinnerState(true);
     return new Promise((resolve, reject) => {
