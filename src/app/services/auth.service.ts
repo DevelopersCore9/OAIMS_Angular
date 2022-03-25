@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import JwtDecode from '../utils/jwt-decode';
 import { UserInfo } from '../utils/userInfo';
 import { UserSignUp } from '../utils/userSignUp';
@@ -17,7 +18,8 @@ export class AuthService {
     private jwtBreaker: JwtDecode,
     private hostAddress: HostService,
     private userIdentity: UserIdentityService,
-  ) { }
+    protected route : Router
+  ) {}
 
   userSignUp(data: UserSignUp) {
     return new Promise<UserInfo>((resolve, reject) => {
@@ -35,6 +37,7 @@ export class AuthService {
           data = this.jwtBreaker.decodedToken(data.payload)
           this.userIdentity.changeUserIdentity(data.id)
           resolve(data);
+          this.route.navigate(['/']);
         })
         .catch((error) => {
           console.log(error)
@@ -57,11 +60,11 @@ export class AuthService {
 
           sessionStorage.setItem("token", data.payload)
 
-          let user = this.jwtBreaker.decodedToken(data.payload)
-          console.log(user.id);
-          this.userIdentity.changeUserIdentity(user.id)
-
+          let user = this.jwtBreaker.decodedToken(data.payload);
+          console.log(user);
+          // this.userIdentity.onUserSave({ id: user.userId, name: user.name });
           resolve(user);
+          this.route.navigate(['/']);
         })
         .catch((error) => {
           console.log(error)
