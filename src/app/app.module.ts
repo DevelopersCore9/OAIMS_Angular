@@ -37,6 +37,8 @@ import { ProductDetailsComponent } from './components/all-products/product-detai
 import { ImageDirective } from './directives/image.directive';
 import { FeaturedImagesDirective } from './directives/featured-images.directive';
 import { SpinnerComponent } from './helper/spinner/spinner.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,6 @@ import { SpinnerComponent } from './helper/spinner/spinner.component';
     FilterPipe,
     ImageDirective,
     FeaturedImagesDirective,
-    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,12 +76,15 @@ import { SpinnerComponent } from './helper/spinner/spinner.component';
     IvyCarouselModule,
     MatRadioModule,
     HttpClientModule,
+    MatButtonModule,
     MatDialogModule,
     NgxPaginationModule,
     MatExpansionModule,
     MatBadgeModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    MatSliderModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

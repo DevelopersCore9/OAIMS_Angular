@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import JwtDecode from '../utils/jwt-decode';
 import { UserInfo } from '../utils/userInfo';
 import { UserSignUp } from '../utils/userSignUp';
@@ -16,7 +17,8 @@ export class AuthService {
     private http: HttpClient,
     private jwtBreaker: JwtDecode,
     private hostAddress: HostService,
-    private userIdentity: UserIdentityService
+    private userIdentity: UserIdentityService,
+    protected route : Router
   ) {}
 
   userSignUp(data: UserSignUp) {
@@ -42,6 +44,7 @@ export class AuthService {
             userId: data.userId,
           });
           resolve(data);
+          this.route.navigate(['/']);
         })
         .catch((error) => {
           console.log(error);
@@ -72,6 +75,7 @@ export class AuthService {
           this.userIdentity.onUserSave({ id: user.userId, name: user.name });
 
           resolve(user);
+          this.route.navigate(['/']);
         })
         .catch((error) => {
           console.log(error);

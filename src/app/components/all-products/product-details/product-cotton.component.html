@@ -4,28 +4,40 @@
       <div class="product-imgs">
         <div class="img-display">
           <div class="img-showcase">
-            <img src={{productsData.images[0]}}>
+            <img src="{{ productsData.images[0] }}" />
           </div>
         </div>
         <div class="img-select">
           <div class="img-item">
             <a data-id="1">
-              <img (click)="swapImageOnClick(1)" src={{productsData.images[1]}}>
+              <img
+                (click)="swapImageOnClick(1)"
+                src="{{ productsData.images[1] }}"
+              />
             </a>
           </div>
           <div class="img-item">
             <a data-id="2">
-              <img (click)="swapImageOnClick(0)" src={{productsData.images[0]}}>
+              <img
+                (click)="swapImageOnClick(0)"
+                src="{{ productsData.images[0] }}"
+              />
             </a>
           </div>
           <div class="img-item">
             <a data-id="3">
-              <img (click)="swapImageOnClick(0)" src={{productsData.images[0]}}>
+              <img
+                (click)="swapImageOnClick(0)"
+                src="{{ productsData.images[0] }}"
+              />
             </a>
           </div>
           <div class="img-item">
             <a data-id="4">
-              <img (click)="swapImageOnClick(1)" src={{productsData.images[1]}}>
+              <img
+                (click)="swapImageOnClick(1)"
+                src="{{ productsData.images[1] }}"
+              />
             </a>
           </div>
         </div>
@@ -34,13 +46,15 @@
     <!-- card right -->
     <div class="col-md-7 mt-4 ml-5 p-2" *ngIf="productsDataIf">
       <div class="product-content">
-        <H1>{{id}}</H1>
-        <h2 class="product-title">{{productsData.name}}</h2>
+        <H1>{{ id }}</H1>
+        <h2 class="product-title">{{ productsData.name }}</h2>
 
         <div class="row">
           <div class="col-md-3">
             <div class="product-price">
-              <p class="new-price"><span>RS.{{this.selectedPrice}}</span></p>
+              <p class="new-price">
+                <span>RS.{{ this.selectedPrice }}</span>
+              </p>
             </div>
           </div>
           <div class="col-md-3 mt-4">
@@ -56,12 +70,26 @@
 
         <form name="demo"></form>
         <div class="row mt-2">
-          <div style="text-align:center" *ngFor="let data of productsData.color">
+          <div
+            style="text-align: center"
+            *ngFor="let data of productsData.color"
+          >
             <mat-radio-group [(ngModel)]="definedColor">
-              <mat-radio-button [value]="data" class="mr-2" #button [value]="data" checked #color
-                (change)="onRadioButtonChange($event)">
-                <span class="fa fa-phone fa-2x dot mt-2" [ngStyle]="{'background-color':data}" ng-model="button.value"
-                  style="color:transparent"></span>
+              <mat-radio-button
+                [value]="data"
+                class="mr-2"
+                #button
+                [value]="data"
+                checked
+                #color
+                (change)="onRadioButtonChange($event)"
+              >
+                <span
+                  class="fa fa-phone fa-2x dot mt-2"
+                  [ngStyle]="{ 'background-color': data }"
+                  ng-model="button.value"
+                  style="color: transparent"
+                ></span>
               </mat-radio-button>
             </mat-radio-group>
             <!-- <span class="dot ml-2" style="background-color: yellow;"></span>
@@ -71,24 +99,46 @@
         </div>
         <div class="row mt-2 mb-3">
           <div class="col-md-3 mt-2">
-            <input type="number" min="0" value="1" class="inp" #quantity>Quantity
+            <input
+              type="number"
+              min="0"
+              value="1"
+              class="inp"
+              #quantity
+            />Quantity
           </div>
 
           <div class="col-md-3 mt-2">
-            <button mat-button class="a-button" (click)="onCheckout(quantity.value)">Add to Cart</button>
+            <button
+              mat-button
+              class="a-button"
+              (click)="onCheckout(quantity.value)"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
         <div class="row mt-2 mb-3">
-          <mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
-            <mat-radio-button [value]="productsData.size[0]" [checked]="priceCheck">{{productsData.size[0]}}
+          <mat-radio-group
+            aria-label="Select an option"
+            (change)="onMeterRadioButtonChange($event)"
+          >
+            <mat-radio-button
+              [value]="productsData.size[0]"
+              [checked]="priceCheck"
+              >{{ productsData.size[0] }}
             </mat-radio-button>
-            <mat-radio-button [value]="productsData.size[1]" [checked]="!priceCheck" class="ml-3">
-              {{productsData.size[1]}}</mat-radio-button>
+            <mat-radio-button
+              [value]="productsData.size[1]"
+              [checked]="!priceCheck"
+              class="ml-3"
+            >
+              {{ productsData.size[1] }}</mat-radio-button
+            >
           </mat-radio-group>
         </div>
         <div class="product-detail">
-
-          <p class="con">{{productsData?.description}}</p>
+          <p class="con">{{ productsData?.description }}</p>
           <ul>
             <li>Available: <span>in stock</span></li>
             <!-- <li>Category: <span>{{productsData.subCategory.category.categoryName}}</span></li> -->
@@ -98,9 +148,7 @@
         </div>
 
         <div class="purchase-info">
-
-
-          <div class="social-links" style="float: right;">
+          <div class="social-links" style="float: right">
             <button class="inp2">Continue Shopping</button>
           </div>
         </div>
@@ -115,187 +163,466 @@
   </div>
   <div class="container-fluid p-5" *ngIf="featuredIf">
     <div class="row">
-      <carousel [height]="700" [cellWidth]="350" [loop]=true [autoplay]=true *ngIf="featuredIf">
-        <div class=" mt-2 carousel-cell">
+      <carousel
+        [height]="700"
+        [cellWidth]="350"
+        [loop]="true"
+        [autoplay]="true"
+        *ngIf="featuredIf"
+      >
+        <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[0].images[0]}} />
+              <img appFeaturedImages src="{{ featured[0].images[0] }}" />
             </div>
 
             <div class="card-heading">
-              {{featured[0].name}}
+              {{ featured[0].name }}
             </div>
             <div class="card-text">
-              {{featured[0].description}}
+              {{ featured[0].description }}
             </div>
             <div class="card-text">
-              {{featured[0].price}} PKR / {{featured[0].size}} Metre
+              {{ featured[0].price }} PKR / {{ featured[0].size }} Metre
             </div>
-            <button class="card-button" (click)="onFeaturedProductCard(0)"> Add To Cart</button>
-          </div>
-        </div>
-        <div class=" mt-2 carousel-cell">
-          <div class="card-sl">
-            <div class="card-image">
-              <img appFeaturedImages src={{featured[1].images[0]}} />
-            </div>
-
-            <div class="card-heading">
-              {{featured[1].name}}
-            </div>
-            <div class="card-text">
-              {{featured[1].description}}
-            </div>
-            <div class="card-text">
-              {{featured[1].price}} PKR / {{featured[1].size}} Metre
-            </div>
-            <button class="card-button" (click)="onFeaturedProductCard(1)"> Add To Cart</button>
-          </div>
-        </div>
-        <div class=" mt-2 carousel-cell">
-          <div class="card-sl">
-            <div class="card-image">
-              <img appFeaturedImages src={{featured[2].images[0]}} />
-            </div>
-
-            <div class="card-heading">
-              {{featured[2].name}}
-            </div>
-            <div class="card-text">
-              {{featured[2].description}}
-            </div>
-            <div class="card-text">
-              {{featured[2].price}} PKR / {{featured[2].size}} Metre
-            </div>
-            <button class="card-button" (click)="onFeaturedProductCard(2)"> Add To Cart</button>
-          </div>
-        </div>
-        <div class=" mt-2 carousel-cell">
-          <div class="card-sl">
-            <div class="card-image">
-              <img appFeaturedImages src={{featured[3].images[0]}} />
-            </div>
-
-            <div class="card-heading">
-              {{featured[3].name}}
-            </div>
-            <div class="card-text">
-              {{featured[3].description}}
-            </div>
-            <div class="card-text">
-              {{featured[3].price}} PKR / {{featured[3].size}} Metre
-            </div>
-            <button class="card-button" (click)="onFeaturedProductCard(3)"> Add To Cart</button>
-          </div>
-        </div>
-        <div class=" mt-2 carousel-cell">
-          <div class="card-sl">
-            <div class="card-image">
-              <img appFeaturedImages src={{featured[4].images[0]}} />
-            </div>
-
-            <div class="card-heading">
-              {{featured[4].name}}
-            </div>
-            <div class="card-text">
-              {{featured[4].description}}
-            </div>
-            <div class="card-text">
-              {{featured[4].price}} PKR / {{featured[4].size}} Metre
-            </div>
-            <button class="card-button" (click)="onFeaturedProductCard(4)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(0)">
+              Add To Cart
+            </button>
           </div>
         </div>
         <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[5].images[0]}} />
+              <img appFeaturedImages src="{{ featured[1].images[0] }}" />
             </div>
 
             <div class="card-heading">
-              {{featured[5].name}}
+              {{ featured[1].name }}
             </div>
             <div class="card-text">
-              {{featured[5].description}}
+              {{ featured[1].description }}
             </div>
             <div class="card-text">
-              {{featured[5].price}} PKR / {{featured[5].size}} Metre
+              {{ featured[1].price }} PKR / {{ featured[1].size }} Metre
             </div>
-            <button class="card-button" (click)="onFeaturedProductCard(5)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(1)">
+              Add To Cart
+            </button>
           </div>
         </div>
-        <div class=" mt-2 carousel-cell">
+        <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[6].images[0]}} />
+              <img appFeaturedImages src="{{ featured[2].images[0] }}" />
             </div>
 
             <div class="card-heading">
-              {{featured[6].name}}
+              {{ featured[2].name }}
             </div>
             <div class="card-text">
-              {{featured[6].description}}
+              {{ featured[2].description }}
             </div>
             <div class="card-text">
-              {{featured[6].price}} PKR / {{featured[6].size}} Metre
+              {{ featured[2].price }} PKR / {{ featured[2].size }} Metre
             </div>
-            <button class="card-button" (click)="onFeaturedProductCard(6)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(2)">
+              Add To Cart
+            </button>
           </div>
         </div>
-        <div class=" mt-2 carousel-cell">
+        <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[7].images[0]}} />
+              <img appFeaturedImages src="{{ featured[3].images[0] }}" />
             </div>
 
             <div class="card-heading">
-              {{featured[7].name}}
+              {{ featured[3].name }}
             </div>
             <div class="card-text">
-              {{featured[7].description}}
+              {{ featured[3].description }}
             </div>
             <div class="card-text">
-              {{featured[7].price}} PKR / {{featured[7].size}} Metre
+              {{ featured[3].price }} PKR / {{ featured[3].size }} Metre
             </div>
-            <button class="card-button" (click)="onFeaturedProductCard(7)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(3)">
+              Add To Cart
+            </button>
           </div>
         </div>
-        <div class=" mt-2 carousel-cell">
+        <div class="mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img appFeaturedImages src={{featured[8].images[0]}} />
-            </div>
-            <div class="card-heading">
-              {{featured[8].name}}
-            </div>
-            <div class="card-text">
-              {{featured[8].description}}
-            </div>
-            <div class="card-text">
-              {{featured[8].price}} PKR / {{featured[8].size}} Metre
-            </div>
-            <button class="card-button" (click)="onFeaturedProductCard(8)"> Add To Cart</button>
-          </div>
-        </div>
-        <div class=" mt-2 carousel-cell">
-          <div class="card-sl">
-            <div class="card-image">
-              <img appFeaturedImages src={{featured[9].images[0]}} />
+              <img appFeaturedImages src="{{ featured[4].images[0] }}" />
             </div>
 
             <div class="card-heading">
-              {{featured[9].name}}
+              {{ featured[4].name }}
             </div>
             <div class="card-text">
-              {{featured[9].description}}
+              {{ featured[4].description }}
             </div>
             <div class="card-text">
-              {{featured[9].price}} PKR / {{featured[9].size}} Metre
+              {{ featured[4].price }} PKR / {{ featured[4].size }} Metre
             </div>
-            <button class="card-button" (click)="onFeaturedProductCard(9)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeaturedProductCard(4)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img appFeaturedImages src="{{ featured[5].images[0] }}" />
+            </div>
+
+            <div class="card-heading">
+              {{ featured[5].name }}
+            </div>
+            <div class="card-text">
+              {{ featured[5].description }}
+            </div>
+            <div class="card-text">
+              {{ featured[5].price }} PKR / {{ featured[5].size }} Metre
+            </div>
+            <button class="card-button" (click)="onFeaturedProductCard(5)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img appFeaturedImages src="{{ featured[6].images[0] }}" />
+            </div>
+
+            <div class="card-heading">
+              {{ featured[6].name }}
+            </div>
+            <div class="card-text">
+              {{ featured[6].description }}
+            </div>
+            <div class="card-text">
+              {{ featured[6].price }} PKR / {{ featured[6].size }} Metre
+            </div>
+            <button class="card-button" (click)="onFeaturedProductCard(6)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img appFeaturedImages src="{{ featured[7].images[0] }}" />
+            </div>
+
+            <div class="card-heading">
+              {{ featured[7].name }}
+            </div>
+            <div class="card-text">
+              {{ featured[7].description }}
+            </div>
+            <div class="card-text">
+              {{ featured[7].price }} PKR / {{ featured[7].size }} Metre
+            </div>
+            <button class="card-button" (click)="onFeaturedProductCard(7)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img appFeaturedImages src="{{ featured[8].images[0] }}" />
+            </div>
+            <div class="card-heading">
+              {{ featured[8].name }}
+            </div>
+            <div class="card-text">
+              {{ featured[8].description }}
+            </div>
+            <div class="card-text">
+              {{ featured[8].price }} PKR / {{ featured[8].size }} Metre
+            </div>
+            <button class="card-button" (click)="onFeaturedProductCard(8)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 carousel-cell">
+          <div class="card-sl">
+            <div class="card-image">
+              <img appFeaturedImages src="{{ featured[9].images[0] }}" />
+            </div>
+
+            <div class="card-heading">
+              {{ featured[9].name }}
+            </div>
+            <div class="card-text">
+              {{ featured[9].description }}
+            </div>
+            <div class="card-text">
+              {{ featured[9].price }} PKR / {{ featured[9].size }} Metre
+            </div>
+            <button class="card-button" (click)="onFeaturedProductCard(9)">
+              Add To Cart
+            </button>
           </div>
         </div>
       </carousel>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="col-sm-6">
+      <hr />
+      <div class="review-block">
+        <div class="row">
+          <div class="col-sm-2">
+            <img
+              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
+              class="img-rounded"
+            />
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9 ml-2">
+            <div class="review-block-rate">
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">
+              this was nice in buy. this was nice in buy. this was nice in buy.
+              this was nice in buy this was nice in buy this was nice in buy
+              this was nice in buy this was nice in buy
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-2">
+            <img
+              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
+              class="img-rounded"
+            />
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9 ml-2">
+            <div class="review-block-rate">
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">
+              this was nice in buy. this was nice in buy. this was nice in buy.
+              this was nice in buy this was nice in buy this was nice in buy
+              this was nice in buy this was nice in buy
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-2">
+            <img
+              src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
+              class="img-rounded"
+            />
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9 ml-2">
+            <div class="review-block-rate">
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-grey btn-xs"
+                aria-label="Left Align"
+              >
+                <span
+                  class="glyphicon glyphicon-star"
+                  aria-hidden="true"
+                ></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">
+              this was nice in buy. this was nice in buy. this was nice in buy.
+              this was nice in buy this was nice in buy this was nice in buy
+              this was nice in buy this was nice in buy
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-5 ml-5">
+      <div class="row">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          style="width: 100%"
+        >
+          <mat-label>Leave a review</mat-label>
+          <textarea
+            cols="10"
+            rows="10"
+            matInput
+            placeholder="Ex. It makes me feel..."
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-slider style="width:100%"
+          thumbLabel
+          [displayWith]="formatLabel"
+          tickInterval="1000"
+          step="1000"
+          min="0"
+          max="100000"
+          aria-label="units"
+        ></mat-slider>
+
+      </div>
+      <button mat-raised-button color="primary" style="float:right">Add Review</button>
     </div>
   </div>
 </div>

@@ -26,6 +26,13 @@ export class ProductDetailsComponent implements OnInit {
   public priceCheck = true;
   public selectedPrice: number = 0;
 
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return value;
+  }
   constructor(
     private featuredProducts: FeaturedService,
     private productService: ProductsService,

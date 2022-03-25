@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     if (sessionStorage.getItem('token')) {
       sessionStorage.removeItem('token');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/auth']);
       return false;
     } else {
       return true;
