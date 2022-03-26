@@ -29,6 +29,11 @@ export class CartService {
     this.cartArray = this.onCartGet();
     this.cartArray.splice(index, 1);
     localStorage.setItem('names', JSON.stringify(this.cartArray));
-    return this.cartArray
+    return this.cartArray;
+  }
+
+  onCartReset() {
+    this.cartArray.length = 0;
+    localStorage.setItem('names', '');
   }
 }

@@ -11,23 +11,23 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-2">
-                    <img src={{order.orderItems[0].product.images[0]}} class="img-fluid" alt="Phone">
+                    <img src={{order?.orderItems[0]?.product?.images[0]}} class="img-fluid" alt="Phone">
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0">{{order.orderItems[0].product.name}}</p>
+                    <p class=" mb-0">{{order?.orderItems[0]?.product?.name}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Size: {{order.orderItems[0].size}} M</p>
+                    <p class=" mb-0 ">Size: {{order?.orderItems[0]?.size}} M</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Qty: {{order.orderItems[0].quantity}}</p>
+                    <p class=" mb-0 ">Qty: {{order?.orderItems[0]?.quantity}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class=" mb-0 ">Status {{order.status}}</p>
+                    <p class=" mb-0 ">Status {{order?.status}}</p>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <button class="btn btn-large" style="background-color:#FFCE31;color: #000;"
-                      (click)="displayOrders(order._id)">Details</button>
+                      (click)="displayOrders(order._id, order, 'history')">Details</button>
                   </div>
                 </div>
               </div>

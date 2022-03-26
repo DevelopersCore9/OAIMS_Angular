@@ -18,26 +18,54 @@
               <p class="lead fw-normal mb-0" style="color: #515151;">Receipt</p>
               <p class="small text-muted mb-0">Receipt Number : 1KAU9-84UIL</p>
             </div>
-            <div class="card shadow-0 border mb-4" *ngFor="let data of placedOrdersData">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <img src={{data.images[0]}} class="img-fluid" alt="Phone">
+            <div *ngIf="!historyView">
+              <div class="card shadow-0 border mb-4" *ngFor="let data of placedOrdersData">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src={{data.images[0]}} class="img-fluid" alt="Phone">
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0">{{data.name}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">{{data.colorSelected}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Size: {{data.selectedSize}} M</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Qty: {{data.quantity}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Rs. {{data.selectedPrice}}</p>
+                    </div>
                   </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0">{{data.name}}</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">{{data.colorSelected}}</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Size: {{data.selectedSize}} M</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Qty: {{data.quantity}}</p>
-                  </div>
-                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                    <p class="font mb-0 ">Rs. {{data.selectedPrice}}</p>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="historyView">
+              <div class="card shadow-0 border mb-4" *ngFor="let data of placedOrdersData">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src={{data.product.images[0]}} class="img-fluid" alt="Phone">
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0">{{data.product.name}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">{{data.product.colorSelected}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Size: {{data.size}} M</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Qty: {{data.quantity}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="font mb-0 ">Rs. {{data.price}}</p>
+                    </div>
                   </div>
                 </div>
               </div>

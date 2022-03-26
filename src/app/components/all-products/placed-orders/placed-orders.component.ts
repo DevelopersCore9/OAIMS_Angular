@@ -13,6 +13,8 @@ export class PlacedOrdersComponent implements OnInit {
   public totalprice: any = 0;
   public deliveryCharges: any = 250;
   public grandTotal: any = 0;
+  public type: any;
+  public historyView = false;
   constructor(
     private invoiceService: InvoiceService,
     public route: ActivatedRoute
@@ -20,10 +22,16 @@ export class PlacedOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      console.log(params.id);
+      console.log(params);
+      this.type = params?.type;
     });
 
     this.placedOrdersData = this.invoiceService.getPaymentItems();
+    if (this.type == 'history') {
+      console.log(this.type);
+      this.historyView = true;
+      this.placedOrdersData = this.placedOrdersData.orderItems;
+    }
     console.log('the orders which are placed are', this.placedOrdersData);
 
     for (let i = 0; i < this.placedOrdersData.length; i++) {

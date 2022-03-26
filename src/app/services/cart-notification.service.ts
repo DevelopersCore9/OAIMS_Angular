@@ -44,4 +44,9 @@ export class CartNotificationService {
       return 0;
     }
   }
+
+  resetNotificationValue() {
+    localStorage.setItem('cartCount', (0).toString());
+    this.notification.next(0);
+  }
 }

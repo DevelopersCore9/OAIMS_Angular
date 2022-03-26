@@ -333,17 +333,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[14].images[0]}} />
+              <img src={{homeData[14]?.images[0]}} />
             </div>
 
             <div class="card-heading">
-              {{homeData[14].name}}
+              {{homeData[14]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[14].description}}
+              {{homeData[14]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[14].price}} PKR / {{homeData[14].size}} Metre
+              {{homeData[14]?.price}} PKR / {{homeData[14]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(14)"> Add To Cart</button>
           </div>

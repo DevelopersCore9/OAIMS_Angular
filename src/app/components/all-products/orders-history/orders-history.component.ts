@@ -3,6 +3,7 @@ import { UserIdentityService } from './../../../services/user-identity.service';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import JwtDecode from 'src/app/utils/jwt-decode';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-orders-history',
@@ -17,7 +18,8 @@ export class OrdersHistoryComponent implements OnInit {
     private userIdentityService: UserIdentityService,
     private orderService: OrderService,
     private router: Router,
-    private jwtBreaker: JwtDecode
+    private jwtBreaker: JwtDecode,
+    private invoiceService: InvoiceService
   ) {}
 
   ngOnInit(): void {
@@ -45,9 +47,10 @@ export class OrdersHistoryComponent implements OnInit {
     }
   }
 
-  displayOrders(id: string) {
+  displayOrders(id: any, orders: any, type: string) {
+    this.invoiceService.savePaymentItems(orders);
     this.router.navigate(['/placed-orders'], {
-      queryParams: { id: id },
+      queryParams: { id: id, type: type },
     });
   }
 }

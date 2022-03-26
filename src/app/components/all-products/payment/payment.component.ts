@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import JwtDecode from 'src/app/utils/jwt-decode';
 import { UserIdentityService } from 'src/app/services/user-identity.service';
 import { OrderService } from 'src/app/services/order.service';
+import { CartNotificationService } from 'src/app/services/cart-notification.service';
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +24,8 @@ export class PaymentComponent implements OnInit {
     private userInformation: UserIdentityService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private cartNotificationService: CartNotificationService
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +70,8 @@ export class PaymentComponent implements OnInit {
       };
       console.log(finalObj);
       this.orderService.placeOrder(finalObj).subscribe((data: any) => {
+        this.cartNotificationService.resetNotificationValue();
+        this.cartService.onCartReset();
         console.log(data);
         this.invoiceService.savePaymentItems(this.allDataCart);
         this.router.navigate(['/placed-orders']);
