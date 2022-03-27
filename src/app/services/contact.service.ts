@@ -1,43 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HostService } from './host.service';
-import { SpinnerService } from './spinner.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContactService {
+  constructor(private http: HttpClient, private hostAddress: HostService) {}
 
-  constructor(
-    private http: HttpClient,
-    private hostAddress: HostService,
-    protected spin: SpinnerService
-  ) { }
-
-  addCustomerMessage(name: string, email: string, subject: string, comment: string) {
+  addCustomerMessage(
+    name: string,
+    email: string,
+    subject: string,
+    comment: string
+  ) {
     let customer = {
-      "name": name,
-      "email": email,
-      "subject": subject,
-      "comment": comment
-    }
-    console.log("customer :", customer);
-    this.spin.changeSpinnerState(true)
+      name: name,
+      email: email,
+      subject: subject,
+      comment: comment,
+    };
+    console.log('customer :', customer);
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.hostAddress.getHostIp()}/api/contactUs`, customer)
+      this.http
+        .post(`${this.hostAddress.getHostIp()}/api/contactUs`, customer)
         .toPromise()
         .then((data: any) => {
-          console.log(data)
+          console.log(data);
           if (data == null) {
-            console.log(data)
+            console.log(data);
           }
-          resolve(data)
-          this.spin.changeSpinnerState(false)
+          resolve(data);
         })
         .catch((err) => {
-          console.log(err)
-          reject(err)
-        })
-    })
+          console.log(err);
+          reject(err);
+        });
+    });
   }
 }

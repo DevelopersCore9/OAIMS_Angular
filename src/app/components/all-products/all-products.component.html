@@ -4,48 +4,71 @@
       <app-filters #Child (filterEvent)="getValuesFromFilters($event)"
         (filterEventColor)="getColorsFromFilters($event)"></app-filters>
     </div>
-    <div class="col mt-5">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb" style="background-color: #dad3c7">
-          <li class="breadcrumb-item"><a routerLink='/home' style="color: #514646">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Cotton</li>
-          <select id="sort-by" (change)="sort($event)" style="float: right">
-            <option value="" selected disabled hidden>Sort By</option>
-            <option value="Name">Name</option>
-            <option value="Low">Show Low to High Price</option>
-            <option value="High">Show High to Low Price</option>
-          </select>
-        </ol>
-      </nav>
+    <ng-container *ngIf="allProducts && allProducts.length > 0">
+      <div class="col mt-5">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb" style="background-color: #dad3c7">
+            <li class="breadcrumb-item"><a routerLink='/home' style="color: #514646">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{capitalize(categoryName)}}</li>&nbsp;&nbsp;&nbsp;
+            <select id="sort-by" (change)="sort($event)" style="float: right">
+              <option value="" selected disabled hidden>Sort By</option>
+              <option value="Name">Name</option>
+              <option value="Low">Show Low to High Price</option>
+              <option value="High">Show High to Low Price</option>
+            </select>
+          </ol>
+        </nav>
 
-      <!-- <div *ngFor="let p of allProducts">
-        {{p.Name}} - {{p.Price}}
-      </div> -->
-      <div class="row mt-5">
-        <div class=" col-md-4"
-          *ngFor="let data of allProducts |filter:searchkey:'title' | paginate:{itemsPerPage:count,currentPage:p}; let i=index">
-          <div class="card-sl mb-3">
-            <div class="card-image">
-              <img appImage src={{data.images[0]}} />
-            </div>
+        <!-- <div *ngFor="let p of allProducts">
+          {{p.Name}} - {{p.Price}}
+        </div> -->
+        <div class="row mt-5">
+          <div class=" col-md-4"
+            *ngFor="let data of allProducts |filter:searchkey:'title' | paginate:{itemsPerPage:count,currentPage:p}; let i=index">
+            <div class="card-sl mb-3">
+              <div class="card-image">
+                <img appImage src={{data.images[0]}} />
+              </div>
 
-            <div class="card-heading">
-              {{data.name}}
+              <div class="card-heading">
+                {{data.name}}
+              </div>
+              <div class="card-text">
+                {{data.description}}
+              </div>
+              <div class="card-text">
+                {{data.price[0]}} PKR / {{data.size[0]}} Metre <b>|</b> {{data.price[1]}} PKR / {{data.size[1]}} Metre
+              </div>
+              <a class="card-button" routerLink="/productCotton" (click)="onDataSelection(i)"> Add To Cart</a>
             </div>
-            <div class="card-text">
-              {{data.description}}
-            </div>
-            <div class="card-text">
-              {{data.price[0]}} PKR / {{data.size[0]}} Metre <b>|</b> {{data.price[1]}} PKR / {{data.size[1]}} Metre
-            </div>
-            <a class="card-button" routerLink="/productCotton" (click)="onDataSelection(i)"> Add To Cart</a>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <pagination-controls (pageChange)="p=$event"></pagination-controls>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="allProducts && allProducts.length == 0">
+      <div class="col mt-5">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb" style="background-color: #dad3c7">
+            <li class="breadcrumb-item"><a routerLink='/home' style="color: #514646">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{capitalize(categoryName)}}</li>&nbsp;&nbsp;&nbsp;
+          </ol>
+        </nav>
+
+        <!-- <div *ngFor="let p of allProducts">
+          {{p.Name}} - {{p.Price}}
+        </div> -->
+        <div class="row mt-5">
+          <div class=" col-md-12">
+            <h1>No Data Found</h1>
           </div>
         </div>
       </div>
-      <div class="text-center mt-5">
-        <pagination-controls (pageChange)="p=$event"></pagination-controls>
-      </div>
-    </div>
+    </ng-container>
+
+
   </div>
 
   <div class="container">
@@ -71,7 +94,7 @@
               {{featured[0].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(0)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(0)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -91,7 +114,7 @@
               {{featured[1].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(1)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(1)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -111,7 +134,7 @@
               {{featured[2].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(2)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(2)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -131,7 +154,7 @@
               {{featured[3].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(3)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(3)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -151,7 +174,7 @@
               {{featured[4].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(4)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(4)"> Add To Cart</button>
           </div>
         </div>
         <div class="mt-2 carousel-cell">
@@ -171,7 +194,7 @@
               {{featured[5].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(5)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(5)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -191,7 +214,7 @@
               {{featured[6].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(6)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(6)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -211,7 +234,7 @@
               {{featured[7].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(7)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(7)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -230,7 +253,7 @@
               {{featured[8].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(8)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(8)"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -250,7 +273,7 @@
               {{featured[9].size[1]}} Metre
 
             </div>
-            <button class="card-button" (click)="onDataSelection(9)"> Add To Cart</button>
+            <button class="card-button" (click)="onFeatureDataSelection(9)"> Add To Cart</button>
           </div>
         </div>
       </carousel>

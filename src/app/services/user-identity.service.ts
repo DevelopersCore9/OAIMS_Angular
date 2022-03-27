@@ -1,4 +1,3 @@
-import { SpinnerService } from './spinner.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import JwtDecode from '../utils/jwt-decode';
@@ -11,7 +10,7 @@ export class UserIdentityService {
   userIdentityValue = this.userIdentity.asObservable();
   userArray: any;
   cartCount: any;
-  constructor(private jwtBreaker: JwtDecode, protected spin: SpinnerService) {}
+  constructor(private jwtBreaker: JwtDecode) {}
 
   changeUserIdentity(id: string): void {
     this.userIdentity.next(id);
@@ -20,10 +19,8 @@ export class UserIdentityService {
   }
 
   getUserIdentity(): string {
-    this.spin.changeSpinnerState(true);
     if (!this.userIdentity.value) {
       let data = this.jwtBreaker.decodedToken(sessionStorage.getItem('token'));
-      this.spin.changeSpinnerState(false);
       return data.id;
     } else {
       console.log(this.userIdentity);

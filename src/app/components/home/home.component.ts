@@ -1,9 +1,8 @@
-import { SpinnerService } from './../../services/spinner.service';
 import { Observable } from 'rxjs';
 import { BannersService } from './../../services/banners.service';
 import { CarouselService } from './../../services/carousel.service';
 import { ProductsService } from './../../services/products.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -65,7 +64,7 @@ export class HomeComponent implements OnInit {
     private carouselService: CarouselService,
     private bannerService: BannersService,
     private navigateService: NavigateProductDataService,
-    protected spin: SpinnerService
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -99,15 +98,6 @@ export class HomeComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       });
-    // this.bannerService
-    //   .getCategoriesImages()
-    //   .then((data: any) => {
-    //     this.categoriesImages = data;
-    //     console.log('Images of categories:', this.categoriesImages);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
 
     this.bannerService.getBanner().then((data: any) => {
       this.banner = data;
@@ -132,6 +122,9 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
   navigateToProducts() {
     this.router.navigate(['/all-products']);
   }

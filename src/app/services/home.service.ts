@@ -7,14 +7,9 @@ import { HostService } from './host.service';
   providedIn: 'root',
 })
 export class HomeService {
-  constructor(
-    private hostAddress: HostService,
-    protected http: HttpClient,
-    protected spin: SpinnerService
-  ) {}
+  constructor(private hostAddress: HostService, protected http: HttpClient) {}
 
   SliderData() {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products/featured`)
@@ -23,7 +18,6 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {
@@ -34,7 +28,6 @@ export class HomeService {
   }
 
   getCollectionData() {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       const formData = new FormData();
       formData.append('type', 'summer');
@@ -50,7 +43,6 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {
@@ -61,7 +53,6 @@ export class HomeService {
   }
 
   getCategories() {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/categories`)
@@ -70,7 +61,6 @@ export class HomeService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
           resolve(data.payload);
         })
         .catch((err) => {

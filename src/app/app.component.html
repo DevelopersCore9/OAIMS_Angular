@@ -1,4 +1,7 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-<!-- <app-spinner></app-spinner> -->
+<!-- <div appSpinner> -->
+<div [style]="{ 'overflow-y' : overflowy(), 'margin' : margin(), 'height' : height(), 'overflow' : overflow()}">
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+  <app-spinner *ngIf="this.spinShow"></app-spinner>
+</div>

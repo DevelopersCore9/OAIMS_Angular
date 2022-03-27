@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../services/spinner.service';
 import { CartNotificationService } from './../../services/cart-notification.service';
 import { NavigateProductDataService } from './../../services/navigate-product-data.service';
 import { FiltersComponent } from './filters/filters.component';
@@ -35,6 +36,7 @@ export class AllProductsComponent implements OnInit {
   public searchkey: string = '';
   public colorFilters: any = [];
   public categoryName: any;
+  public spin: any;
 
   constructor(
     private productService: ProductsService,
@@ -43,32 +45,44 @@ export class AllProductsComponent implements OnInit {
     private ref: ChangeDetectorRef,
     private router: Router,
     private navigateService: NavigateProductDataService,
-    private notificationsService: CartNotificationService
+    private notificationsService: CartNotificationService,
+    private spinnerService: SpinnerService,
+    private cdr: ChangeDetectorRef
   ) {
-    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
-    //   return false;
-    // };
+    // this.spinnerService.changeSpinnerState(true);
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
   }
 
   ngOnInit(): void {
     this.getQueryGetProduct =
       this.activatedRoute.snapshot.paramMap.get('product');
-    this.productService
-      .CustomProductsCategory(this.getQueryGetProduct)
-      .subscribe((data) => {
-        console.log(data);
-        this.allProducts = data;
-        console.log('all Cotton products are:', this.allProducts);
-        this.ref.detectChanges();
-      });
+    console.log(this.getQueryGetProduct);
+    if (this.getQueryGetProduct) {
+      this.categoryName = this.getQueryGetProduct;
+      this.productService
+        .CustomProductsCategory(this.getQueryGetProduct)
+        .subscribe((data) => {
+          console.log(data);
+          if (data) {
+            this.allProducts = data;
+            console.log('all Cotton products are:', this.allProducts);
+          }
+        });
+    }
 
     // Default Loading Data of Cotton Products
     if (!this.getQueryGetProduct) {
+      this.categoryName = 'cotton';
       this.productService.CustomProductsCategory('cotton').subscribe((data) => {
         console.log(data);
+        this.categoryName = 'cotton';
         this.allProducts = data;
         console.log('all Cotton products are:', this.allProducts);
-        this.ref.detectChanges();
+        this.allProducts = this.allProducts.sort(
+          (low: any, high: any) => low.Price - high.Price
+        );
       });
     }
 
@@ -82,14 +96,20 @@ export class AllProductsComponent implements OnInit {
       const countNumber = params.limit;
       console.log('Limit is:', countNumber);
     });
-
-    this.allProducts = this.allProducts.sort(
-      (low: any, high: any) => low.Price - high.Price
-    );
   }
+
+  ngAfterViewInit() {
+    // setTimeout(() => {
+    //   this.spinnerService.changeSpinnerState(false);
+    // }, 2000);
+
+    this.cdr.detectChanges();
+  }
+
   // Get Data or Category Name from Child
   getValuesFromFilters($event: any) {
     if ($event.category) {
+      this.categoryName = $event.category;
       this.productService
         .CustomProductsCategory($event.category)
         .subscribe((data) => {
@@ -136,6 +156,13 @@ export class AllProductsComponent implements OnInit {
     this.navigateService.saveData(this.allProducts[index]);
     this.router.navigate(['/productDetails'], {
       queryParams: { product_id: this.allProducts[index]._id },
+    });
+  }
+
+  onFeatureDataSelection(index: any) {
+    this.navigateService.saveData(this.featured[index]);
+    this.router.navigate(['/productDetails'], {
+      queryParams: { product_id: this.featured[index]._id },
     });
   }
 
@@ -187,5 +214,9 @@ export class AllProductsComponent implements OnInit {
       }
     }
     return this.allProducts;
+  }
+
+  capitalize(cat_name: string) {
+    return cat_name[0].toUpperCase() + cat_name.slice(1);
   }
 }

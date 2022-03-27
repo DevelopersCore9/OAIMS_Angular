@@ -1,4 +1,3 @@
-import { SpinnerService } from './spinner.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HostService } from './host.service';
 import { Injectable } from '@angular/core';
@@ -8,11 +7,7 @@ import { Observable, defer } from 'rxjs';
   providedIn: 'root',
 })
 export class OrderService {
-  constructor(
-    public hostAddress: HostService,
-    public http: HttpClient,
-    protected spin: SpinnerService
-  ) {}
+  constructor(public hostAddress: HostService, public http: HttpClient) {}
 
   placeOrder(obj: string): Observable<any> {
     // return this.http.post(`${this.hostAddress.getHostIp()}/api/products/category`, obj)

@@ -1,4 +1,3 @@
-import { SpinnerService } from './spinner.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HostService } from './host.service';
 import { Injectable } from '@angular/core';
@@ -8,14 +7,9 @@ import { Observable, defer } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor(
-    public hostAddress: HostService,
-    public http: HttpClient,
-    protected spin: SpinnerService
-  ) {}
+  constructor(public hostAddress: HostService, public http: HttpClient) {}
 
   getTopSelling() {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products/topSelling`)
@@ -25,7 +19,7 @@ export class ProductsService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
+
           resolve(data.payload);
         })
         .catch((err) => {
@@ -36,7 +30,6 @@ export class ProductsService {
   }
 
   getAllProducts() {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products?page=1&limit=10`)
@@ -46,7 +39,7 @@ export class ProductsService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
+
           resolve(data.payload);
         })
         .catch((err) => {
@@ -103,7 +96,6 @@ export class ProductsService {
   }
 
   getProduct(id: string) {
-    this.spin.changeSpinnerState(true);
     return new Promise<any>((resolve, reject) => {
       this.http
         .get(`${this.hostAddress.getHostIp()}/api/products/byId?id=${id}`)
@@ -113,7 +105,7 @@ export class ProductsService {
           if (data == null) {
             console.log(data);
           }
-          this.spin.changeSpinnerState(false);
+
           resolve(data.payload);
         })
         .catch((err) => {

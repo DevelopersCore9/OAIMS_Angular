@@ -37,8 +37,9 @@ import { ProductDetailsComponent } from './components/all-products/product-detai
 import { ImageDirective } from './directives/image.directive';
 import { FeaturedImagesDirective } from './directives/featured-images.directive';
 import { SpinnerComponent } from './helper/spinner/spinner.component';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatButtonModule} from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import { SpinnerDirective } from './directives/spinner.directive';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,8 @@ import {MatButtonModule} from '@angular/material/button';
     FilterPipe,
     ImageDirective,
     FeaturedImagesDirective,
+    SpinnerComponent,
+    SpinnerDirective
   ],
   imports: [
     BrowserModule,
@@ -89,4 +92,4 @@ import {MatButtonModule} from '@angular/material/button';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

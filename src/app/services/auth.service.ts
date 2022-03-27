@@ -18,7 +18,7 @@ export class AuthService {
     private jwtBreaker: JwtDecode,
     private hostAddress: HostService,
     private userIdentity: UserIdentityService,
-    protected route : Router
+    protected route: Router
   ) {}
 
   userSignUp(data: UserSignUp) {
