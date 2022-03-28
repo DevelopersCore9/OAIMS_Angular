@@ -63,7 +63,7 @@ import { SpinnerDirective } from './directives/spinner.directive';
     ImageDirective,
     FeaturedImagesDirective,
     SpinnerComponent,
-    SpinnerDirective
+    SpinnerDirective,
   ],
   imports: [
     BrowserModule,
@@ -92,4 +92,4 @@ import { SpinnerDirective } from './directives/spinner.directive';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

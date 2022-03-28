@@ -47,11 +47,8 @@
           </div>
           <div class="col-md-3 mt-4">
             <div class="product-rating">
-              <i class="fa fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fa fa-star-half-alt"></i>
-              <span> (100)</span>
+              <span class="">Remaining</span>
+              <span> ({{productsData.quantity}})</span>
             </div>
           </div>
         </div>
@@ -322,10 +319,13 @@
 </div>
 
 <div class="container-fluid p-3">
+  <div class="product-content">
+    <h1 class="product-title ml-4 mt-5">Reviews</h1>
+  </div>
   <div class="row">
     <div class="col-sm-6">
       <hr />
-      <div class="review-block" *ngFor="let review of reviews">
+      <div class="review-block ml-4" *ngFor="let review of reviews">
         <div class="row">
           <div class="col-sm-2">
             <img src="https://www.pngitem.com/pimgs/m/504-5040528_empty-profile-picture-png-transparent-png.png"
@@ -369,8 +369,8 @@
       </div>
       <div class="row">
         <mat-slider style="width:100%" thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1" min="0"
-          max="10" aria-label="units" #rating></mat-slider>
-
+          max="5" aria-label="units" #rating></mat-slider>
+        <p>RATING 1-5</p>
       </div>
       <button mat-raised-button color="primary" style="float:right"
         (click)="saveReview(messgae.value, rating.value)">Add Review</button>

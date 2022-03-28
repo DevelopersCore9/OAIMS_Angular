@@ -37,7 +37,7 @@
     </div>
   </div>
   <!-- Gallery -->
-  <a style="float: right;" class="btn mt-3 mr-n1 a-button " target="_blank" (click)="showCard()">{{isViewMore ? 'View
+  <a style="float: right;" class="btn mt-1 mr-n1 a-button " target="_blank" (click)="showCard()">{{isViewMore ? 'View
     Less': 'View More'}}</a>
 </div>
 <br><br><br><br>
@@ -53,7 +53,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[0].images[0]}} />
+              <img src={{homeData[0].images[0]}} style="height: 450px" />
             </div>
 
             <div class="card-heading">
@@ -71,7 +71,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[1].images[0]}} />
+              <img src={{homeData[1].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -89,7 +89,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[2].images[0]}} />
+              <img src={{homeData[2].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -107,7 +107,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[3].images[0]}} />
+              <img src={{homeData[3].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -125,7 +125,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[4].images[0]}} />
+              <img src={{homeData[4].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -153,7 +153,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[5].images[0]}} />
+              <img src={{homeData[5].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -171,7 +171,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[6].images[0]}} />
+              <img src={{homeData[6].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -189,7 +189,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[7].images[0]}} />
+              <img src={{homeData[7].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -207,7 +207,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[8].images[0]}} />
+              <img src={{homeData[8].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -225,7 +225,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[9].images[0]}} />
+              <img src={{homeData[9].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -261,7 +261,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[10].images[0]}} />
+              <img src={{homeData[10].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -279,7 +279,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[11].images[0]}} />
+              <img src={{homeData[11].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -297,7 +297,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[12].images[0]}} />
+              <img src={{homeData[12].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -315,7 +315,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[13].images[0]}} />
+              <img src={{homeData[13].images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -333,7 +333,7 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[14]?.images[0]}} />
+              <img src={{homeData[14]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
@@ -383,7 +383,7 @@
               {{data.description}}
             </div>
             <div class="card-text">
-              {{data.price}} PKR / {{data.size} }Metre
+              {{data.price}} PKR / {{data.size}}Metre
             </div>
             <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
           </div>
@@ -401,16 +401,16 @@
         <div class="card-sl">
           <div class="card-image">
             <img appImage src={{data.images[0]}} />
-            </div>
+          </div>
 
-            <div class="card-heading">
-              {{data.name}}
-            </div>
-            <div class="card-text">
-              {{data.description}}
-            </div>
-            <div class="card-text">
-              {{data.price}} PKR / {{data.size} }Metre
+          <div class="card-heading">
+            {{data.name}}
+          </div>
+          <div class="card-text">
+            {{data.description}}
+          </div>
+          <div class="card-text">
+            {{data.price}} PKR / {{data.size} }Metre
           </div>
           <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
         </div>
