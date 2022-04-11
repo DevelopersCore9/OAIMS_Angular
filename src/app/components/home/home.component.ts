@@ -12,6 +12,7 @@ import {
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from '../../services/home.service';
 import { NavigateProductDataService } from '../../services/navigate-product-data.service';
+import { CollectionService } from 'src/app/services/collection.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   public categoriesData: any;
   isViewMore = false;
   public viewCount = 3;
+  public collectionDescription: any;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -64,10 +66,15 @@ export class HomeComponent implements OnInit {
     private carouselService: CarouselService,
     private bannerService: BannersService,
     private navigateService: NavigateProductDataService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private collectionService: CollectionService
   ) {}
 
   ngOnInit(): void {
+    this.collectionService.CollectionDescription().then((description) => {
+      this.collectionDescription = description;
+      console.log('this.collectionDescription', this.collectionDescription);
+    });
     this.homeService
       .SliderData()
       .then((data: any) => {

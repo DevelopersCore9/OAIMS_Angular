@@ -119,7 +119,7 @@ export class ProductDetailsComponent implements OnInit {
     console.log('In product Details', this.selectedColor, this.selectedMeter);
     if (this.selectedColor == null || this.selectedMeter == null) {
       this.openSnackBar('please select the attributes first');
-    } else {
+    } else if (qty <= this.productsData.quantity || qty != 0) {
       this.navigateService.saveData(this.productsData);
       this.productsData.colorSelected = this.selectedColor;
       this.productsData.quantity = qty;
@@ -133,6 +133,8 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.priceCheck);
       console.log(this.productsData.size[0]);
       console.log(this.productsData);
+    } else {
+      this.openSnackBar('Enter the right quantity');
     }
   }
 

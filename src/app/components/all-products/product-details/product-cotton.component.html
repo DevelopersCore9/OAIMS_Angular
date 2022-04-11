@@ -73,11 +73,13 @@
             <input type="number" min="0" value="1" class="inp" #quantity />Quantity
           </div>
 
-          <div class="col-md-3 mt-2">
+          <!-- <div class="col-md-3 mt-2">
             <button mat-button class="a-button" (click)="onCheckout(quantity.value)">
               Add to Cart
             </button>
-          </div>
+          </div> -->
+
+          <div class="col-md-3"></div>
         </div>
         <div class="row mt-2 mb-3">
           <mat-radio-group aria-label="Select an option" (change)="onMeterRadioButtonChange($event)">
@@ -96,11 +98,16 @@
             <li>Shipping Fee: <span>Free</span></li>
           </ul>
         </div>
-
         <div class="purchase-info">
-          <div class="social-links" style="float: right">
+          <div class="social-links" style="float: left">
             <button class="inp2" routerLink="../all-products">Continue Shopping</button>
           </div>
+          <!-- <div class="social-links" style="float: right">
+            <button class="inp2" routerLink="../all-products">Continue Shopping</button>
+          </div> -->
+          <button mat-button class="a-button" style="float: right" (click)="onCheckout(quantity.value)">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

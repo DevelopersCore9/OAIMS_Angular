@@ -3,13 +3,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100 img-fluid" src={{carouselImages[0].image}} alt="First slide">
+          <img class="d-block w-100 img-fluid" src={{carouselImages[0]?.image}} alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src={{carouselImages[1].image}} alt="Second slide" alt="Second slide">
+          <img class="d-block w-100" src={{carouselImages[1]?.image}} alt="Second slide" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src={{carouselImages[2].image}} alt="Third slide" alt="Third slide">
+          <img class="d-block w-100" src={{carouselImages[2]?.image}} alt="Third slide" alt="Third slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -29,7 +29,7 @@
   <div class="row">
     <div class="col-lg-4 mb-4 mb-lg-0 mt-4" *ngFor="let data of categoriesData; let i = index;">
       <div class="container bg-overlay" *ngIf="i < viewCount" style=" background: linear-gradient(rgba(167, 119, 64, 0.7), rgba(0, 0, 0, 0.7)),
-      url('{{data.image}}');">
+      url('{{data?.image}}');">
         <div class="d-flex justify-content-center" style="position:relative;top: 50%;transform: translateY(-50%)">
           <h2 style="text-transform: uppercase;" (click)="onCategory(data.categoryName)">{{data.categoryName}}</h2>
         </div>
@@ -45,25 +45,25 @@
 <div class="container-fluid mt-1">
   <div class="row content">
     <div class="col-md-6" *ngIf="bannerIf">
-      <img style="width: 100%; height: 650px" src={{banner[0].image}} alt="">
+      <img style="width: 100%; height: 650px" src={{banner[0]?.image}} alt="">
     </div>
 
     <div class="col-md-6 mt-1">
       <carousel [height]="650" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="homeDataIf">
-        <div class=" mt-2 carousel-cell">
+        ? <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[0].images[0]}} style="height: 450px" />
+              <img src={{homeData[0]?.images[0]}} style="height: 450px" />
             </div>
 
             <div class="card-heading">
-              {{homeData[0].name}}
+              {{homeData[0]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[0].description}}
+              {{homeData[0]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[0].price}} PKR / {{homeData[0].quantity}} Metre
+              {{homeData[0]?.price}} PKR / {{homeData[0]?.quantity}} Metre
             </div>
             <button class="card-button" (click)="onSave(0)"> Add To Cart</button>
           </div>
@@ -71,17 +71,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[1].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[1]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[1].name}}
+              {{homeData[1]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[1].description}}
+              {{homeData[1]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[1].price}} PKR / {{homeData[1].size}} Metre
+              {{homeData[1]?.price}} PKR / {{homeData[1]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(1)"> Add To Cart</button>
           </div>
@@ -89,17 +89,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[2].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[2]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[2].name}}
+              {{homeData[2]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[2].description}}
+              {{homeData[2]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[2].price}} PKR / {{homeData[0].size}} Metre
+              {{homeData[2]?.price}} PKR / {{homeData[0]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(2)"> Add To Cart</button>
           </div>
@@ -107,17 +107,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[3].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[3]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[3].name}}
+              {{homeData[3]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[3].description}}
+              {{homeData[3]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[3].price}} PKR / {{homeData[3].size}} Metre
+              {{homeData[3]?.price}} PKR / {{homeData[3]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(3)"> Add To Cart</button>
           </div>
@@ -125,17 +125,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[4].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[4]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[4].name}}
+              {{homeData[4]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[4].description}}
+              {{homeData[4]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[4].price}} PKR / {{homeData[4].size}} Metre
+              {{homeData[4]?.price}} PKR / {{homeData[4]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(4)"> Add To Cart</button>
           </div>
@@ -150,20 +150,20 @@
   <div class="row content">
     <div class="col-md-6 mt-2">
       <carousel [height]="650" [cellWidth]="300" [loop]=true [autoplay]=true *ngIf="homeDataIf">
-        <div class=" mt-2 carousel-cell">
+        ? <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[5].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[5]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[5].name}}
+              {{homeData[5]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[5].description}}
+              {{homeData[5]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[5].price}} PKR / {{homeData[5].size}} Metre
+              {{homeData[5]?.price}} PKR / {{homeData[5]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(5)"> Add To Cart</button>
           </div>
@@ -171,17 +171,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[6].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[6]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[6].name}}
+              {{homeData[6]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[6].description}}
+              {{homeData[6]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[6].price}} PKR / {{homeData[6].size}} Metre
+              {{homeData[6]?.price}} PKR / {{homeData[6]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(6)"> Add To Cart</button>
           </div>
@@ -189,17 +189,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[7].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[7]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[7].name}}
+              {{homeData[7]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[7].description}}
+              {{homeData[7]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[7].price}} PKR / {{homeData[7].size}} Metre
+              {{homeData[7]?.price}} PKR / {{homeData[7]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(7)"> Add To Cart</button>
           </div>
@@ -207,17 +207,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[8].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[8]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[8].name}}
+              {{homeData[8]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[8].description}}
+              {{homeData[8]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[8].price}} PKR / {{homeData[8].size}} Metre
+              {{homeData[8]?.price}} PKR / {{homeData[8]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(8)"> Add To Cart</button>
           </div>
@@ -225,17 +225,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[9].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[9]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[9].name}}
+              {{homeData[9]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[9].description}}
+              {{homeData[9]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[9].price}} PKR / {{homeData[9].size}} Metre
+              {{homeData[9]?.price}} PKR / {{homeData[9]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(9)"> Add To Cart</button>
           </div>
@@ -257,21 +257,20 @@
     </div>
 
     <div class="col-md-6 mt-2" *ngIf="homeDataIf">
-      <carousel [height]="650" [cellWidth]="300" [loop]=true [autoplay]=true>
+      ? <carousel [height]="650" [cellWidth]="300" [loop]=true [autoplay]=true>
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[10].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[10]?.images[0]}} style="height: 450px !important" />
             </div>
-
             <div class="card-heading">
-              {{homeData[10].name}}
+              {{homeData[10]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[10].description}}
+              {{homeData[10]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[10].price}} PKR / {{homeData[10].size}} Metre
+              {{homeData[10]?.price}} PKR / {{homeData[10]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(10)"> Add To Cart</button>
           </div>
@@ -279,17 +278,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[11].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[11]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[11].name}}
+              {{homeData[11]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[11].description}}
+              {{homeData[11]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[11].price}} PKR / {{homeData[11].size}} Metre
+              {{homeData[11]?.price}} PKR / {{homeData[11]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(11)"> Add To Cart</button>
           </div>
@@ -297,17 +296,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[12].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[12]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[12].name}}
+              {{homeData[12]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[12].description}}
+              {{homeData[12]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[12].price}} PKR / {{homeData[12].size}} Metre
+              {{homeData[12]?.price}} PKR / {{homeData[12]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(12)"> Add To Cart</button>
           </div>
@@ -315,17 +314,17 @@
         <div class=" mt-2 carousel-cell">
           <div class="card-sl">
             <div class="card-image">
-              <img src={{homeData[13].images[0]}} style="height: 450px !important" />
+              <img src={{homeData[13]?.images[0]}} style="height: 450px !important" />
             </div>
 
             <div class="card-heading">
-              {{homeData[13].name}}
+              {{homeData[13]?.name}}
             </div>
             <div class="card-text">
-              {{homeData[13].description}}
+              {{homeData[13]?.description}}
             </div>
             <div class="card-text">
-              {{homeData[13].price}} PKR / {{homeData[13].size}} Metre
+              {{homeData[13]?.price}} PKR / {{homeData[13]?.size}} Metre
             </div>
             <button class="card-button" (click)="onSave(13)"> Add To Cart</button>
           </div>
@@ -400,17 +399,17 @@
       <div class="col-md-3" *ngFor="let data of topSelling;let i=index">
         <div class="card-sl">
           <div class="card-image">
-            <img appImage src={{data.images[0]}} />
+            <img appImage src={{data?.images[0]}} />
           </div>
 
           <div class="card-heading">
-            {{data.name}}
+            {{data?.name}}
           </div>
           <div class="card-text">
-            {{data.description}}
+            {{data?.description}}
           </div>
           <div class="card-text">
-            {{data.price}} PKR / {{data.size} }Metre
+            {{data?.price}} PKR / {{data?.size} }Metre
           </div>
           <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
         </div>
