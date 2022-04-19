@@ -21,6 +21,8 @@ export class PlacedOrdersComponent implements OnInit {
   number = 0;
   orders: any;
   loggedInUserData: any;
+  public userName: any;
+  selectedPrice: number = 0;
 
   constructor(
     private invoiceService: InvoiceService,
@@ -36,6 +38,8 @@ export class PlacedOrdersComponent implements OnInit {
       this.loggedInUserData = this.jwtBreaker.decodedToken(
         sessionStorage.getItem('token')
       );
+      console.log(this.loggedInUserData, 'this.loggedInUserData');
+      this.userName = this.loggedInUserData.name;
       this.orderService
         .getOrderById({ id: this.loggedInUserData.userId })
         .subscribe((data) => {
@@ -46,6 +50,7 @@ export class PlacedOrdersComponent implements OnInit {
     } else {
       let user = this.userIdentityService.onUserGet();
       this.number = user.number;
+      this.userName = user.name;
       this.orderService
         .getOrderByNumber({ phone: this.number })
         .subscribe((data) => {
@@ -76,11 +81,16 @@ export class PlacedOrdersComponent implements OnInit {
     console.log('the orders which are placed are', this.placedOrdersData);
 
     for (let i = 0; i < this.placedOrdersData?.orderItems?.length; i++) {
+      this.selectedPrice = parseInt(
+        this.placedOrdersData.orderItems[i].quantity
+      );
       console.log(
         'this.placedOrdersData[i].price;',
         this.placedOrdersData.orderItems[i].price
       );
-      this.totalprice += this.placedOrdersData.orderItems[i].price;
+      this.totalprice =
+        this.totalprice +
+        this.placedOrdersData.orderItems[i].price * this.selectedPrice;
       // parseInt(this.placedOrdersData[i].quantity);
       console.log('this.totalprice', this.totalprice);
     }

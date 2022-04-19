@@ -65,7 +65,7 @@
             <div class="card-text">
               {{homeData[0]?.price}} PKR / {{homeData[0]?.quantity}} Metre
             </div>
-            <button class="card-button" (click)="onSave(0)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[0])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -83,7 +83,7 @@
             <div class="card-text">
               {{homeData[1]?.price}} PKR / {{homeData[1]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(1)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[1])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -101,7 +101,7 @@
             <div class="card-text">
               {{homeData[2]?.price}} PKR / {{homeData[0]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(2)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[2])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -119,7 +119,7 @@
             <div class="card-text">
               {{homeData[3]?.price}} PKR / {{homeData[3]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(3)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[3])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -137,7 +137,7 @@
             <div class="card-text">
               {{homeData[4]?.price}} PKR / {{homeData[4]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(4)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[4])"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -165,7 +165,7 @@
             <div class="card-text">
               {{homeData[5]?.price}} PKR / {{homeData[5]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(5)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[5])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -183,7 +183,7 @@
             <div class="card-text">
               {{homeData[6]?.price}} PKR / {{homeData[6]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(6)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[6])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -201,7 +201,7 @@
             <div class="card-text">
               {{homeData[7]?.price}} PKR / {{homeData[7]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(7)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[7])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -219,7 +219,7 @@
             <div class="card-text">
               {{homeData[8]?.price}} PKR / {{homeData[8]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(8)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[8])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -237,7 +237,7 @@
             <div class="card-text">
               {{homeData[9]?.price}} PKR / {{homeData[9]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(9)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[9])"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -272,7 +272,7 @@
             <div class="card-text">
               {{homeData[10]?.price}} PKR / {{homeData[10]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(10)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[10])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -290,7 +290,7 @@
             <div class="card-text">
               {{homeData[11]?.price}} PKR / {{homeData[11]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(11)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[11])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -308,7 +308,7 @@
             <div class="card-text">
               {{homeData[12]?.price}} PKR / {{homeData[12]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(12)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[12])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -326,7 +326,7 @@
             <div class="card-text">
               {{homeData[13]?.price}} PKR / {{homeData[13]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(13)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[13])"> Add To Cart</button>
           </div>
         </div>
         <div class=" mt-2 carousel-cell">
@@ -344,7 +344,7 @@
             <div class="card-text">
               {{homeData[14]?.price}} PKR / {{homeData[14]?.size}} Metre
             </div>
-            <button class="card-button" (click)="onSave(14)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.homeData[14])"> Add To Cart</button>
           </div>
         </div>
       </carousel>
@@ -357,10 +357,8 @@
   <div class="row mt-5 content" style="background-color:#dad3c7">
     <div class="col-md-2 offset-md-1">
       <div class="row mt-5 d-flex justify-content-center">
-        <h1 class="font">Summer Collection</h1>
-        <p class="p-2" style="align-items: center;color:#514646">Our legacy and quest for producing the finest cloth
-          continues to be
-          stronger then ever.</p>
+        <h1 class="font">{{this.collectionDescription?.title}}</h1>
+        <p class="p-2" style="align-items: center;color:#514646">{{this.collectionDescription?.description}}</p>
       </div>
       <div class="row ml-5 mr-5">
       </div>
@@ -384,7 +382,7 @@
             <div class="card-text">
               {{data.price}} PKR / {{data.size}}Metre
             </div>
-            <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
+            <button class="card-button" (click)="onSave(this.collectionData[i])"> Add To Cart</button>
           </div>
         </div>
       </div>
@@ -409,9 +407,9 @@
             {{data?.description}}
           </div>
           <div class="card-text">
-            {{data?.price}} PKR / {{data?.size} }Metre
+            {{data?.price}} PKR / {{data?.size}}Metre
           </div>
-          <button class="card-button" (click)="onSave(i)"> Add To Cart</button>
+          <button class="card-button" (click)="onSave(this.topSelling[i])"> Add To Cart</button>
         </div>
       </div>
     </div>

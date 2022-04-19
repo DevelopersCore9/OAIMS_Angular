@@ -41,6 +41,9 @@ export class CheckoutComponent implements OnInit {
   public informationData: any;
   public loggedInUserData: any = {};
   public cartCount: any = {};
+  public selectedPrice: number = 0;
+  public selectedQuantity: number = 0;
+  public totalPrice: number = 0;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -89,6 +92,7 @@ export class CheckoutComponent implements OnInit {
 
       this.loggedInUserData = this.UserIdentityService.onUserGet();
     }
+    this.setTotalPrice();
   }
 
   openDialog() {
@@ -143,5 +147,15 @@ export class CheckoutComponent implements OnInit {
       verticalPosition: 'top',
       duration: 5 * 1000,
     });
+  }
+
+  setTotalPrice() {
+    for (var i = 0; i < this.cartData.length; i++) {
+      this.selectedQuantity = parseInt(this.cartData[i].quantity);
+      this.totalPrice =
+        this.totalPrice +
+        this.cartData[i].selectedPrice * this.selectedQuantity;
+      console.log('the total price', this.totalPrice);
+    }
   }
 }

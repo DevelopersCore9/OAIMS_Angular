@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.collectionService.CollectionDescription().then((description) => {
-      this.collectionDescription = description;
+      this.collectionDescription = description[0];
       console.log('this.collectionDescription', this.collectionDescription);
     });
     this.homeService
@@ -148,10 +148,10 @@ export class HomeComponent implements OnInit {
   }
 
   onSave(index: any) {
-    this.navigateService.saveData(this.homeData[index]);
-    console.log(this.homeData[index]._id);
+    this.navigateService.saveData(index);
+    console.log(index._id);
     this.router.navigate(['/productDetails'], {
-      queryParams: { product_id: this.homeData[index]._id },
+      queryParams: { product_id: index._id },
     });
   }
 

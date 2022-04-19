@@ -48,7 +48,7 @@
           <div class="col-md-3 mt-4">
             <div class="product-rating">
               <span class="">Remaining</span>
-              <span> ({{productsData.quantity}})</span>
+              <span> ({{productsData.quantity > 0 ? productsData.quantity : 0}})</span>
             </div>
           </div>
         </div>
@@ -105,8 +105,13 @@
           <!-- <div class="social-links" style="float: right">
             <button class="inp2" routerLink="../all-products">Continue Shopping</button>
           </div> -->
-          <button mat-button class="a-button" style="float: right" (click)="onCheckout(quantity.value)">
+          <button *ngIf="quantity.value < productsData.quantity" mat-button class="a-button" style="float: right"
+            (click)="onCheckout(quantity.value)">
             Add to Cart
+          </button>
+          <button *ngIf="quantity.value > productsData.quantity" mat-button class="a-button"
+            style="float: right;color: white" disabled>
+            Out of Stock
           </button>
         </div>
       </div>

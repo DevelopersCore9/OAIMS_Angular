@@ -17,6 +17,9 @@ export class PaymentComponent implements OnInit {
   public allDataCart: any;
   public isChecked: boolean = false;
   public user: any;
+  public selectedPrice: number = 0;
+  public selectedQuantity: number = 0;
+  public totalPrice: number = 0;
 
   constructor(
     private cartService: CartService,
@@ -34,6 +37,8 @@ export class PaymentComponent implements OnInit {
     console.log('allDataCart', this.allDataCart);
     this.user = this.userInformation.onUserGet();
     console.log(this.user, 'this.user');
+
+    this.setTotalPrice();
   }
 
   onRemoveItem(index: number) {
@@ -84,5 +89,15 @@ export class PaymentComponent implements OnInit {
       verticalPosition: 'top',
       duration: 5 * 1000,
     });
+  }
+
+  setTotalPrice() {
+    for (var i = 0; i < this.allDataCart.length; i++) {
+      this.selectedQuantity = parseInt(this.allDataCart[i].quantity);
+      this.totalPrice =
+        this.totalPrice +
+        this.allDataCart[i].selectedPrice * this.selectedQuantity;
+      console.log('the total price', this.totalPrice);
+    }
   }
 }

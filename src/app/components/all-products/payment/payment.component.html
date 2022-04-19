@@ -33,7 +33,7 @@
     <div class="col-md-7 cart p-5" *ngIf="isChecked">
       <div class="title">
         <div class="row">
-          <h3>Your Orders</h3>
+          <h3><strong>Your Orders</strong></h3>
         </div>
       </div>
       <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
@@ -49,6 +49,14 @@
           <div class="col">
             <button class="btn btn-danger">Remove</button>
           </div>
+        </div>
+      </div>
+
+
+
+      <div class="container-fluid">
+        <div class="row" style="float:right">
+          <h4 class="mt-2"><strong>Total:</strong> {{this.totalPrice}} <strong>Rs</strong></h4>
         </div>
       </div>
     </div>
