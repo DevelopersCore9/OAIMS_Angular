@@ -30,7 +30,7 @@
           Order</button>
       </div>
     </div>
-    <div class="col-md-7 cart p-5" *ngIf="isChecked">
+    <div class="col-md-7 cart p-5" >
       <div class="title">
         <div class="row">
           <h3><strong>Your Orders</strong></h3>
@@ -39,16 +39,17 @@
       <div class="row border-top border-bottom" *ngFor="let order of allDataCart">
         <div class="row main align-items-center">
           <div class="col-2"><img class="img-fluid" src={{order.images[0]}}></div>
-          <div class="col">
-            <div class="row ">{{order.name}}</div>
+          <div class="col-2">
+            <div class="row mt-1"><strong>Name</strong>&nbsp; {{ order.name}}</div>
           </div>
-          <div class="col">Color <strong>{{order.colorSelected}}</strong> </div>
-          <div class="col">{{order.size}} M</div>
-          <div class="col">{{order.quantity}} M</div>
-          <div class="col">Rs.{{order.selectedPrice}} </div>
-          <div class="col">
-            <button class="btn btn-danger">Remove</button>
+          <div class="col-2 mt-1" >
+            <span class="fa-2x dot mt-1 ml-4" [ngStyle]="{ 'background-color': order.colorSelected }"
+                  ng-model="button.value" style="color: transparent"></span>
+            <!-- {{cart.colorSelected}}</strong>  -->
           </div>
+          <div class="col-2 mt-1"><strong>Size</strong> {{order.selectedSize}}M</div>
+          <div class="col mt-1"><strong>Qty</strong> {{order.quantity}}</div>
+          <div class="col mt-1">Rs.{{order.selectedPrice}} </div>
         </div>
       </div>
 

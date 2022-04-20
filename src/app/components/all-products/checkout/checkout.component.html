@@ -102,14 +102,20 @@
       <div class="row border-top border-bottom" *ngFor="let cart of cartData; index as i">
         <div class="row main align-items-center">
           <div class="col-2"><img class="img-fluid" src={{cart.images[0]}}></div>
-          <div class="col">
-            <div class="row ">{{cart.name}}</div>
+          <div class="col-2">
+            <div class="row mt-1"><strong>Name</strong>&nbsp; {{ cart.name}}</div>
           </div>
-          <div class="col">Color <strong>{{cart.colorSelected}}</strong> </div>
-          <div class="col">Size {{cart.selectedSize}}M</div>
-          <div class="col">Quantity {{cart.quantity}}</div>
-          <div class="col">Rs.{{cart.selectedPrice}} </div>
-          <button class="btn btn-danger" (click)="removeItem(i)">Remove</button>
+          <div class="col-2 mt-1" >
+            <span class="fa-2x dot mt-1 ml-4" [ngStyle]="{ 'background-color': cart.colorSelected }"
+                  ng-model="button.value" style="color: transparent"></span>
+            <!-- {{cart.colorSelected}}</strong>  -->
+          </div>
+          <div class="col-2 mt-1"><strong>Size</strong> {{cart.selectedSize}}M</div>
+          <div class="col mt-1"><strong>Qty</strong> {{cart.quantity}}</div>
+          <div class="col mt-1">Rs.{{cart.selectedPrice}} </div>
+          <div class="col"><i class="fa fa-close" (click)="removeItem(i)" style="font-size:36px;color:red;cursor: pointer !important;"></i>
+          </div>
+          <!-- <button class="btn btn-danger" >Remove</button> -->
         </div>
       </div>
       <div class="container-fluid">

@@ -1,55 +1,124 @@
 <section id="contact" class="contact">
-
   <div class="container" data-aos="fade-up">
     <header class="section-header">
       <h1 class="d-flex justify-content-center text-center">Contact Us</h1>
     </header>
     <div class="row">
-      <div class="col-md-12" style="background-color: #dad3c7;">
+      <div class="col-md-12" style="background-color: #dad3c7">
         <form class="p-3">
           <div class="row gy-4">
-
             <div class="col-md-6">
               <p>
-                <mat-form-field appearance="outline" style="min-width: 100% !important;">
+                <mat-form-field
+                  appearance="outline"
+                  style="min-width: 100% !important"
+                >
                   <mat-label>Enter Your Name</mat-label>
-                  <input matInput placeholder="Name" #name>
+                  <input
+                    matInput
+                    placeholder="Name"
+                    #name
+                    [formControl]="nameFormControl"
+                    required
+                  />
+                  <mat-error *ngIf="nameFormControl.hasError('minlength') && !nameFormControl.hasError('required')">
+                    Name must have 5 letters
+                  </mat-error>
+                  <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Name is <strong>required</strong>
+                  </mat-error>
                 </mat-form-field>
               </p>
             </div>
 
-            <div class="col-md-6 ">
+            <div class="col-md-6">
               <p>
-                <mat-form-field appearance="outline" style="min-width: 100% !important;">
+                <mat-form-field
+                  appearance="outline"
+                  style="min-width: 100% !important"
+                >
                   <mat-label>Enter Your Email</mat-label>
-                  <input matInput placeholder="Email" #email>
+                  <input
+                    matInput
+                    placeholder="Email"
+                    #email
+                    [formControl]="emailFormControl"
+                    required
+                  />
+
+                  <mat-error
+                    *ngIf="
+                      emailFormControl.hasError('email') &&
+                      !emailFormControl.hasError('required')
+                    "
+                  >
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
                 </mat-form-field>
               </p>
             </div>
 
             <div class="col-md-12">
-
-              <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="outline" style="min-width: 100% !important;">
+              <form class="example-form" name="myForm" #myForm>
+                <mat-form-field
+                  class="example-full-width"
+                  appearance="outline"
+                  style="min-width: 100% !important"
+                >
                   <mat-label>Subject</mat-label>
-                  <input matInput #subject>
+                  <input
+                    matInput
+                    #subject
+                    [formControl]="subjectFormControl"
+                    required
+                  />
+                  <mat-error *ngIf="subjectFormControl.hasError('required')">
+                    Subject is <strong>required</strong>
+                  </mat-error>
                 </mat-form-field>
               </form>
             </div>
 
             <div class="col-md-12">
               <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="outline" style="min-width: 100% !important;">
+                <mat-form-field
+                  class="example-full-width"
+                  appearance="outline"
+                  style="min-width: 100% !important"
+                >
                   <mat-label>Leave a comment</mat-label>
-                  <textarea matInput placeholder="Ex. It makes me feel..." #comment></textarea>
+                  <textarea
+                    matInput
+                    placeholder="Leave a meesage for us"
+                    #comment
+                    [formControl]="commentFormControl"
+                    required
+                  ></textarea>
+                  <mat-error *ngIf="commentFormControl.hasError('required')">
+                    Comment is <strong>required</strong>
+                  </mat-error>
                 </mat-form-field>
               </form>
             </div>
 
             <div class="col-md-12 text-center">
-
-              <button class="btn" style="background-color: #FFCE31;"
-                (click)="addMessage(name.value,email.value,subject.value,comment.value)">Send Message</button>
+              <button
+                class="btn"
+                style="background-color: #ffce31"
+                (click)="
+                  addMessage(
+                    name.value,
+                    email.value,
+                    subject.value,
+                    comment.value
+                  )
+                "
+              >
+                Send Message
+              </button>
             </div>
           </div>
         </form>
@@ -58,23 +127,26 @@
   </div>
 </section>
 
-<footer id="footer" class="footer" style="background-color: #dad3c7;">
-
-  <div class="footer-top" style="background-color: #dad3c7;">
+<footer id="footer" class="footer" style="background-color: #dad3c7">
+  <div class="footer-top" style="background-color: #dad3c7">
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="">
-            <span style="color: #514646;">OAIMS</span>
+            <img src="assets/img/logo.png" alt="" />
+            <span style="color: #514646">OAIMS</span>
           </a>
           <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
             donna mare fermentum iaculis eu non diam phasellus.</p> -->
           <div class="social-links mt-3">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+            <a href="#" class="instagram"
+              ><i class="bi bi-instagram bx bxl-instagram"></i
+            ></a>
+            <a href="#" class="linkedin"
+              ><i class="bi bi-linkedin bx bxl-linkedin"></i
+            ></a>
           </div>
         </div>
 
@@ -82,10 +154,20 @@
           <h4>Useful Links</h4>
           <ul>
             <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a [routerLink]="['/all-products']">All Products</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a [routerLink]="['/orders-history']">Orders</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About Us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Contact Us</a></li>
+            <li>
+              <i class="bi bi-chevron-right"></i>
+              <a [routerLink]="['/all-products']">All Products</a>
+            </li>
+            <li>
+              <i class="bi bi-chevron-right"></i>
+              <a [routerLink]="['/orders-history']">Orders</a>
+            </li>
+            <li>
+              <i class="bi bi-chevron-right"></i> <a href="#">About Us</a>
+            </li>
+            <li>
+              <i class="bi bi-chevron-right"></i> <a href="#">Contact Us</a>
+            </li>
           </ul>
         </div>
 
@@ -98,30 +180,31 @@
           </ul>
         </div> -->
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <div
+          class="col-lg-3 col-md-12 footer-contact text-center text-md-start"
+        >
           <h4>Contact Us</h4>
           <p>
-            Azam Market <br>
-            Lahore, PAK 54000<br>
-            Pakistan <br><br>
-            <strong>Phone:</strong> +92 308 4353638<br>
-            <strong>Email:</strong> OAIMS@example.com<br>
+            Azam Market <br />
+            Lahore, PAK 54000<br />
+            Pakistan <br /><br />
+            <strong>Phone:</strong> +92 308 4353638<br />
+            <strong>Email:</strong> OAIMS@example.com<br />
           </p>
-
         </div>
-
       </div>
     </div>
   </div>
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span>OAIMS</span></strong>. All Rights Reserved | Developed By <strong>DEVELOPERS
-        CORE</strong>
+      &copy; Copyright <strong><span>OAIMS</span></strong
+      >. All Rights Reserved | Developed By <strong>DEVELOPERS CORE</strong>
     </div>
-
   </div>
-</footer><!-- End Footer -->
+</footer>
+<!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-    class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"
+  ><i class="bi bi-arrow-up-short"></i
+></a>

@@ -91,25 +91,26 @@
         </div>
         <div class="product-detail">
           <p class="con">{{ productsData?.description }}</p>
-          <ul>
-            <li>Available: <span>in stock</span></li>
+          <ul >
+            <li >Feature: <span >Easy to wear | Premium | Original</span></li>
+            <li *ngIf="stringToInt(quantity.value) > 0">Credibility: <span>High in quality</span></li>
             <!-- <li>Category: <span>{{productsData.subCategory.category.categoryName}}</span></li> -->
             <li>Shipping Area: <span>Pakistan</span></li>
-            <li>Shipping Fee: <span>Free</span></li>
+            <li>Shipping Fee: <span>Rs 250</span></li>
           </ul>
         </div>
         <div class="purchase-info">
-          <div class="social-links" style="float: left">
+          <!-- <div class="social-links" style="float: left">
             <button class="inp2" routerLink="../all-products">Continue Shopping</button>
-          </div>
+          </div> -->
           <!-- <div class="social-links" style="float: right">
             <button class="inp2" routerLink="../all-products">Continue Shopping</button>
           </div> -->
-          <button *ngIf="quantity.value < productsData.quantity" mat-button class="a-button" style="float: right"
+          <button *ngIf="stringToInt(quantity.value) > 0 && quantity.value <= productsData.quantity" mat-button class="a-button" style="float: right"
             (click)="onCheckout(quantity.value)">
             Add to Cart
           </button>
-          <button *ngIf="quantity.value > productsData.quantity" mat-button class="a-button"
+          <button *ngIf="stringToInt(quantity.value) < 1 || quantity.value > productsData.quantity " mat-button class="a-button"
             style="float: right;color: white" disabled>
             Out of Stock
           </button>

@@ -10,3 +10,11 @@ h1 {
   border-bottom: 4px solid #514646;
   zoom: 1;
 }
+
+.dot {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid white;
+}

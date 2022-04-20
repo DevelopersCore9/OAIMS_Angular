@@ -11,3 +11,11 @@ h2 {
 .font{
   font-size: xx-large;
 }
+
+.dot {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid white;
+}

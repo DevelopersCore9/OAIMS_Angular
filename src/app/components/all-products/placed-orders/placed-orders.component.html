@@ -29,7 +29,8 @@
                       <p class="font mb-0">{{data.product.name}}</p>
                     </div>
                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="font mb-0 ">{{data.product.colorSelected}}</p>
+                      <p class="fa-2x dot font mb-0" [ngStyle]="{ 'background-color': data.color }"
+                      ng-model="button.value" ></p>
                     </div>
                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                       <p class="font mb-0 ">Size: {{data.size}} M</p>

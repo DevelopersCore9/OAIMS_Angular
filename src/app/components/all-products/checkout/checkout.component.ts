@@ -110,6 +110,7 @@ export class CheckoutComponent implements OnInit {
   removeItem(index: any) {
     this.cartData = this.cartService.onRemoveItem(index);
     this.cartNotificationService.minusNotificationValue();
+    window.location.reload();
   }
 
   saveInformation(

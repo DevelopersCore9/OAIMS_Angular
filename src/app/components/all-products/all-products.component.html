@@ -23,7 +23,7 @@
           {{p.Name}} - {{p.Price}}
         </div> -->
         <div class="row mt-5">
-          <div class=" col-md-4"
+          <div class="col-md-4"
             *ngFor="let data of allProducts |filter:searchkey:'title' | paginate:{itemsPerPage:count,currentPage:p}; let i=index">
             <div class="card-sl mb-3">
               <div class="card-image">

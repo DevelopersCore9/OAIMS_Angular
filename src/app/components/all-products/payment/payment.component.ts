@@ -33,7 +33,6 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.allDataCart = this.cartService.onCartGet();
-    this.isChecked = true;
     console.log('allDataCart', this.allDataCart);
     this.user = this.userInformation.onUserGet();
     console.log(this.user, 'this.user');
@@ -61,8 +60,9 @@ export class PaymentComponent implements OnInit {
         box: '622ddf833996892a9140eaa0',
       });
     });
-    if (this.isChecked == null) {
-      this.openSnackBar('Please select the option first');
+    console.log("this isChecked",this.isChecked)
+    if (this.isChecked == false ) {
+      this.openSnackBar('Please select option first');
     } else {
       let finalObj: any = {
         orderItems: orderItems,
