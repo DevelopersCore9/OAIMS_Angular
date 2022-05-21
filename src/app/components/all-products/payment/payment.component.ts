@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
   public selectedPrice: number = 0;
   public selectedQuantity: number = 0;
   public totalPrice: number = 0;
-
+  public discountValue : number = 0;
   constructor(
     private cartService: CartService,
     private invoiceService: InvoiceService,
@@ -38,6 +38,7 @@ export class PaymentComponent implements OnInit {
     console.log(this.user, 'this.user');
 
     this.setTotalPrice();
+    this.checkDiscount();
   }
 
   onRemoveItem(index: number) {
@@ -90,7 +91,15 @@ export class PaymentComponent implements OnInit {
       duration: 5 * 1000,
     });
   }
-
+  checkDiscount(){
+    if(this.user.id == '' || this.user.id == this.user.id){
+      this.discountValue = 0;
+      console.log("Not logged In or old user",this.discountValue);
+    }else{
+      this.discountValue = this.totalPrice * 10/100;
+      console.log("New User",this.discountValue);
+    }
+  }
   setTotalPrice() {
     for (var i = 0; i < this.allDataCart.length; i++) {
       this.selectedQuantity = parseInt(this.allDataCart[i].quantity);
