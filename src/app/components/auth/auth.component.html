@@ -27,8 +27,20 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="Email" required #userLoginEmail>
-              <mat-error *ngIf="loginEmail.invalid">{{getErrorMessageLogin()}}</mat-error>
+              <input matInput placeholder="Email" required #userLoginEmail
+              [formControl]="logInFormControl"
+              >
+              <mat-error
+              *ngIf="
+                logInFormControl.hasError('email') &&
+                !logInFormControl.hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="logInFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -36,12 +48,23 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'"  required #userLoginPassword>
+              <input matInput [type]="hide ? 'password' : 'text'"  required #userLoginPassword
+              [formControl]="logInPasswordControl"
+              >
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+              <mat-error
+              *ngIf="
+                logInPasswordControl.hasError('maxlength') &&
+                !logInPasswordControl.hasError('required')
+              "> Password amount should be less than 12</mat-error>
+            <mat-error *ngIf="logInPasswordControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
             </mat-form-field>
+
           </div>
         </div>
       </div>
@@ -61,7 +84,15 @@
         <div class="col-md-12 mt-3" >
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Full Name</mat-label>
-            <input matInput #firstName>
+            <input matInput #firstName
+            [formControl]="nameFormControl" required
+            >
+            <mat-error *ngIf="nameFormControl.hasError('maxlength') && !nameFormControl.hasError('required')">
+              Name must have less than 20 letters
+            </mat-error>
+            <mat-error *ngIf="signUpFormControl.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -70,8 +101,20 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="pat@example.com" required #userSignUpEmail>
-              <mat-error *ngIf="signUpEmail.invalid">{{getErrorMessageSignUp()}}</mat-error>
+              <input matInput placeholder="abc@example.com" required #userSignUpEmail
+              [formControl]="signUpFormControl"
+              >
+              <mat-error
+              *ngIf="
+              signUpFormControl.hasError('email') &&
+                !signUpFormControl.hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="signUpFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -79,11 +122,20 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" required #userSignUpPassword>
+              <input matInput [type]="hide ? 'password' : 'text'" required #userSignUpPassword
+              [formControl]="signUpPasswordControl">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+               <mat-error
+              *ngIf="
+                signUpPasswordControl.hasError('maxlength') &&
+                !signUpPasswordControl.hasError('required')
+              "> Password amount should be less than 12</mat-error>
+            <mat-error *ngIf="signUpPasswordControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -91,17 +143,26 @@
           <div class="example-container">
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-label>Retype your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <input matInput [type]="hide ? 'password' : 'text'" required #confirm
+              [formControl]="confirmPasswordControl">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+              <mat-error
+              *ngIf="
+                confirmPasswordControl.hasError('maxlength') &&
+                !confirmPasswordControl.hasError('required')
+              "> Password amount should be less than 12</mat-error>
+            <mat-error *ngIf="confirmPasswordControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
             </mat-form-field>
           </div>
         </div>
       </div>
       <div class="row p-2" style="float: right">
-        <button class="btn" style="background-color: #514646;color: #fff;" (click)="userSignUp(firstName.value,userSignUpEmail.value,userSignUpPassword.value)">Sign Up</button>
+        <button class="btn" style="background-color: #514646;color: #fff;" (click)="userSignUp(firstName.value,userSignUpEmail.value,userSignUpPassword.value,confirm.value)">Sign Up</button>
       </div>
     </div>
   </div>

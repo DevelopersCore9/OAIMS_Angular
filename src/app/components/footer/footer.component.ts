@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl,  Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
