@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit {
   public selectedQuantity: number = 0;
   public totalPrice: number = 0;
   public discountValue : number = 0;
+  loggedInUserData : any;
   constructor(
     private cartService: CartService,
     private invoiceService: InvoiceService,
@@ -28,10 +29,15 @@ export class PaymentComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar,
     private orderService: OrderService,
-    private cartNotificationService: CartNotificationService
+    private cartNotificationService: CartNotificationService,
+    private UserIdentityService: UserIdentityService,
+    private jwtBreaker: JwtDecode,
+
+
   ) {}
 
   ngOnInit(): void {
+
     this.allDataCart = this.cartService.onCartGet();
     console.log('allDataCart', this.allDataCart);
     this.user = this.userInformation.onUserGet();
